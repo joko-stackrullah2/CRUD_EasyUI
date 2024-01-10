@@ -23,11 +23,13 @@
     <thead>
         <tr>
             
-            <th field="nisn">Nisn</th>
-            <th field="nama">Nama</th>
-            <th field="alamat">Alamat</th>
-            <th field="telepon">Telepon</th>
-            <th field="kelas">Kelas</th>
+            
+            <th field="nisn" width="225">NISN</th>
+            <th field="nama"  width="300">NAMA</th>
+            <th field="alamat"  width="430">ALAMAT</th>
+            <th field="telepon"  width="300">TELEPON</th>
+            <th field="kelas"  width="150">KELAS</th>
+
 
         </tr>
     </thead>
@@ -80,9 +82,7 @@
             </center>
 </div>
 </div>
-<div id="pp" class="easyui-pagination" style="background:#efefef;border:1px solid #ccc;"
-        data-options="total:2000,pageSize:10">
-</div>
+
 	</div>
 
 </div>
@@ -170,7 +170,7 @@ function hapus(){
         success: function(result){
             var result = eval('('+result+')');
             if (result.success){
-                $('#dlg').dialog('close');        
+                $('#dd').dialog('close');        
                 $('#dg-siswa').datagrid('reload');
             } else {
                 $.messager.show({
