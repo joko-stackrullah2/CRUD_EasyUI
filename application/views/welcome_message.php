@@ -14,7 +14,7 @@
 
 <div id="container">
     <center>
-	<h1>LIST DATA SISWA</h1>
+	<h1>LIST DATA SISWA RPL</h1>
     </center>
 
 	<div id="body">
