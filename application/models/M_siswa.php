@@ -66,4 +66,30 @@ class M_siswa extends CI_Model
         return $this->db->delete('siswa',$data);
     }
 
+    public function CariSiswa(){
+        $page = isset($_POST['page']) ? intval($_POST['page']) : 1;
+        $rows = isset($_POST['rows']) ? intval($_POST['rows']) : 50;
+        $nama = isset($_POST['nama']) ? strval($_POST['nama']) : '';
+        $offset = ($page-1)*$rows;
+
+        $result = array();
+        $where = "nama like '$nama%'";
+        $query = "select count(*) from siswa where " . $where;
+        $row = array();
+        $result['total'] = $row[0];
+        
+
+        // select data from table product
+        $query = "SELECT * FROM siswa where " . $where . " limit $offset,$rows";
+
+        $items = array();
+        while($row = ($query)){
+            array_push($items, $row);
+        }
+        $result["rows"] = $items;
+         
+        echo json_encode($result);
+		
+}
+
 }

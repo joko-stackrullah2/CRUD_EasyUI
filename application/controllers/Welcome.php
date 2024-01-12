@@ -63,5 +63,6 @@ public function hapus(){
 		echo json_encode(['Msg'=>'Some Error occured!.']);}
 }
 
-	
 }
+	
+

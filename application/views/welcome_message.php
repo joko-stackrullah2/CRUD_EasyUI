@@ -14,9 +14,13 @@
 
 <div id="container">
     <center>
-	<h1>LIST DATA SISWA RPL</h1>
+	<h1>LIST DATA SISWA</h1>
     </center>
-
+    <div id="tb" style="padding:3px">
+        <span>Cari nama siswa:</span>
+        <input id="nama" style="line-height:26px;border:1px solid #ccc">
+        <a href="#" class="easyui-linkbutton" iconCls="icon-search" plain="true" onclick="cariSiswa()">Cari</a>
+    </div>
 	<div id="body">
 	<table id="dg-siswa" toolbar="#toolbar" title="DATA SISWA" class="easyui-datagrid" fit="true" singleSelect="true" fitColumns="true" rowNumbers="false" pagination="true" url="<?= site_url('welcome/getAllDataSiswa') ?>" pageSize="50" pageList="[25,50,75,100,125,150,200]" nowrap="false" data-options="singleSelect:true" >
 
@@ -34,6 +38,7 @@
         </tr>
     </thead>
 </table>
+
 <div id="toolbar">
     <a href="#" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="newSiswa()" >Tambah Siswa</a>
     <a href="#" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onclick="editSiswa()" >Edit Siswa</a>
@@ -41,28 +46,35 @@
 </div>
 <div id="dlg" class="easyui-dialog"  style="width:400px;height:280px;padding:10px 20px"
         closed="true" buttons="#dlg-buttons">
+        <center>
     <div class="ftitle">DATA SISWA</div>
+</center>
     <form id="fm" method="post" novalidate>
 
         <div class="fitem">
+            <p>
             <label>Nisn:</label>
-            <input name="nisn" class="easyui-textbox" required="true">
+            <br><input name="nisn" class="easyui-textbox" width= "300"required="true"></br></p>
         </div>
         <div class="fitem">
+            <p>
             <label>Nama:</label>
-            <input name="nama" class="easyui-textbox" required="true">
+           <input name="nama" class="easyui-textbox" width="300" required="true"></p>
         </div>
         <div class="fitem">
+            <p>
             <label>Alamat:</label>
-            <input name="alamat" class="easyui-textbox">
+            <input name="alamat" class="easyui-textbox" width="300"></p>
         </div>
         <div class="fitem">
+            <p>
             <label>Telepon:</label>
-            <input name="telepon" class="easyui-textbox" validType="text">
+            <input name="telepon" class="easyui-textbox" width="300" validType="text"></p>
         </div>
         <div class="fitem">
+            <p>
             <label>Kelas:</label>
-            <input name="kelas" class="easyui-textbox" validType="text">
+            <input name="kelas" class="easyui-textbox" width="300" validType="text"></p>
         </div>
     </form>
 </div>
@@ -87,6 +99,8 @@
 
 </div>
 <script>
+
+
     var url =''
 function newSiswa(){
     $('#dlg').dialog('open').dialog('setTitle','Tambah Data Siswa');
@@ -111,7 +125,12 @@ function hapusSiswa(){
     url = 'index.php/Welcome/hapus';
 }
 }
-
+function cariSiswa(){
+        $('#dg-siswa').datagrid('load',{
+            nama: $('#nama').val()
+           
+        });
+    }
 function simpan(){
     $('#fm').form('submit',{
         url: url,
@@ -182,6 +201,8 @@ function hapus(){
         }
     });
 }
+
+
 
 
 
