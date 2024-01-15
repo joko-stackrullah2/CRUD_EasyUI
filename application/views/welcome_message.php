@@ -16,11 +16,7 @@
     <center>
 	<h1>LIST DATA SISWA RPL</h1>
     </center>
-    <div id="tb" style="padding:3px">
-        <span>Cari nama siswa:</span>
-        <input id="nama" style="line-height:26px;border:1px solid #ccc">
-        <a href="#" class="easyui-linkbutton" iconCls="icon-search" plain="true" onclick="cariSiswa()">Cari</a>
-    </div>
+    
 	<div id="body">
 	<table id="dg-siswa" toolbar="#toolbar" title="DATA SISWA" class="easyui-datagrid" fit="true" singleSelect="true" fitColumns="true" rowNumbers="false" pagination="true" url="<?= site_url('welcome/getAllDataSiswa') ?>" pageSize="50" pageList="[25,50,75,100,125,150,200]" nowrap="false" data-options="singleSelect:true" >
 
@@ -125,12 +121,7 @@ function hapusSiswa(){
     url = 'index.php/Welcome/hapus';
 }
 }
-function cariSiswa(){
-        $('#dg-siswa').datagrid('load',{
-            nama: $('#nama').val()
-           
-        });
-    }
+
 function simpan(){
     $('#fm').form('submit',{
         url: url,
