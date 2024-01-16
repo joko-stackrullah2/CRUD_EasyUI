@@ -14,11 +14,11 @@
 
 <div id="container">
     <center>
-	<h1>LIST DATA SISWA RPL</h1>
+	<h1>LIST DATA SISWA </h1>
     </center>
     
 	<div id="body">
-	<table id="dg-siswa" toolbar="#toolbar" title="DATA SISWA" class="easyui-datagrid" fit="true" singleSelect="true" fitColumns="true" rowNumbers="false" pagination="true" url="<?= site_url('welcome/getAllDataSiswa') ?>" pageSize="50" pageList="[25,50,75,100,125,150,200]" nowrap="false" data-options="singleSelect:true" >
+	<table id="dg-siswa" toolbar="#toolbar" title="DATA SISWA" height="570"class="easyui-datagrid"  singleSelect="true" fitColumns="true" rowNumbers="false" pagination="true" url="<?= site_url('welcome/getAllDataSiswa') ?>" pageSize="50" pageList="[25,50,75,100,125,150,200]" nowrap="false" data-options="singleSelect:true" >
 
     <thead>
         <tr>
