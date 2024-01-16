@@ -67,6 +67,17 @@
             <label>Telepon:</label>
             <input name="telepon" class="easyui-textbox" width="300" validType="text"></p>
         </div>
+
+        <div class="fitem">
+            <p>
+            <label>Jenis Kelamin:</label>
+           <select id="cc" class="easyui-combobox" name="kelamin" style="width:150px;">
+    <option value="aa">Laki laki</option>
+    <option>Perempuan</option>
+    
+</select></p>
+
+
         <form id="ff">
         <label>Kelas:</label>
     <div style="margin-bottom:20px">
