@@ -67,11 +67,18 @@
             <label>Telepon:</label>
             <input name="telepon" class="easyui-textbox" width="300" validType="text"></p>
         </div>
-        <div class="fitem">
-            <p>
-            <label>Kelas:</label>
-            <input name="kelas" class="easyui-textbox" width="300" validType="text"></p>
-        </div>
+        <form id="ff">
+        <label>Kelas:</label>
+    <div style="margin-bottom:20px">
+        <input class="easyui-radiobutton" name="kelas" value="rpl" label="RPL:">
+    </div>
+    <div style="margin-bottom:20px">
+        <input class="easyui-radiobutton" name="kelas" value="tkj" label="TKJ:">
+    </div>
+    <div style="margin-bottom:20px">
+        <input class="easyui-radiobutton" name="kelas" value="tei" label="TEI:">
+    </div>
+</form>
     </form>
 </div>
 <div id="dlg-buttons">
