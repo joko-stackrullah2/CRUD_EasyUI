@@ -36,6 +36,8 @@ class M_siswa extends CI_Model
             'alamat' => $this->input->post('alamat'),
             'telepon' => $this->input->post('telepon'),
             'kelas' => $this->input->post('kelas'),
+            'kelamin' => $this->input->post('kelamin'),
+
             
         ];
         $this->db->insert('siswa',$data);
@@ -48,6 +50,8 @@ class M_siswa extends CI_Model
             'alamat' => $this->input->post('alamat'),
             'telepon' => $this->input->post('telepon'),
             'kelas' => $this->input->post('kelas'),
+            'kelamin' => $this->input->post('kelamin'),
+
             
         ];
         $this->db->where('nisn',$data['nisn']);
@@ -61,6 +65,8 @@ class M_siswa extends CI_Model
             'alamat' => $this->input->post('alamat'),
             'telepon' => $this->input->post('telepon'),
             'kelas' => $this->input->post('kelas'),
+            'kelamin' => $this->input->post('kelamin'),
+
         ];
         $this->db->where('nisn',$data['nisn']);
         return $this->db->delete('siswa',$data);

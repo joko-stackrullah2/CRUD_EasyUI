@@ -28,7 +28,10 @@
             <th field="nama"  width="300">NAMA</th>
             <th field="alamat"  width="430">ALAMAT</th>
             <th field="telepon"  width="300">TELEPON</th>
-            <th field="kelas"  width="150">KELAS</th>
+            <th field="kelamin"  width="300">JENIS KELAMIN</th>
+            <th field="kelas"  width="200">KELAS</th>
+            
+
 
 
         </tr>
@@ -67,13 +70,12 @@
             <label>Telepon:</label>
             <input name="telepon" class="easyui-textbox" width="300" validType="text"></p>
         </div>
-
         <div class="fitem">
             <p>
             <label>Jenis Kelamin:</label>
            <select id="cc" class="easyui-combobox" name="kelamin" style="width:150px;">
-    <option value="aa">Laki laki</option>
-    <option>Perempuan</option>
+    <option value="aa">LAKI-LAKI</option>
+    <option>PEREMPUAN</option>
     
 </select></p>
 
@@ -81,13 +83,13 @@
         <form id="ff">
         <label>Kelas:</label>
     <div style="margin-bottom:20px">
-        <input class="easyui-radiobutton" name="kelas" value="rpl" label="RPL:">
+        <input class="easyui-radiobutton" name="kelas" value="RPL" label="RPL:">
     </div>
     <div style="margin-bottom:20px">
-        <input class="easyui-radiobutton" name="kelas" value="tkj" label="TKJ:">
+        <input class="easyui-radiobutton" name="kelas" value="TKJ" label="TKJ:">
     </div>
     <div style="margin-bottom:20px">
-        <input class="easyui-radiobutton" name="kelas" value="tei" label="TEI:">
+        <input class="easyui-radiobutton" name="kelas" value="TEI" label="TEI:">
     </div>
 </form>
     </form>
