@@ -43,18 +43,18 @@ class M_siswa extends CI_Model
             'telepon' => $this->input->post('telepon'),
             'kelas' => $this->input->post('kelas'),
             'kelamin' => $this->input->post('kelamin'),
-
-            
         ];
 
         $ceknisn=$this->cekSiswa($data['nisn']);
         if($ceknisn > 0){
-            return 0;
+            $response["success"] = "0";
+			$response["msg"] = "Data siswa dengan NISN ".$data['nisn']." sudah ada !";
         }else{
             $this->db->insert('siswa',$data);
-        return $this->db->insert_id();
+            $response["success"] = "1";
+			$response["msg"] = "Data siswa berhasil ditambahkan";
         }
-        
+        return $response;
     }
     function UpdateSiswa(){
         $data = [

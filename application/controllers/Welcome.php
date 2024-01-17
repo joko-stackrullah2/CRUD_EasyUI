@@ -36,12 +36,8 @@ class Welcome extends CI_Controller {
 	}
 
 	public function tambah(){
-		
 		$input = $this->M_siswa->InsertSiswa();
-		if ($input) {
-			echo json_encode(['success' => true]);
-		}else {
-			echo json_encode(['Msg'=>'Some Error occured!.']);}
+		echo json_encode($input);
 	}
 
 	 
