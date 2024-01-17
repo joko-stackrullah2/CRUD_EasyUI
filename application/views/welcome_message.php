@@ -73,8 +73,8 @@
         <div class="fitem">
             <p>
             <label>Jenis Kelamin:</label>
-           <select id="cc" class="easyui-combobox" name="kelamin" style="width:150px;">
-    <option value="aa">LAKI-LAKI</option>
+           <select id="cc" class="easyui-combobox" name="kelamin" style="width:150px;"  panelHeight="100%">
+    <option>LAKI-LAKI</option>
     <option>PEREMPUAN</option>
     
 </select></p>
@@ -155,7 +155,8 @@ function simpan(){
                 $('#dlg').dialog('close');        
                 $('#dg-siswa').datagrid('reload');
             } else {
-                $.messager.show({
+        $('#dlg').dialog('close'); 
+        $.messager.show({
                     title: 'Error',
                     msg: result.errorMsg
                 });
@@ -179,11 +180,8 @@ function edit(){
                 $('#dlg').dialog('close');        
                 $('#dg-siswa').datagrid('reload');
             } else {
-                $.messager.show({
-                    title: 'Error',
-                    msg: result.errorMsg
-                });
-                ;
+                $('#dlg').dialog('close'); 
+                $.messager.alert('Info','Data siswa telah ditambahkan','info');
             }
         }
     });

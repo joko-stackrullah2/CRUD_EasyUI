@@ -23,10 +23,16 @@ class M_siswa extends CI_Model
 
         // select data from table product
         $query = "SELECT * FROM siswa";
-
+        
         $country = $this->db->query($query)->result_array();    
         $result = array_merge($result, ['rows' => $country]);
         return $result;
+    }
+    
+    public function cekSiswa($nisn){
+        $hasil = $this->db->query("select * from siswa where nisn=$nisn")->num_rows();
+
+        return $hasil;
     }
 
     function InsertSiswa(){
@@ -40,8 +46,15 @@ class M_siswa extends CI_Model
 
             
         ];
-        $this->db->insert('siswa',$data);
+
+        $ceknisn=$this->cekSiswa($data['nisn']);
+        if($ceknisn > 0){
+            return 0;
+        }else{
+            $this->db->insert('siswa',$data);
         return $this->db->insert_id();
+        }
+        
     }
     function UpdateSiswa(){
         $data = [
@@ -54,8 +67,15 @@ class M_siswa extends CI_Model
 
             
         ];
-        $this->db->where('nisn',$data['nisn']);
-        return $this->db->update('siswa',$data);
+
+        $ceknisn=$this->cekSiswa($data['nisn']);
+        if($ceknisn > 0){
+            return 0;
+        }else{
+            $this->db->insert('siswa',$data);
+        return $this->db->insert_id();
+        }
+
     }
 
     function DeleteSiswa(){
