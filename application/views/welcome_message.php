@@ -42,6 +42,7 @@
     <a href="#" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="newSiswa()" >Tambah Siswa</a>
     <a href="#" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onclick="editSiswa()" >Edit Siswa</a>
     <a href="#" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="hapusSiswa()" >Hapus Siswa</a>
+    <a href = "#" class = "easyui-linkbutton" iconCls = "icon-print" onclick="cetakSiswa()">Cetak </a>  
 </div>
 <div id="dlg" class="easyui-dialog"  style="width:420px;height:510px;padding:10px 20px" closed="true" buttons="#dlg-buttons">
     <div class="ftitle">DATA SISWA</div>
@@ -49,7 +50,7 @@
         <div class="fitem">
             <p>
             <label>Nisn:</label>
-            <input name="nisn" class="easyui-textbox" width= "300"required="true" ></p>
+            <input name="nisn" id="tb-nisn" class="easyui-textbox" width= "300"required="true"></p>
         </div>
         <div class="fitem">
             <p>
@@ -117,6 +118,9 @@
 function newSiswa(){
     $('#dlg').dialog('open').dialog('setTitle','Tambah Data Siswa');
     $('#fm').form('clear');
+    $('#fm #tb-nisn').textbox({
+        readonly:false
+    })
     url = 'index.php/Welcome/tambah';
 }
 
@@ -125,6 +129,9 @@ function editSiswa(){
     if (row){
     $('#dlg').dialog('open').dialog('setTitle','Edit Data Siswa');
     $('#fm').form('load',row);
+    $('#fm #tb-nisn').textbox({
+        readonly:true
+    })
     url = 'index.php/Welcome/edit';
 }
 }
@@ -137,6 +144,9 @@ function hapusSiswa(){
     url = 'index.php/Welcome/hapus';
 }
 }
+function cetakSiswa() {
+         window.print();
+      }
 
 function simpan(){
     $('#fm').form('submit',{
