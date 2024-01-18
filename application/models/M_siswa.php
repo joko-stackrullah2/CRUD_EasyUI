@@ -67,14 +67,17 @@ class M_siswa extends CI_Model
 
             
         ];
-
-        $ceknisn=$this->cekSiswa($data['nisn']);
-        if($ceknisn > 0){
-            return 0;
+        $this->db->where('nisn',$data['nisn']);
+        if($data == 0){
+            $response["success"] = "0";
+			$response["msg"] = "Data gagal di edit!";
         }else{
-            $this->db->insert('siswa',$data);
-        return $this->db->insert_id();
+            $response["success"] = "1";
+            $response["msg"] = "Data siswa berhasil di edit";
+            $this->db->update('siswa',$data);
         }
+        return $response;
+       
 
     }
 

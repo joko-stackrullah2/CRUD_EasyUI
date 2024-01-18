@@ -49,7 +49,7 @@
         <div class="fitem">
             <p>
             <label>Nisn:</label>
-            <input name="nisn" class="easyui-textbox" width= "300"required="true"></p>
+            <input name="nisn" class="easyui-textbox" width= "300"required="true" ></p>
         </div>
         <div class="fitem">
             <p>
@@ -59,7 +59,7 @@
         <div class="fitem">
             <p>
             <label>Alamat:</label>
-            <input name="alamat" class="easyui-textbox" width="300"></p>
+            <input name="alamat" class="easyui-textbox" width="300" required="true"></p>
         </div>
         <div class="fitem">
             <p>
@@ -173,16 +173,24 @@ function edit(){
         onSubmit: function(){
             return $(this).form('validate');
         },
-        success: function(result){
-            var result = eval('('+result+')');
-            if (result.success){
-                $('#dlg').dialog('close');        
-                $('#dg-siswa').datagrid('reload');
-            } else {
+        success: function(response){
+            var obj = jQuery.parseJSON(response);
+            console.log(obj)
+            if(obj.success=="1"){				
+                $.messager.progress('close');	
+                $.messager.alert('Info',obj.msg,'info');
+                $("#dg-siswa").datagrid("reload");
                 $('#dlg').dialog('close'); 
-                $.messager.alert('Info','Data siswa telah ditambahkan','info');
+            }else{
+                $('#dlg').dialog('close'); 
+                $.messager.progress('close');
+                $.messager.alert('Info',obj.msg,'info');
             }
-        }
+        },
+        error: function(){
+            $.messager.progress('close');
+            $.messager.alert('Info','Terjadi kesalahan','info');
+        },
     });
 }
 
