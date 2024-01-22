@@ -12,9 +12,9 @@ class M_siswa extends CI_Model
      function getAllDataSiswa(){
         $page = isset($_POST['page']) ? intval($_POST['page']) : 1;
         $rows = isset($_POST['rows']) ? intval($_POST['rows']) : 50;
-        $sort = isset($_POST['sort']) ? strval($_POST['sort']) : 'customers.customerNumber';
+        $sort = isset($_POST['sort']) ? strval($_POST['sort']) : 'siswa.nisn';
         $order = isset($_POST['order']) ? strval($_POST['order']) : 'asc';
-        $search = isset($_POST['search_customer']) ? strval($_POST['search_customer']) : '';
+        $search = isset($_POST['search_siswa']) ? strval($_POST['search_siswa']) : '';
         $offset = ($page-1)*$rows;
 
         $result = array();
@@ -22,10 +22,12 @@ class M_siswa extends CI_Model
         $row = array();
 
         // select data from table product
-        $query = "SELECT * FROM siswa";
+        $query = "SELECT *
+        from siswa
+        where concat(nama,'',alamat)  like '%$search%' order by $sort $order limit $offset, $rows";
         
-        $country = $this->db->query($query)->result_array();    
-        $result = array_merge($result, ['rows' => $country]);
+        $siswa = $this->db->query($query)->result_array();    
+        $result = array_merge($result, ['rows' => $siswa]);
         return $result;
     }
     

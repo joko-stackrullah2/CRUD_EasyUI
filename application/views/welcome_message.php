@@ -43,6 +43,15 @@
     <a href="#" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onclick="editSiswa()" >Edit Siswa</a>
     <a href="#" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="hapusSiswa()" >Hapus Siswa</a>
     <a href = "#" class = "easyui-linkbutton" iconCls = "icon-print" onclick="cetakSiswa()">Cetak </a>  
+    <input  id="searchSiswa" class="easyui-searchbox" data-options="prompt:'Please Input Value',searcher:doSiswa,
+            inputEvents: $.extend({}, $.fn.searchbox.defaults.inputEvents, {
+                keyup: function(e){
+                    var t = $(e.data.target);
+                    var opts = t.searchbox('options');
+                    t.searchbox('setValue', $(this).val());
+                    opts.searcher.call(t[0],t.searchbox('getValue'),t.searchbox('getName'));
+                }
+              })" style="width:50%;"></input>
 </div>
 <div id="dlg" class="easyui-dialog"  style="width:420px;height:510px;padding:10px 20px" closed="true" buttons="#dlg-buttons">
     <div class="ftitle">DATA SISWA</div>
@@ -115,6 +124,13 @@
 
 
     var url =''
+
+    function doSiswa(){
+	$('#dg-siswa').datagrid('load',{
+		search_siswa: $('#searchSiswa').val()
+	});
+}
+
 function newSiswa(){
     $('#dlg').dialog('open').dialog('setTitle','Tambah Data Siswa');
     $('#fm').form('clear');
