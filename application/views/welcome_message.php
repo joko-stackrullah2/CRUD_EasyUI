@@ -42,6 +42,7 @@
     <a href="#" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="newSiswa()" >Tambah Siswa</a>
     <a href="#" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onclick="editSiswa()" >Edit Siswa</a>
     <a href="#" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="hapusSiswa()" >Hapus Siswa</a>
+    <a href = "#" class = "easyui-linkbutton" iconCls = "icon-print" onclick="cetakSiswa()">Cetak </a>  
 </div>
 <div id="dlg" class="easyui-dialog"  style="width:420px;height:510px;padding:10px 20px" closed="true" buttons="#dlg-buttons">
     <div class="ftitle">DATA SISWA</div>
@@ -59,7 +60,7 @@
         <div class="fitem">
             <p>
             <label>Alamat:</label>
-            <input name="alamat" class="easyui-textbox" width="300"></p>
+            <input name="alamat" class="easyui-textbox" width="300" required="true"></p>
         </div>
         <div class="fitem">
             <p>
@@ -139,6 +140,9 @@ function hapusSiswa(){
     url = 'index.php/Welcome/hapus';
 }
 }
+function cetakSiswa() {
+         window.print();
+      }
 
 function simpan(){
     $('#fm').form('submit',{
@@ -175,16 +179,24 @@ function edit(){
         onSubmit: function(){
             return $(this).form('validate');
         },
-        success: function(result){
-            var result = eval('('+result+')');
-            if (result.success){
-                $('#dlg').dialog('close');        
-                $('#dg-siswa').datagrid('reload');
-            } else {
+        success: function(response){
+            var obj = jQuery.parseJSON(response);
+            console.log(obj)
+            if(obj.success=="1"){				
+                $.messager.progress('close');	
+                $.messager.alert('Info',obj.msg,'info');
+                $("#dg-siswa").datagrid("reload");
                 $('#dlg').dialog('close'); 
-                $.messager.alert('Info','Data siswa telah ditambahkan','info');
+            }else{
+                $('#dlg').dialog('close'); 
+                $.messager.progress('close');
+                $.messager.alert('Info',obj.msg,'info');
             }
-        }
+        },
+        error: function(){
+            $.messager.progress('close');
+            $.messager.alert('Info','Terjadi kesalahan','info');
+        },
     });
 }
 
