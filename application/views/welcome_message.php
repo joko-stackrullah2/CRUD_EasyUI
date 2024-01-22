@@ -49,7 +49,7 @@
         <div class="fitem">
             <p>
             <label>Nisn:</label>
-            <input name="nisn" class="easyui-textbox" width= "300"required="true"></p>
+            <input id="tb-nisn" name="nisn" class="easyui-textbox" width= "300"required="true"></p>
         </div>
         <div class="fitem">
             <p>
@@ -117,6 +117,7 @@
 function newSiswa(){
     $('#dlg').dialog('open').dialog('setTitle','Tambah Data Siswa');
     $('#fm').form('clear');
+    $('#fm #tb-nisn').textbox({readonly:false})
     url = 'index.php/Welcome/tambah';
 }
 
@@ -125,6 +126,7 @@ function editSiswa(){
     if (row){
     $('#dlg').dialog('open').dialog('setTitle','Edit Data Siswa');
     $('#fm').form('load',row);
+    $('#fm #tb-nisn').textbox({readonly:true})
     url = 'index.php/Welcome/edit';
 }
 }
