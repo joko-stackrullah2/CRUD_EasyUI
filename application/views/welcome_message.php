@@ -19,18 +19,17 @@
     </center>
     
 	<div id="body">
-	<table id="dg-siswa" toolbar="#toolbar" title="DATA SISWA" height="570"class="easyui-datagrid"  singleSelect="true" fitColumns="true" rowNumbers="false" pagination="true" url="<?= site_url('welcome/getAllDataSiswa') ?>" pageSize="50" pageList="[25,50,75,100,125,150,200]" nowrap="false" data-options="singleSelect:true" >
+	<table id="dg-siswa"  toolbar="#toolbar" height="570"class="easyui-datagrid"  singleSelect="true" fitColumns="true" rowNumbers="false" pagination="true" url="<?= site_url('welcome/getAllDataSiswa') ?>" pageSize="50" pageList="[25,50,75,100,125,150,200]" nowrap="false" data-options="singleSelect:true" >
 
     <thead>
         <tr>
             
-            
-            <th field="nisn" width="225">NISN</th>
-            <th field="nama"  width="300">NAMA</th>
-            <th field="alamat"  width="430">ALAMAT</th>
-            <th field="telepon"  width="300">TELEPON</th>
-            <th field="kelamin"  width="300">JENIS KELAMIN</th>
-            <th field="kelas"  width="200">KELAS</th>
+            <th field="nisn" width="225" sortable="true" align="center">NISN</th>
+            <th field="nama"  width="300" sortable="true" align="center">NAMA</th>
+            <th field="alamat"  width="430" align="center">ALAMAT</th>
+            <th field="telepon"  width="300" align="center">TELEPON</th>
+            <th field="kelamin"  width="300" sortable="true" align="center">JENIS KELAMIN</th>
+            <th field="kelas"  width="200" sortable="true" align="center">KELAS</th>
             
 
 
@@ -161,7 +160,6 @@ function cetakSiswa() {
     $('#dg-siswa').datagrid('print','Data Siswa');  
     $('#dg-siswa').datagrid('print', {
     title: 'Data Siswa',
-    caption: 'Caption',
     fields: ['nisn','nama','alamat','telepon','kelamin','kelas'],
     rows: rows,
 });
