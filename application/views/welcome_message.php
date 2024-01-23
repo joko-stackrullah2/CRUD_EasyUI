@@ -7,6 +7,7 @@
     <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/themes/icon.css') ?>">
     <script type="text/javascript" src="<?php echo base_url('assets/jquery.min.js') ?>"></script>
     <script type="text/javascript" src="<?php echo base_url('assets/jquery.easyui.min.js') ?>"></script>
+    <script type="text/javascript" src="<?php echo base_url('assets/datagrid-export.js') ?>"></script>
 
 
 </head>
@@ -43,7 +44,7 @@
     <a href="#" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onclick="editSiswa()" >Edit Siswa</a>
     <a href="#" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="hapusSiswa()" >Hapus Siswa</a>
     <a href = "#" class = "easyui-linkbutton" iconCls = "icon-print" onclick="cetakSiswa()">Cetak </a>  
-    <input  id="searchSiswa" class="easyui-searchbox" data-options="prompt:'Please Input Value',searcher:doSiswa,
+    <input  id="searchSiswa" class="easyui-searchbox" data-options="prompt:'Ketikkan nama siswa',searcher:doSiswa,
             inputEvents: $.extend({}, $.fn.searchbox.defaults.inputEvents, {
                 keyup: function(e){
                     var t = $(e.data.target);
@@ -157,7 +158,13 @@ function hapusSiswa(){
 }
 }
 function cetakSiswa() {
-         window.print();
+    $('#dg-siswa').datagrid('print','Data Siswa');  
+    $('#dg-siswa').datagrid('print', {
+    title: 'Data Siswa',
+    caption: 'Caption',
+    fields: ['nisn','nama','alamat','telepon','kelamin','kelas'],
+    rows: rows,
+});
       }
 
 function simpan(){
