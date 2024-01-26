@@ -12,25 +12,33 @@
 
 </head>
 <body>
+<div class="easyui-layout" style="width:1340px;height:600px;">
+        <div data-options="region:'north'" style="height:50px" ></div>
+        <div data-options="region:'south',split:true" style="height:50px;"></div>
+        <div data-options="region:'west',split:true" title="West" style="width:100px;">
+        <ul>
+      <li><a href="#">siswa</a></li>
+      
+    </ul>
+</div>
+        <div data-options="region:'center',title:'LIST DATA SISWA',iconCls:'icon-ok'">
 
 <div id="container">
-    <center>
-	<h1>LIST DATA SISWA </h1>
-    </center>
+    
     
 	<div id="body">
-	<table id="dg-siswa" toolbar="#toolbar" title="DATA SISWA" height="570"class="easyui-datagrid"  singleSelect="true" fitColumns="true" rowNumbers="false" pagination="true" url="<?= site_url('welcome/getAllDataSiswa') ?>" pageSize="50" pageList="[25,50,75,100,125,150,200]" nowrap="false" data-options="singleSelect:true" >
+	<table id="dg-siswa" toolbar="#toolbar"  height="570"class="easyui-datagrid"  singleSelect="true" fitColumns="true" rowNumbers="false" pagination="true" url="<?= site_url('welcome/getAllDataSiswa') ?>" pageSize="50" pageList="[25,50,75,100,125,150,200]" nowrap="false" data-options="singleSelect:true" >
 
     <thead>
         <tr>
             
             
-            <th field="nisn" width="225">NISN</th>
-            <th field="nama"  width="300">NAMA</th>
-            <th field="alamat"  width="430">ALAMAT</th>
-            <th field="telepon"  width="300">TELEPON</th>
-            <th field="kelamin"  width="300">JENIS KELAMIN</th>
-            <th field="kelas"  width="200">KELAS</th>
+            <th field="nisn" width="225" sortable="true">NISN</th>
+            <th field="nama"  width="300" sortable="true">NAMA</th>
+            <th field="alamat"  width="430" sortable="true">ALAMAT</th>
+            <th field="telepon"  width="300" sortable="true">TELEPON</th>
+            <th field="kelamin"  width="300" sortable="true">JENIS KELAMIN</th>
+            <th field="kelas"  width="200" sortable="true">KELAS</th>
             
 
 
