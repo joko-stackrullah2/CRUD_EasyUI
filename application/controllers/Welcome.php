@@ -34,7 +34,7 @@ class Welcome extends CI_Controller {
 	public function index(){
 		$this->load->view('welcome_message');
 	}
-
+	
 	public function tambah(){
 		$input = $this->M_siswa->InsertSiswa();
 		echo json_encode($input);
@@ -55,6 +55,7 @@ public function hapus(){
 	}else {
 		echo json_encode(['Msg'=>'Some Error occured!.']);}
 }
+
 
 }
 	

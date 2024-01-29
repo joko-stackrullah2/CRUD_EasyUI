@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>List-data siswa</title>
+	<title>List-data guru</title>
     <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/themes/metro/easyui.css') ?>">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/themes/icon.css') ?>">
     <script type="text/javascript" src="<?php echo base_url('assets/jquery.min.js') ?>"></script>
@@ -17,29 +17,28 @@
         <div data-options="region:'south',split:true" style="height:50px;"></div>
         <div data-options="region:'west',split:true" title="MENU" style="width:150px;">
         <ul>
-      <li><a href="index.php/gr/tc">GURU</a></li>
-
+      <li><a href="index.php/Welcome/index">SISWA</a></li>
       
     </ul>
 </div>
-        <div data-options="region:'center',title:'LIST DATA SISWA',iconCls:'icon-ok'">
+        <div data-options="region:'center',title:'LIST DATA GURU',iconCls:'icon-ok'">
 
 <div id="container">
     
     
 	<div id="body">
-	<table id="dg-siswa" toolbar="#toolbar"  height="570"class="easyui-datagrid"  singleSelect="true" fitColumns="true" rowNumbers="false" pagination="true" url="<?= site_url('welcome/getAllDataSiswa') ?>" pageSize="50" pageList="[25,50,75,100,125,150,200]" nowrap="false" data-options="singleSelect:true" >
+	<table id="dg-guru" toolbar="#toolbar"  height="570"class="easyui-datagrid"  singleSelect="true" fitColumns="true" rowNumbers="false" pagination="true" url="<?= site_url('gr/GetAllDataGuru') ?>" pageSize="50" pageList="[25,50,75,100,125,150,200]" nowrap="false" data-options="singleSelect:true" >
 
     <thead>
         <tr>
 
             
-            <th field="nisn" width="225" sortable="true">NISN</th>
+            <th field="nip" width="225" sortable="true">NIP</th>
             <th field="nama"  width="300" sortable="true">NAMA</th>
             <th field="alamat"  width="430" sortable="true">ALAMAT</th>
             <th field="telepon"  width="300" sortable="true">TELEPON</th>
             <th field="kelamin"  width="300" sortable="true">JENIS KELAMIN</th>
-            <th field="kelas"  width="200" sortable="true">KELAS</th>
+            <th field="mapel"  width="200" sortable="true">MAPEL</th>
 
 
 
@@ -48,11 +47,11 @@
 </table>
 
 <div id="toolbar">
-    <a href="#" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="newSiswa()" >Tambah Siswa</a>
-    <a href="#" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onclick="editSiswa()" >Edit Siswa</a>
-    <a href="#" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="hapusSiswa()" >Hapus Siswa</a>
+    <a href="#" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="newGuru()" >Tambah Guru</a>
+    <a href="#" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onclick="editGuru()" >Edit Guru</a>
+    <a href="#" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="hapusSiswa()" >Hapus Guru</a>
     <a href = "#" class = "easyui-linkbutton" iconCls = "icon-print" onclick="cetakSiswa()">Cetak </a>  
-    <input  id="searchSiswa" class="easyui-searchbox" data-options="prompt:'Ketikkan nama siswa',searcher:doSiswa,
+    <input  id="searchGuru" class="easyui-searchbox" data-options="prompt:'Ketikkan nama guru',searcher:doSiswa,
             inputEvents: $.extend({}, $.fn.searchbox.defaults.inputEvents, {
                 keyup: function(e){
                     var t = $(e.data.target);
@@ -63,12 +62,12 @@
               })" style="width:50%;"></input>
 </div>
 <div id="dlg" class="easyui-dialog"  style="width:420px;height:510px;padding:10px 20px" closed="true" buttons="#dlg-buttons">
-    <div class="ftitle">DATA SISWA</div>
+    <div class="ftitle">DATA GURU</div>
     <form id="fm" method="post" novalidate>
         <div class="fitem">
             <p>
-            <label>Nisn:</label>
-            <input id="tb-nisn" name="nisn" class="easyui-textbox" width= "300"required="true"></p>
+            <label>Nip:</label>
+            <input id="tb-nip" name="nip" class="easyui-textbox" width= "300"required="true"></p>
         </div>
         <div class="fitem">
             <p>
@@ -96,15 +95,15 @@
 
 
         <form id="ff">
-        <label>Kelas:</label>
+        <label>Mapel:</label>
     <div style="margin-bottom:20px">
-        <input class="easyui-radiobutton" name="kelas" value="RPL" label="RPL:">
+        <input class="easyui-radiobutton" name="mapel" value="RPL" label="RPL:">
     </div>
     <div style="margin-bottom:20px">
-        <input class="easyui-radiobutton" name="kelas" value="TKJ" label="TKJ:">
+        <input class="easyui-radiobutton" name="mapel" value="TKJ" label="TKJ:">
     </div>
     <div style="margin-bottom:20px">
-        <input class="easyui-radiobutton" name="kelas" value="TEI" label="TEI:">
+        <input class="easyui-radiobutton" name="mapel" value="TEI" label="TEI:">
     </div>
 </form>
     </form>
@@ -140,36 +139,36 @@
 	});
 }
 
-function newSiswa(){
-    $('#dlg').dialog('open').dialog('setTitle','Tambah Data Siswa');
+function newGuru(){
+    $('#dlg').dialog('open').dialog('setTitle','Tambah Data Guru');
     $('#fm').form('clear');
-    $('#fm #tb-nisn').textbox({readonly:false})
-    url = 'index.php/Welcome/tambah';
+    $('#fm #tb-nip').textbox({readonly:false})
+    url = 'Welcome/tambahgr';
 }
 
-function editSiswa(){
-    let row = $('#dg-siswa').datagrid('getSelected');
+function editGuru(){
+    let row = $('#dg-guru').datagrid('getSelected');
     if (row){
-    $('#dlg').dialog('open').dialog('setTitle','Edit Data Siswa');
+    $('#dlg').dialog('open').dialog('setTitle','Edit Data Guru');
     $('#fm').form('load',row);
-    $('#fm #tb-nisn').textbox({readonly:true})
-    url = 'index.php/Welcome/edit';
+    $('#fm #tb-nip').textbox({readonly:true})
+    url = 'index.php/gr/edit';
 }
 }
 
-function hapusSiswa(){
-    let row = $('#dg-siswa').datagrid('getSelected');
+function hapusGuru(){
+    let row = $('#dg-guru').datagrid('getSelected');
     if (row){
-    $('#dd').dialog('open').dialog('setTitle','Hapus Data Siswa');
+    $('#dd').dialog('open').dialog('setTitle','Hapus Data Guru');
     $('#fm').form('load',row);
     url = 'index.php/Welcome/hapus';
 }
 }
-function cetakSiswa() {
-    $('#dg-siswa').datagrid('print','Data Siswa');  
-    $('#dg-siswa').datagrid('print', {
-    title: 'Data Siswa',
-    fields: ['nisn','nama','alamat','telepon','kelamin','kelas'],
+function cetakGuru() {
+    $('#dg-guru').datagrid('print','Data Guru');  
+    $('#dg-guru').datagrid('print', {
+    title: 'Data Guru',
+    fields: ['nip','nama','alamat','telepon','kelamin','mapel'],
     rows: rows,
 });
       }
@@ -186,7 +185,7 @@ function simpan(){
             if(obj.success=="1"){				
                 $.messager.progress('close');	
                 $.messager.alert('Info',obj.msg,'info');
-                $("#dg-siswa").datagrid("reload");
+                $("#dg-guru").datagrid("reload");
                 $('#dlg').dialog('close'); 
             }else{
                 $('#dlg').dialog('close'); 
@@ -202,7 +201,7 @@ function simpan(){
 }
 
 function edit(){
-    var row = $('#dg-siswa').datagrid('getSelected');
+    var row = $('#dg-guru').datagrid('getSelected');
     $('#fm').form('load',row);
     $('#fm').form('submit',{
         url: url,
@@ -215,7 +214,7 @@ function edit(){
             if(obj.success=="1"){				
                 $.messager.progress('close');	
                 $.messager.alert('Info',obj.msg,'info');
-                $("#dg-siswa").datagrid("reload");
+                $("#dg-guru").datagrid("reload");
                 $('#dlg').dialog('close'); 
             }else{
                 $('#dlg').dialog('close'); 
@@ -231,7 +230,7 @@ function edit(){
 }
 
 function hapus(){
-    var row = $('#dg-siswa').datagrid('getSelected');
+    var row = $('#dg-guru').datagrid('getSelected');
     $('#fm').form('load',row);
     $('#fm').form('submit',{
         url: url,
@@ -242,7 +241,7 @@ function hapus(){
             var result = eval('('+result+')');
             if (result.success){
                 $('#dd').dialog('close');        
-                $('#dg-siswa').datagrid('reload');
+                $('#dg-guru').datagrid('reload');
             } else {
                 $.messager.show({
                     title: 'Error',
