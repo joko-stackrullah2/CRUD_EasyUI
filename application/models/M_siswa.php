@@ -29,11 +29,18 @@ class M_siswa extends CI_Model
             $kelas = "AND kelas = '$kelas'";
         };
 
+        $kelamin = $this->input->post("kelamin");
+        if($kelamin == ""){
+            $kelamin = "";
+        }else{
+            $kelamin = "AND kelamin = '$kelamin'";
+        };
+
 
         // select data from table product
         $query = "SELECT *
         from siswa
-        where concat(nama,'',alamat) like '%$search%' $kelas order by $sort $order limit $offset, $rows";
+        where concat(nama,'',alamat) like '%$search%' $kelas $kelamin order by $sort $order limit $offset, $rows";
         
         $siswa = $this->db->query($query)->result_array();    
         $result = array_merge($result, ['rows' => $siswa]);

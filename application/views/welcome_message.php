@@ -35,6 +35,14 @@
                             <option>TKJ</option>
                             <option>TEI</option>
                         </select>
+
+                        <p>
+                            <label>JENIS KELAMIN:</label>
+                            <p>
+                        <select id="cb-filter_kelamin" class="easyui-combobox" name="kelamin" style="width:150px;"  panelHeight="100%">
+                            <option>LAKI-LAKI</option>
+                            <option>PEREMPUAN</option>
+                        </select>
             </div>
             <div data-options="region:'center',title:'LIST DATA SISWA',iconCls:'icon-ok'">
                 <div id="container">
@@ -127,6 +135,14 @@
         onClick : function(val){
             $('#dg-siswa').datagrid('load',{
                 kelas : val.value
+            });
+        }
+    })
+
+    $("#cb-filter_kelamin").combobox({
+        onClick : function(val){
+            $('#dg-siswa').datagrid('load',{
+                kelamin : val.value
             });
         }
     })
