@@ -21,10 +21,19 @@ class M_siswa extends CI_Model
         $result['total'] = $this->db->get('siswa')->num_rows();
         $row = array();
 
+
+        $kelas = $this->input->post("kelas");
+        if($kelas == ""){
+            $kelas = "";
+        }else{
+            $kelas = "AND kelas = '$kelas'";
+        };
+
+
         // select data from table product
         $query = "SELECT *
         from siswa
-        where concat(nama,'',alamat)  like '%$search%' order by $sort $order limit $offset, $rows";
+        where concat(nama,'',alamat) like '%$search%' $kelas order by $sort $order limit $offset, $rows";
         
         $siswa = $this->db->query($query)->result_array();    
         $result = array_merge($result, ['rows' => $siswa]);

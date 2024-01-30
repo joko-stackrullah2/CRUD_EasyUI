@@ -30,11 +30,10 @@
                             <p>
                             <label>KELAS:</label>
                             <p>
-                        <select id="cc" class="easyui-combobox" name="kelas" style="width:150px;"  panelHeight="100%">
+                        <select id="cb-filter_kelas" class="easyui-combobox" name="kelas" style="width:150px;"  panelHeight="100%">
                             <option>RPL</option>
                             <option>TKJ</option>
                             <option>TEI</option>
-                            
                         </select>
             </div>
             <div data-options="region:'center',title:'LIST DATA SISWA',iconCls:'icon-ok'">
@@ -123,123 +122,134 @@
 </html>
 <script>
     var url =''
-    function doSiswa(){
-	$('#dg-siswa').datagrid('load',{
-		search_siswa: $('#searchSiswa').val()
-	});
-}
 
-function newSiswa(){
-    $('#dlg').dialog('open').dialog('setTitle','Tambah Data Siswa');
-    $('#fm').form('clear');
-    $('#fm #tb-nisn').textbox({readonly:false})
-    url = 'index.php/Welcome/tambah';
-}
-
-function editSiswa(){
-    let row = $('#dg-siswa').datagrid('getSelected');
-    if (row){
-    $('#dlg').dialog('open').dialog('setTitle','Edit Data Siswa');
-    $('#fm').form('load',row);
-    $('#fm #tb-nisn').textbox({readonly:true})
-    url = 'index.php/Welcome/edit';
-}
-}
-
-function hapusSiswa(){
-    let row = $('#dg-siswa').datagrid('getSelected');
-    if (row){
-    $('#dd').dialog('open').dialog('setTitle','Hapus Data Siswa');
-    $('#fm').form('load',row);
-    url = 'index.php/Welcome/hapus';
-}
-}
-function cetakSiswa() {
-    $('#dg-siswa').datagrid('print','Data Siswa');  
-    $('#dg-siswa').datagrid('print', {
-    title: 'Data Siswa',
-    fields: ['nisn','nama','alamat','telepon','kelamin','kelas'],
-    rows: rows,
-});
-      }
-
-function simpan(){
-    $('#fm').form('submit',{
-        url: url,
-        onSubmit: function(){
-            return $(this).form('validate');
-        },
-        success: function(response){
-            var obj = jQuery.parseJSON(response);
-            console.log(obj)
-            if(obj.success=="1"){				
-                $.messager.progress('close');	
-                $.messager.alert('Info',obj.msg,'info');
-                $("#dg-siswa").datagrid("reload");
-                $('#dlg').dialog('close'); 
-            }else{
-                $('#dlg').dialog('close'); 
-                $.messager.progress('close');
-                $.messager.alert('Info',obj.msg,'info');
-            }
-        },
-        error: function(){
-            $.messager.progress('close');
-            $.messager.alert('Info','Terjadi kesalahan','info');
-        },
-    });
-}
-
-function edit(){
-    var row = $('#dg-siswa').datagrid('getSelected');
-    $('#fm').form('load',row);
-    $('#fm').form('submit',{
-        url: url,
-        onSubmit: function(){
-            return $(this).form('validate');
-        },
-        success: function(response){
-            var obj = jQuery.parseJSON(response);
-            console.log(obj)
-            if(obj.success=="1"){				
-                $.messager.progress('close');	
-                $.messager.alert('Info',obj.msg,'info');
-                $("#dg-siswa").datagrid("reload");
-                $('#dlg').dialog('close'); 
-            }else{
-                $('#dlg').dialog('close'); 
-                $.messager.progress('close');
-                $.messager.alert('Info',obj.msg,'info');
-            }
-        },
-        error: function(){
-            $.messager.progress('close');
-            $.messager.alert('Info','Terjadi kesalahan','info');
-        },
-    });
-}
-
-function hapus(){
-    var row = $('#dg-siswa').datagrid('getSelected');
-    $('#fm').form('load',row);
-    $('#fm').form('submit',{
-        url: url,
-        onSubmit: function(){
-            return $(this).form('validate');
-        },
-        success: function(result){
-            var result = eval('('+result+')');
-            if (result.success){
-                $('#dd').dialog('close');        
-                $('#dg-siswa').datagrid('reload');
-            } else {
-                $.messager.show({
-                    title: 'Error',
-                    msg: result.errorMsg
-                });
-                ;
-            }
+    $("#cb-filter_kelas").combobox({
+        onClick : function(val){
+            $('#dg-siswa').datagrid('load',{
+                kelas : val.value
+            });
         }
+    })
+    
+    function doSiswa(){
+        $('#dg-siswa').datagrid('load',{
+            search_siswa: $('#searchSiswa').val()
+        });
+    }
+
+    function newSiswa(){
+        $('#dlg').dialog('open').dialog('setTitle','Tambah Data Siswa');
+        $('#fm').form('clear');
+        $('#fm #tb-nisn').textbox({readonly:false})
+        url = 'index.php/Welcome/tambah';
+    }
+
+    function editSiswa(){
+        let row = $('#dg-siswa').datagrid('getSelected');
+        if (row){
+        $('#dlg').dialog('open').dialog('setTitle','Edit Data Siswa');
+        $('#fm').form('load',row);
+        $('#fm #tb-nisn').textbox({readonly:true})
+        url = 'index.php/Welcome/edit';
+    }
+    }
+
+    function hapusSiswa(){
+        let row = $('#dg-siswa').datagrid('getSelected');
+        if (row){
+        $('#dd').dialog('open').dialog('setTitle','Hapus Data Siswa');
+        $('#fm').form('load',row);
+        url = 'index.php/Welcome/hapus';
+    }
+    }
+    function cetakSiswa() {
+        $('#dg-siswa').datagrid('print','Data Siswa');  
+        $('#dg-siswa').datagrid('print', {
+        title: 'Data Siswa',
+        fields: ['nisn','nama','alamat','telepon','kelamin','kelas'],
+        rows: rows,
     });
-}
+        }
+
+    function simpan(){
+        $('#fm').form('submit',{
+            url: url,
+            onSubmit: function(){
+                return $(this).form('validate');
+            },
+            success: function(response){
+                var obj = jQuery.parseJSON(response);
+                console.log(obj)
+                if(obj.success=="1"){				
+                    $.messager.progress('close');	
+                    $.messager.alert('Info',obj.msg,'info');
+                    $("#dg-siswa").datagrid("reload");
+                    $('#dlg').dialog('close'); 
+                }else{
+                    $('#dlg').dialog('close'); 
+                    $.messager.progress('close');
+                    $.messager.alert('Info',obj.msg,'info');
+                }
+            },
+            error: function(){
+                $.messager.progress('close');
+                $.messager.alert('Info','Terjadi kesalahan','info');
+            },
+        });
+    }
+
+    function edit(){
+        var row = $('#dg-siswa').datagrid('getSelected');
+        $('#fm').form('load',row);
+        $('#fm').form('submit',{
+            url: url,
+            onSubmit: function(){
+                return $(this).form('validate');
+            },
+            success: function(response){
+                var obj = jQuery.parseJSON(response);
+                console.log(obj)
+                if(obj.success=="1"){				
+                    $.messager.progress('close');	
+                    $.messager.alert('Info',obj.msg,'info');
+                    $("#dg-siswa").datagrid("reload");
+                    $('#dlg').dialog('close'); 
+                }else{
+                    $('#dlg').dialog('close'); 
+                    $.messager.progress('close');
+                    $.messager.alert('Info',obj.msg,'info');
+                }
+            },
+            error: function(){
+                $.messager.progress('close');
+                $.messager.alert('Info','Terjadi kesalahan','info');
+            },
+        });
+    }
+
+    function hapus(){
+        var row = $('#dg-siswa').datagrid('getSelected');
+        $('#fm').form('load',row);
+        $('#fm').form('submit',{
+            url: url,
+            onSubmit: function(){
+                return $(this).form('validate');
+            },
+            success: function(result){
+                var result = eval('('+result+')');
+                if (result.success){
+                    $('#dd').dialog('close');        
+                    $('#dg-siswa').datagrid('reload');
+                } else {
+                    $.messager.show({
+                        title: 'Error',
+                        msg: result.errorMsg
+                    });
+                    ;
+                }
+            }
+        });
+    }
+
+
 </script>
