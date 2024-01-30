@@ -27,6 +27,15 @@
                                 opts.searcher.call(t[0],t.searchbox('getValue'),t.searchbox('getName'));
                             }
                         })" style="width:100%"/>
+                            <p>
+                            <label>KELAS:</label>
+                            <p>
+                        <select id="cc" class="easyui-combobox" name="kelas" style="width:150px;"  panelHeight="100%">
+                            <option>RPL</option>
+                            <option>TKJ</option>
+                            <option>TEI</option>
+                            
+                        </select>
             </div>
             <div data-options="region:'center',title:'LIST DATA SISWA',iconCls:'icon-ok'">
                 <div id="container">
