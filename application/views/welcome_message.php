@@ -8,13 +8,20 @@
         <script type="text/javascript" src="<?php echo base_url('assets/jquery.min.js') ?>"></script>
         <script type="text/javascript" src="<?php echo base_url('assets/jquery.easyui.min.js') ?>"></script>
         <script type="text/javascript" src="<?php echo base_url('assets/datagrid-export.js') ?>"></script>
+        <script src="https://unpkg.com/jspdf-invoice-template@1.4.0/dist/index.js"></script>
     </head>
     <body>
         <div class="easyui-layout" style="width:1340px;height:600px;">
             <div data-options="region:'west',split:true" title="MENU" style="width:150px;">
-                <ul>
-                    <li><a href="index.php/gr/tc">GURU</a></li>
-                </ul>
+            <ul id="tt" class="easyui-tree">
+         <li>
+        <span>smkn 1 kepanjen</span>
+        <ul>
+            <li><span>mata pelajaran</span></li>
+            <li><span>guru</span></li>
+        </ul>
+        </li>
+        </ul>
             </div>
             <div data-options="region:'east',split:true" title="PENCARIAN" style="width:350px;padding:7px">
                 <!-- <div>Pencarian</div> -->
@@ -66,7 +73,12 @@
                 <a href="#" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="newSiswa()" >Tambah Siswa</a>
                 <a href="#" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onclick="editSiswa()" >Edit Siswa</a>
                 <a href="#" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="hapusSiswa()" >Hapus Siswa</a>
-                <a href = "#" class = "easyui-linkbutton" iconCls = "icon-print" onclick="cetakSiswa()">Cetak </a>  
+                <a href = "#" class = "easyui-linkbutton" iconCls = "icon-print"  onclick="cetakSiswa()">Cetak </a>
+                <a href = "#" class = "easyui-linkbutton" iconCls = "icon-print"  onclick="cetakpdf()">Cetak PDF </a>
+                <a href = "#" class = "easyui-linkbutton" iconCls = "icon-print"  onclick="cetakexcel()">Cetak Excel </a>   
+
+
+
             </div>
             <div id="dlg" class="easyui-dialog"  style="width:420px;height:510px;padding:10px 20px" closed="true" buttons="#dlg-buttons">
                 <div class="ftitle">DATA SISWA</div>
@@ -145,7 +157,7 @@
                 kelamin : val.value
             });
         }
-    })
+    }) 
     
     function doSiswa(){
         $('#dg-siswa').datagrid('load',{
@@ -181,12 +193,51 @@
     function cetakSiswa() {
         $('#dg-siswa').datagrid('print','Data Siswa');  
         $('#dg-siswa').datagrid('print', {
+        paper: 'A4',
         title: 'Data Siswa',
         fields: ['nisn','nama','alamat','telepon','kelamin','kelas'],
         rows: rows,
     });
         }
 
+    function cetakexcel(){
+        $('#dg-siswa').datagrid('toExcel','data-siswa.xls'); 
+    }
+    function cetakpdf(){
+    
+    var pdfObject = jsPDFInvoiceTemplate.default(props);
+
+    console.log("Object created: ", pdfObject);
+        }
+            var props = {
+    outputType: jsPDFInvoiceTemplate.OutputType.Save,
+    returnJsPDFDocObject: true,
+    fileName: "Data Siswa",
+    orientationLandscape: false,
+    compress: true,
+
+    invoice: {
+        headerBorder: true,
+        tableBodyBorder: true,
+        header: [
+          { 
+            title: "NISN",
+            style: {
+              width: 25
+            } 
+          }, 
+          { 
+            title: "NAMA",
+            style: {
+              width: 50
+            } 
+          }, 
+          { title: "ALAMAT"},
+          { title: "TELEPON"},
+          { title: "JENIS KELAMIN"},
+          { title: "KELAS"}
+        ],
+    }}
     function simpan(){
         $('#fm').form('submit',{
             url: url,
