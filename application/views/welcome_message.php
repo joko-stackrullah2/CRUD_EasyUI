@@ -8,6 +8,8 @@
         <script type="text/javascript" src="<?php echo base_url('assets/jquery.min.js') ?>"></script>
         <script type="text/javascript" src="<?php echo base_url('assets/jquery.easyui.min.js') ?>"></script>
         <script type="text/javascript" src="<?php echo base_url('assets/datagrid-export.js') ?>"></script>
+        <script type="text/javascript" src="<?php echo base_url('pdfmake/build/pdfmake.min.js') ?>"></script>
+        <script type="text/javascript" src="<?php echo base_url('pdfmake/build/vfs_fonts.js') ?>"></script>
         <script src="https://unpkg.com/jspdf-invoice-template@1.4.0/dist/index.js"></script>
     </head>
     <body>
@@ -203,41 +205,22 @@
     function cetakexcel(){
         $('#dg-siswa').datagrid('toExcel','data-siswa.xls'); 
     }
-    function cetakpdf(){
     
-    var pdfObject = jsPDFInvoiceTemplate.default(props);
+    function cetakpdf(){
+        var body = $('#dg-siswa').datagrid('toArray');
+        console.log(JSON.stringify(body))
+        var docDefinition = {
+            content: [{
+                table: {
+                    headerRows: 1,
+                    widths: ['*','*','*','*','auto','*'],
+                    body: body
+                }
+            }]
+        };
+        pdfMake.createPdf(docDefinition).open();
+    }
 
-    console.log("Object created: ", pdfObject);
-        }
-            var props = {
-    outputType: jsPDFInvoiceTemplate.OutputType.Save,
-    returnJsPDFDocObject: true,
-    fileName: "Data Siswa",
-    orientationLandscape: false,
-    compress: true,
-
-    invoice: {
-        headerBorder: true,
-        tableBodyBorder: true,
-        header: [
-          { 
-            title: "NISN",
-            style: {
-              width: 25
-            } 
-          }, 
-          { 
-            title: "NAMA",
-            style: {
-              width: 50
-            } 
-          }, 
-          { title: "ALAMAT"},
-          { title: "TELEPON"},
-          { title: "JENIS KELAMIN"},
-          { title: "KELAS"}
-        ],
-    }}
     function simpan(){
         $('#fm').form('submit',{
             url: url,
