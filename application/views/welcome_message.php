@@ -27,19 +27,11 @@
             </div>
             <div data-options="region:'east',split:true" title="PENCARIAN" style="width:350px;padding:7px">
                 <!-- <div>Pencarian</div> -->
-                <input  id="searchSiswa" class="easyui-searchbox" data-options="prompt:'Ketikkan nama siswa',searcher:doSiswa,
-                        inputEvents: $.extend({}, $.fn.searchbox.defaults.inputEvents, {
-                            keyup: function(e){
-                                var t = $(e.data.target);
-                                var opts = t.searchbox('options');
-                                t.searchbox('setValue', $(this).val());
-                                opts.searcher.call(t[0],t.searchbox('getValue'),t.searchbox('getName'));
-                            }
-                        })" style="width:100%"/>
+                <input  id="searchSiswa" class="easyui-searchbox" data-options="prompt:'Ketikkan nama siswa',searcher:doSiswa" style="width:100%">
                             <p>
                             <label>KELAS:</label>
                             <p>
-                        <select id="cb-filter_kelas" class="easyui-combobox" name="kelas" style="width:150px;"  panelHeight="100%">
+                        <select id="cb-filter_kelas" class="easyui-combobox" name="kelas" style="width:150px;" editable="false"   panelHeight="100%">
                             <option>RPL</option>
                             <option>TKJ</option>
                             <option>TEI</option>
@@ -48,7 +40,7 @@
                         <p>
                             <label>JENIS KELAMIN:</label>
                             <p>
-                        <select id="cb-filter_kelamin" class="easyui-combobox" name="kelamin" style="width:150px;"  panelHeight="100%">
+                        <select id="cb-filter_kelamin" class="easyui-combobox" name="kelamin" style="width:150px;" editable="false"  panelHeight="100%">
                             <option>LAKI-LAKI</option>
                             <option>PEREMPUAN</option>
                         </select>
@@ -210,15 +202,15 @@
         var body = $('#dg-siswa').datagrid('toArray');
         console.log(JSON.stringify(body))
         var docDefinition = {
-            content: [{
-                table: {
+                    content: [{
+                    table: {
                     headerRows: 1,
                     widths: ['*','*','*','*','auto','*'],
                     body: body
                 }
             }]
         };
-        pdfMake.createPdf(docDefinition).open();
+        pdfMake.createPdf(docDefinition).download('data-siswa.pdf');
     }
 
     function simpan(){
