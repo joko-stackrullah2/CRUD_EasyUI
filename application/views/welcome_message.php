@@ -19,8 +19,10 @@
          <li>
         <span>smkn 1 kepanjen</span>
         <ul>
-            <li><span>mata pelajaran</span></li>
+            <li><span>siswa</span></li>
             <li><span>guru</span></li>
+            <li><span>mata pelajaran</span></li>
+            <li><span>kelas</span></li>
         </ul>
         </li>
         </ul>
@@ -208,6 +210,15 @@
         var body = $('#dg-siswa').datagrid('toArray');
         console.log(JSON.stringify(body))
         var docDefinition = {
+                        header: {
+                        margin: 10,
+                        columns: [
+                            {
+                                margin: [230, 10, 10, 250],
+                                text: 'DATA PDF SELURUH SISWA'
+                            }
+                        ]
+                    },
                     content: [{
                     table: {
                     headerRows: 1,
