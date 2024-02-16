@@ -194,9 +194,15 @@
     });
         }
 
-    function cetakexcel(){
-        $('#dg-siswa').datagrid('toExcel','data-siswa.xls'); 
+   
+        function cetakexcel(){
+        $('#dg-siswa').datagrid('toExcel',{
+            filename: 'data_siswa.xls',
+            worksheet: 'Worksheet',
+            caption: 'DATA EXCEL SELURUH SISWA',
+        }); 
     }
+    
     
     function cetakpdf(){
         var body = $('#dg-siswa').datagrid('toArray');
