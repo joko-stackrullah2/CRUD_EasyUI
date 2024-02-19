@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class gr extends CI_Controller {
+class Gr extends CI_Controller {
 
 
     public function __construct(){
@@ -15,10 +15,8 @@ class gr extends CI_Controller {
 		$employee = $this->M_gr->getAllDataGuru();
 		echo json_encode($employee);
 	}
-
-    public function tc(){
-		$this->load->view('new');
+	public function index(){
+		$this->load->view('v_guru');
 	}
 
-   
 }

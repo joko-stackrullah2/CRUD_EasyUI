@@ -31,18 +31,20 @@
                 <!-- <div>Pencarian</div> -->
                 <input  id="searchGuru" class="easyui-searchbox" data-options="prompt:'Ketikkan nama guru',searcher:doGuru" style="width:100%">
                             <p>
-                            <label>KELAS:</label>
+                            <label>MAPEL:</label>
                             <p>
-                        <select id="cb-filter_kelas" class="easyui-combobox" name="kelas" style="width:150px;" editable="false"   panelHeight="100%">
-                            <option>RPL</option>
-                            <option>TKJ</option>
-                            <option>TEI</option>
+                        <select id="cb-filter_kelas" class="easyui-combobox" name="mapel" style="width:150px;" editable="false"   panelHeight="100%">
+                            <option>IPA</option>
+                            <option>PKN</option>
+                            <option>MATEMATIKA</option>
+                            <option>INGGRIS</option>
+
                         </select>
 
                         <p>
                             <label>JENIS KELAMIN:</label>
                             <p>
-                        <select id="cb-filter_kelamin" class="easyui-combobox" name="kelamin" style="width:150px;" editable="false"  panelHeight="100%">
+                        <select id="cb-filter_kelamin" class="easyui-combobox" name="jk_guru" style="width:150px;" editable="false"  panelHeight="100%">
                             <option>LAKI-LAKI</option>
                             <option>PEREMPUAN</option>
                         </select>
@@ -50,7 +52,7 @@
             <div data-options="region:'center',title:'LIST DATA GURU',iconCls:'icon-ok'">
                 <div id="container">
                     <div id="body">
-                    <table id="dg-guru" toolbar="#toolbar" class="easyui-datagrid" style="width:auto;height:567px;; singleSelect="true" fitColumns="true" rowNumbers="false" pagination="true" url="<?= site_url('welcome/getAllDataGuru') ?>" pageSize="50" pageList="[25,50,75,100,125,150,200]" nowrap="false" data-options="singleSelect:true" >
+                    <table id="dg-guru" toolbar="#toolbar" class="easyui-datagrid" style="width:auto;height:567px;; singleSelect="true" fitColumns="true" rowNumbers="false" pagination="true" url="<?= site_url('Gr/getAllDataGuru') ?>" pageSize="50" pageList="[25,50,75,100,125,150,200]" nowrap="false" data-options="singleSelect:true" >
                         <thead>
                             <tr>
                                 <th field="id_guru" width="225" sortable="true">ID GURU</th>
@@ -58,7 +60,7 @@
                                 <th field="alamat_guru"  width="430" sortable="true">ALAMAT</th>
                                 <th field="telp_guru"  width="300" sortable="true">TELEPON</th>
                                 <th field="jk_guru"  width="300" sortable="true">JENIS KELAMIN</th>
-                                <th field="id_mapel"  width="200" sortable="true">ID MAPEL</th>
+                                <th field="id_mapel"  width="200" sortable="true">MAPEL</th>
                             </tr>
                         </thead>
                     </table>
@@ -69,7 +71,7 @@
                 <a href="#" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="newGuru()" >Tambah Guru</a>
                 <a href="#" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onclick="editGuru()" >Edit Guru</a>
                 <a href="#" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="hapusGuru()" >Hapus Guru</a>
-                <a href = "#" class = "easyui-linkbutton" iconCls = "icon-print"  onclick="cetakSiswa()">Cetak </a>
+                <a href = "#" class = "easyui-linkbutton" iconCls = "icon-print"  onclick="cetakGuru()">Cetak </a>
                 <a href = "#" class = "easyui-linkbutton" iconCls = "icon-print"  onclick="cetakpdf()">Cetak PDF </a>
                 <a href = "#" class = "easyui-linkbutton" iconCls = "icon-print"  onclick="cetakexcel()">Cetak Excel </a>   
 
@@ -80,22 +82,24 @@
                 <div class="ftitle">DATA GURU </div>
                     <form id="fm" method="post" novalidate>
                         <div class="fitem">
-                            <label>ID GURU:</label>
-                            <input id="tb-nisn" name="nisn" class="easyui-textbox" width= "300"required="true"></p>
+                            <P>
+                            <label>Id guru:</label>
+                            <p>
+                            <input id="tb-id" name="nisn" class="easyui-textbox" width= "300"required="true"></p>
                         </div>
                         <div class="fitem">
                             <p>
-                            <label>Nama GURU:</label>
+                            <label>Nama guru:</label>
                         <input name="nama_guru" class="easyui-textbox" width="300" required="true"></p>
                         </div>
                         <div class="fitem">
                             <p>
-                            <label>Alamat GURU:</label>
+                            <label>Alamat guru:</label>
                             <input name="alamat_guru" class="easyui-textbox" width="300" required="true"></p>
                         </div>
                         <div class="fitem">
                             <p>
-                            <label>Telepon GURU:</label>
+                            <label>Telepon guru:</label>
                             <input name="telp_guru" class="easyui-textbox" width="300" validType="text"></p>
                         </div>
                         <div class="fitem">
@@ -108,12 +112,13 @@
                             <option>INGGRIS</option>
 
                         </select>
+                        <P>
                         <label>Jenis kelamin:</label>
                         <div style="margin-bottom:20px">
-                            <input class="easyui-radiobutton" name="jk_guru" value="PEREMPUAN" label="PEREMPUAN:">
+                            <input class="easyui-radiobutton" name="jk_guru" value="PEREMPUAN" label="P:">
                         </div>
                         <div style="margin-bottom:20px">
-                            <input class="easyui-radiobutton" name="jk_guru" value="LAKI-LAKI" label="LAKI-LAKI:">
+                            <input class="easyui-radiobutton" name="jk_guru" value="LAKI-LAKI" label="L:">
                         </div>
                     </form>
                 </div>
@@ -142,7 +147,7 @@
     $("#cb-filter_kelas").combobox({
         onClick : function(val){
             $('#dg-guru').datagrid('load',{
-                kelas : val.value
+                mapel : val.value
             });
         }
     })
@@ -157,7 +162,7 @@
     
     function doGuru(){
         $('#dg-guru').datagrid('load',{
-            search_siswa: $('#searchSiswaGuru').val()
+            search_guru: $('#searchGuru').val()
         });
     }
 
@@ -165,7 +170,7 @@
         $('#dlg').dialog('open').dialog('setTitle','Tambah Data Guru');
         $('#fm').form('clear');
         $('#fm #tb-id').textbox({readonly:false})
-        url = 'index.php/Welcome/tambah';
+        url = '';
     }
 
     function editGuru(){
