@@ -60,6 +60,17 @@ class Menu extends CI_Controller {
                     "title":"Mata Pelajaran"
                     
                 }
+            },{
+                "id":"4",
+                "text":"Kelas",
+                "checked":false,
+                "iconCls":"icon-mini-add",
+                "attributes":{
+                    "url":"kelas",
+                    "view":"v_kelas",
+                    "title":"Kelas"
+                    
+                }
                 
             }]
          }]';
