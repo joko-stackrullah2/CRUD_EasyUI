@@ -179,7 +179,7 @@
         $('#dlg').dialog('open').dialog('setTitle','Edit Data Guru');
         $('#fm').form('load',row);
         $('#fm #tb-nisn').textbox({readonly:true})
-        url = 'index.php/Welcome/edit';
+        url = 'index.php/Siswa/edit';
     }
     }
 
@@ -188,7 +188,7 @@
         if (row){
         $('#dd').dialog('open').dialog('setTitle','Hapus Data Guru');
         $('#fm').form('load',row);
-        url = 'index.php/Welcome/hapus';
+        url = 'index.php/Siswa/hapus';
     }
     }
     function cetakGuru() {
