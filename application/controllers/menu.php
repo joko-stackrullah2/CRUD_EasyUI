@@ -50,16 +50,17 @@ class Menu extends CI_Controller {
                     "title":"Data Guru"
                     }
                 },{
-                "id":"16",
-                "text":"Agenda Direksi",
+                "id":"3",
+                "text":"Mata Pelajaran",
                 "checked":false,
                 "iconCls":"icon-mini-add",
                 "attributes":{
-                    "url":"mAgendaDireksi",
-                    "view":"mAgendaDireksi",
-                    "title":"Agenda Direksi"
+                    "url":"mapel",
+                    "view":"v_mapel",
+                    "title":"Mata Pelajaran"
                     
                 }
+                
             }]
          }]';
 		echo $menu;	
