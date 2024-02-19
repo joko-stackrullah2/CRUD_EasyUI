@@ -1,32 +1,5 @@
-<!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <title>List-data guru</title>
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/themes/metro/easyui.css') ?>">
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/themes/icon.css') ?>">
-        <script type="text/javascript" src="<?php echo base_url('assets/jquery.min.js') ?>"></script>
-        <script type="text/javascript" src="<?php echo base_url('assets/jquery.easyui.min.js') ?>"></script>
-        <script type="text/javascript" src="<?php echo base_url('assets/datagrid-export.js') ?>"></script>
-        <script type="text/javascript" src="<?php echo base_url('pdfmake/build/pdfmake.min.js') ?>"></script>
-        <script type="text/javascript" src="<?php echo base_url('pdfmake/build/vfs_fonts.js') ?>"></script>
-        <script src="https://unpkg.com/jspdf-invoice-template@1.4.0/dist/index.js"></script>
-    </head>
-    <body>
-        <div class="easyui-layout" style="width:1340px;height:600px;">
-            <div data-options="region:'west',split:true" title="MENU" style="width:150px;">
-            <ul id="tt" class="easyui-tree">
-         <li>
-        <span>smkn 1 kepanjen</span>
-        <ul>
-            <li><span>siswa</span></li>
-            <li><span>guru</span></li>
-            <li><span>mata pelajaran</span></li>
-            <li><span>kelas</span></li>
-        </ul>
-        </li>
-        </ul>
-            </div>
+
+        <div class="easyui-layout" data-options="fit:true" style="width:1340px;height:600px;">
             <div data-options="region:'east',split:true" title="PENCARIAN" style="width:350px;padding:7px">
                 <!-- <div>Pencarian</div> -->
                 <input  id="searchGuru" class="easyui-searchbox" data-options="prompt:'Ketikkan nama guru',searcher:doGuru" style="width:100%">
@@ -52,7 +25,7 @@
             <div data-options="region:'center',title:'LIST DATA GURU',iconCls:'icon-ok'">
                 <div id="container">
                     <div id="body">
-                    <table id="dg-guru" toolbar="#toolbar" class="easyui-datagrid" style="width:auto;height:567px;; singleSelect="true" fitColumns="true" rowNumbers="false" pagination="true" url="<?= site_url('Gr/getAllDataGuru') ?>" pageSize="50" pageList="[25,50,75,100,125,150,200]" nowrap="false" data-options="singleSelect:true" >
+                    <table id="dg-guru" toolbar="#toolbar" class="easyui-datagrid" style="width:auto;height:567px;; singleSelect="true" fitColumns="true" rowNumbers="false" pagination="true" url="<?= site_url('guru/getAllDataGuru') ?>" pageSize="50" pageList="[25,50,75,100,125,150,200]" nowrap="false" data-options="singleSelect:true" >
                         <thead>
                             <tr>
                                 <th field="id_guru" width="225" sortable="true">ID GURU</th>
