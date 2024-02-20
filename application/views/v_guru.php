@@ -33,7 +33,7 @@
                                 <th field="alamat_guru"  width="430" sortable="true">ALAMAT</th>
                                 <th field="telp_guru"  width="300" sortable="true">TELEPON</th>
                                 <th field="jk_guru"  width="300" sortable="true">JENIS KELAMIN</th>
-                                <th field="id_mapel"  width="200" sortable="true">MAPEL</th>
+                                <th field="id_mapel"  width="200" sortable="true">ID MAPEL</th>
                             </tr>
                         </thead>
                     </table>
@@ -58,17 +58,17 @@
                             <P>
                             <label>Id guru:</label>
                             <p>
-                            <input id="tb-id" name="nisn" class="easyui-textbox" width= "300"required="true"></p>
+                            <input id="tb-id" name="nisn" class="easyui-textbox" width= "300"></p>
                         </div>
                         <div class="fitem">
                             <p>
                             <label>Nama guru:</label>
-                        <input name="nama_guru" class="easyui-textbox" width="300" required="true"></p>
+                        <input name="nama_guru" class="easyui-textbox" width="300"></p>
                         </div>
                         <div class="fitem">
                             <p>
                             <label>Alamat guru:</label>
-                            <input name="alamat_guru" class="easyui-textbox" width="300" required="true"></p>
+                            <input name="alamat_guru" class="easyui-textbox" width="300"></p>
                         </div>
                         <div class="fitem">
                             <p>
@@ -143,7 +143,7 @@
         $('#dlg').dialog('open').dialog('setTitle','Tambah Data Guru');
         $('#fm').form('clear');
         $('#fm #tb-id').textbox({readonly:false})
-        url = '';
+        url = 'index.php/Guru/tambah';
     }
 
     function editGuru(){
@@ -161,7 +161,7 @@
         if (row){
         $('#dd').dialog('open').dialog('setTitle','Hapus Data Guru');
         $('#fm').form('load',row);
-        url = 'index.php/Siswa/hapus';
+        url = 'index.php/Guru/hapus';
     }
     }
     function cetakGuru() {

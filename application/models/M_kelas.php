@@ -1,6 +1,6 @@
 <?php
 
-class M_gr extends CI_Model
+class M_kelas extends CI_Model
 {
     function __construct()
 	{
@@ -36,24 +36,5 @@ class M_gr extends CI_Model
         $hasil = $this->db->query("select * from kelas where id_kelas=$idkelas")->num_rows();
 
         return $hasil;
-    }
-
-     function InsertKelas(){
-        $data = [
-            'id_kelas' => $this->input->post('id_kelas'),
-            'nama_kelas' => $this->input->post('nama_kelas'),
-            
-        ];
-
-        $cekid=$this->cekKelas($data['id_kelas']);
-        if($cekid > 0){
-            $response["success"] = "0";
-			$response["msg"] = "Data kelas dengan ID ".$data['id_kelas']." sudah ada !";
-        }else{
-            $this->db->insert('kelas',$data);
-            $response["success"] = "1";
-			$response["msg"] = "Data kelas berhasil ditambahkan";
-        }
-        return $response;
     }
 }

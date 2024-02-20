@@ -52,17 +52,17 @@
             <form id="form-tambah_siswa" method="post" novalidate>
                 <div class="fitem">
                     <label>Nisn:</label>
-                    <input id="tb-nisn" name="nisn" class="easyui-textbox" width= "300"required="true"></p>
+                    <input id="tb-nisn" name="nisn" class="easyui-textbox" width= "300" required="true"></p>
                 </div>
                 <div class="fitem">
                     <p>
                     <label>Nama:</label>
-                <input name="nama" class="easyui-textbox" width="300" required="true"></p>
+                <input name="nama" class="easyui-textbox" width="300"  required="true"></p>
                 </div>
                 <div class="fitem">
                     <p>
                     <label>Alamat:</label>
-                    <input name="alamat" class="easyui-textbox" width="300" required="true"></p>
+                    <input name="alamat" class="easyui-textbox" width="300"></p>
                 </div>
                 <div class="fitem">
                     <p>
@@ -96,6 +96,7 @@
     </div>
 
     <div id="dlg-hapus-siswa" class="easyui-dialog" title="Confirm" closed="true" button="#buttons-hapus_siswa" style="width:400px;height:200px;" data-options="iconCls:'icon-help',resizable:true,modal:true">
+        <center>
         <h1> Hapus data ini? </h1>
         <div id="buttons-hapus_siswa" >
             <a href="javascript:void(0)" class="easyui-linkbutton c6" iconCls="icon-ok" onclick= "hapus()" style="width:90px" >Hapus</a>

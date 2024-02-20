@@ -30,6 +30,14 @@ class M_gr extends CI_Model
         $guru = $this->db->query($query)->result_array();    
         $result = array_merge($result, ['rows' => $guru]);
         return $result;
+
+        $this->db->select('
+        guru.*, mapel.id_mapel AS id_guru, mapel.nama_mapel, 
+      ');
+		$this->db->from('mapel');
+		$this->db->join('guru', 'guru.id_guru = mapel.id_mapel', 'left');
+		$this->db->where('guru.id_guru');
+		return $this->db->get()->result();
     }
 
     public function cekGuru($idguru){
@@ -58,5 +66,19 @@ class M_gr extends CI_Model
 			$response["msg"] = "Data guru berhasil ditambahkan";
         }
         return $response;
+    }
+
+    function DeleteGuru(){
+        $data = [
+            'id_guru' => $this->input->post('id_guru'),
+            'nama_guru' => $this->input->post('nama_guru'),
+            'alamat_guru' => $this->input->post('alamat_guru'),
+            'telp_guru' => $this->input->post('telp_guru'),
+            'jk_guru' => $this->input->post('jk_guru'),
+            'id_mapel' => $this->input->post('id_mapel'),
+
+        ];
+        $this->db->where('id_guru',$data['id_guru']);
+        return $this->db->delete('guru',$data);
     }
 }
