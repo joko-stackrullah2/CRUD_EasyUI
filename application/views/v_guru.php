@@ -179,7 +179,7 @@
         $('#dg-guru').datagrid('toExcel',{
             filename: 'data_guru.xls',
             worksheet: 'Worksheet',
-            caption: 'DATA EXCEL SELURUH SISWA',
+            caption: 'DATA EXCEL SELURUH GURU',
         }); 
     }
     
@@ -193,7 +193,7 @@
                         columns: [
                             {
                                 margin: [230, 10, 10, 250],
-                                text: 'DATA PDF SELURUH SISWA'
+                                text: 'DATA PDF SELURUH GURU'
                             }
                         ]
                     },

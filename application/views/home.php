@@ -10,6 +10,7 @@
     <link rel="shortcut icon" href="<?php echo base_url("image/favicon.ico"); ?>"/>
     <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/themes/metro/easyui.css') ?>">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/themes/icon.css') ?>">
+    <link id="theme_style" rel="stylesheet" type="text/css" href="http://www.jeasyui.com/easyui/themes/default/easyui.css">
     <script type="text/javascript" src="<?php echo base_url('assets/jquery.min.js') ?>"></script>
     <script type="text/javascript" src="<?php echo base_url('assets/jquery.easyui.min.js') ?>"></script>
     <script type="text/javascript" src="<?php echo base_url('assets/datagrid-export.js') ?>"></script>
@@ -37,6 +38,5 @@
    
 </body>
 <script type="text/javascript">
-
 </script> 
 </html>

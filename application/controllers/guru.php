@@ -21,7 +21,7 @@ class Guru extends CI_Controller {
 	}
 
 	public function tambah(){
-		$input = $this->M_guru->InsertGuru();
+		$input = $this->M_gr->InsertGuru();
 		echo json_encode($input);
 	}
 
