@@ -72,7 +72,7 @@
                 <div class="fitem">
                     <p>
                     <label>Jenis Kelamin:</label>
-                <select id="cc" class="easyui-combobox" name="kelamin" style="width:150px;"  panelHeight="100%">
+                <select id="cc" class="easyui-combobox" name="kelamin" style="width:150px;"  editable="false" panelHeight="100%">
                     <option>LAKI-LAKI</option>
                     <option>PEREMPUAN</option>
                 </select>

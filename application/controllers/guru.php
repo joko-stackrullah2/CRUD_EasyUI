@@ -7,6 +7,7 @@ class Guru extends CI_Controller {
     public function __construct(){
 		parent ::__construct();
 		$this->load->model('M_gr');
+
 	
 	}
     public function getAllDataGuru()
@@ -24,6 +25,12 @@ class Guru extends CI_Controller {
 		$input = $this->M_gr->InsertGuru();
 		echo json_encode($input);
 	}
+
+	public function edit(){
+		
+		$input = $this->M_gr->UpdateGuru();
+		echo json_encode($input);
+}
 
 	public function hapus(){
 		

@@ -2,14 +2,14 @@
 <div class="easyui-layout" data-options="fit:true" style="width:1340px;height:600px;">
             <div data-options="region:'east',split:true" title="PENCARIAN" style="width:350px;padding:7px">
                 <!-- <div>Pencarian</div> -->
-                <input  id="searchGuru" class="easyui-searchbox" data-options="prompt:'Ketikkan nama mapel',searcher:doGuru" style="width:100%">
+                <input  id="searchMapel" class="easyui-searchbox" data-options="prompt:'Ketikkan nama mapel',searcher:doMapel" style="width:100%">
 
                         
             </div>
             <div data-options="region:'center',title:'DAFTAR MATA PELAJARAN',iconCls:'icon-ok'">
                 <div id="container">
                     <div id="body">
-                    <table id="dg-guru" toolbar="#toolbar" class="easyui-datagrid" style="width:auto;height:567px;; singleSelect="true" fitColumns="true" rowNumbers="false" pagination="true" url="<?= site_url('mapel/getAllDataMapel') ?>" pageSize="50" pageList="[25,50,75,100,125,150,200]" nowrap="false" data-options="singleSelect:true" >
+                    <table id="dg-mapel" toolbar="#toolbar" class="easyui-datagrid" style="width:auto;height:567px;;" singleSelect="true" fitColumns="true" rowNumbers="false" pagination="true" url="<?= site_url('mapel/getAllDataMapel') ?>" pageSize="50" pageList="[25,50,75,100,125,150,200]" nowrap="false" data-options="singleSelect:true" >
                         <thead>
                             <tr>
                                 <th field="id_mapel" width="300" sortable="true">ID MAPEL</th>
@@ -21,7 +21,7 @@
             </div>
 
             <div id="toolbar">
-                <a href = "#" class = "easyui-linkbutton" iconCls = "icon-print"  onclick="cetakGuru()">Cetak </a>
+                <a href = "#" class = "easyui-linkbutton" iconCls = "icon-print"  onclick="cetakMapel()">Cetak </a>
                 <a href = "#" class = "easyui-linkbutton" iconCls = "icon-print"  onclick="cetakpdf()">Cetak PDF </a>
                 <a href = "#" class = "easyui-linkbutton" iconCls = "icon-print"  onclick="cetakexcel()">Cetak Excel </a>   
             </div>
@@ -51,9 +51,9 @@
         }
     }) 
     
-    function doGuru(){
-        $('#dg-guru').datagrid('load',{
-            search_guru: $('#searchGuru').val()
+    function doMapel(){
+        $('#dg-mapel').datagrid('load',{
+            search_mapel: $('#searchMapel').val()
         });
     }
 
@@ -82,28 +82,28 @@
         url = 'index.php/Siswa/hapus';
     }
     }
-    function cetakGuru() {
-        $('#dg-guru').datagrid('print','Data Guru');  
-        $('#dg-guru').datagrid('print', {
+    function cetakMapel() {
+        $('#dg-mapel').datagrid('print','Daftar Mata Pelajaran');  
+        $('#dg-mapel').datagrid('print', {
         paper: 'A4',
-        title: 'Data Guru',
-        fields: ['nisn','nama','alamat','telepon','kelamin','kelas'],
+        title: 'Daftar Mata Pelajaran',
+        fields: ['id_mapel','nama_mapel'],
         rows: rows,
     });
         }
 
    
         function cetakexcel(){
-        $('#dg-guru').datagrid('toExcel',{
-            filename: 'data_guru.xls',
+        $('#dg-mapel').datagrid('toExcel',{
+            filename: 'daftar_mapel.xls',
             worksheet: 'Worksheet',
-            caption: 'DATA EXCEL SELURUH SISWA',
+            caption: 'DAFTAR MATA PELAJARAN',
         }); 
     }
     
     
     function cetakpdf(){
-        var body = $('#dg-guru').datagrid('toArray');
+        var body = $('#dg-mapel').datagrid('toArray');
         console.log(JSON.stringify(body))
         var docDefinition = {
                         header: {
@@ -111,7 +111,7 @@
                         columns: [
                             {
                                 margin: [230, 10, 10, 250],
-                                text: 'DATA PDF SELURUH SISWA'
+                                text: 'DAFTAR MATA PELAJARAN'
                             }
                         ]
                     },
@@ -123,7 +123,7 @@
                 }
             }]
         };
-        pdfMake.createPdf(docDefinition).download('data-guru.pdf');
+        pdfMake.createPdf(docDefinition).download('daftar-mapel.pdf');
     }
 
     function simpan(){

@@ -54,7 +54,7 @@
     
     function doKelas(){
         $('#dg-kelas').datagrid('load',{
-            search_guru: $('#searchKelas').val()
+            search_kelas: $('#searchKelas').val()
         });
     }
 

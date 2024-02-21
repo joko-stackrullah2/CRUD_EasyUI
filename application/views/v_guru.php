@@ -6,7 +6,7 @@
                             <p>
                             <label>MAPEL:</label>
                             <p>
-                        <select id="cb-filter_kelas" class="easyui-combobox" name="mapel" style="width:150px;" editable="false"   panelHeight="100%">
+                        <select id="cb-filter_kelas" class="easyui-combobox" name="nama_mapel" style="width:150px;" editable="false"   panelHeight="100%">
                             <option>IPA</option>
                             <option>PKN</option>
                             <option>MATEMATIKA</option>
@@ -33,7 +33,7 @@
                                 <th field="alamat_guru"  width="430" sortable="true">ALAMAT</th>
                                 <th field="telp_guru"  width="300" sortable="true">TELEPON</th>
                                 <th field="jk_guru"  width="300" sortable="true">JENIS KELAMIN</th>
-                                <th field="id_mapel"  width="200" sortable="true">ID MAPEL</th>
+                                <th field="nama_mapel"  width="200" sortable="true">MAPEL</th>
                             </tr>
                         </thead>
                     </table>
@@ -58,7 +58,7 @@
                             <P>
                             <label>Id guru:</label>
                             <p>
-                            <input id="tb-id" name="nisn" class="easyui-textbox" width= "300"></p>
+                            <input id="tb-id" name="id_guru" class="easyui-textbox" width= "300" required="true"></p>
                         </div>
                         <div class="fitem">
                             <p>
@@ -78,11 +78,11 @@
                         <div class="fitem">
                             <p>
                             <label>Mapel:</label>
-                        <select id="cc" class="easyui-combobox" name="id_mapel" style="width:150px;"  panelHeight="100%">
-                            <option>IPA</option>
-                            <option>PKN</option>
-                            <option>MATEMATIKA</option>
-                            <option>INGGRIS</option>
+                        <select id="cc" class="easyui-combobox" name="id_mapel" style="width:150px;"  panelHeight="100%"  editable="false">
+                            <option value="1">IPA</option>
+                            <option value="2">PKN</option>
+                            <option value="3">MATEMATIKA</option>
+                            <option value="4">INGGRIS</option>
 
                         </select>
                         <P>
@@ -151,8 +151,8 @@
         if (row){
         $('#dlg').dialog('open').dialog('setTitle','Edit Data Guru');
         $('#fm').form('load',row);
-        $('#fm #tb-nisn').textbox({readonly:true})
-        url = 'index.php/Siswa/edit';
+        $('#fm #tb-id').textbox({readonly:true})
+        url = 'index.php/Guru/edit';
     }
     }
 
