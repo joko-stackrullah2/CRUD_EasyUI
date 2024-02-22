@@ -22,15 +22,47 @@
             </div>
 
             <div id="toolbar">
+                <a href="#" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="newKelas()" >Tambah Kelas</a>
+                <a href="#" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onclick="editKelas()" >Edit Kelas</a>
+                <a href="#" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="hapusKelas()" >Hapus Kelas</a>
                 <a href = "#" class = "easyui-linkbutton" iconCls = "icon-print"  onclick="cetakKelas()">Cetak </a>
                 <a href = "#" class = "easyui-linkbutton" iconCls = "icon-print"  onclick="cetakpdf()">Cetak PDF </a>
                 <a href = "#" class = "easyui-linkbutton" iconCls = "icon-print"  onclick="cetakexcel()">Cetak Excel </a>   
             </div>
                 <div id="dd" class="easyui-dialog" title="Confirm" closed="true" button="#dd-buttons" style="width:400px;height:200px;" data-options="iconCls:'icon-help',resizable:true,modal:true">
-                    </div>
+            
+                
+                <div id="dlg-kelas" class="easyui-dialog"  style="width:420px;height:300px;padding:10px 20px" closed="true" buttons="#buttons-simpan_kelas">
+                 <div class="ftitle">DATA KELAS</div>
+                 <p>
+            <form id="form-tambah_kelas" method="post" novalidate>
+                <div class="fitem">
+                    <label> Id Kelas:</label>
+                    <p>
+                    <input id="tb-id_kelas" name="id_kelas" class="easyui-textbox" width= "300" required="true"></p>
                 </div>
-            </div>
+                <div class="fitem">
+                    <p>
+                    <label>Nama Kelas:</label>
+                <input name="nama_kelas" class="easyui-textbox" width="300"  required="true"></p>
+                </div>
+            </form>
         </div>
+    </div>
+
+    <div id="buttons-simpan_kelas">
+        <a href="javascript:void(0)" class="easyui-linkbutton c6" iconCls="icon-ok" onclick= "simpan()" style="width:90px">Save</a>
+        <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-cancel" onclick="javascript:$('#dlg-kelas').dialog('close')" style="width:90px">Cancel</a>
+    </div>
+
+    <div id="dlg-hapus-kelas" class="easyui-dialog" title="Confirm" closed="true" button="#buttons-hapus_kelas " style="width:400px;height:200px;" data-options="iconCls:'icon-help',resizable:true,modal:true">
+        <center>
+        <h1> Hapus data ini? </h1>
+        <div id="buttons-hapus_kelas" >
+            <a href="javascript:void(0)" class="easyui-linkbutton c6" iconCls="icon-ok" onclick= "hapus()" style="width:90px" >Hapus</a>
+            <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-cancel" onclick="javascript:$('#dlg-hapus-kelas').dialog('close')" style="width:90px">Cancel</a>
+        </div>
+    </div>
     </body>
 </html>
 <script>
@@ -44,14 +76,7 @@
         }
     })
 
-    $("#cb-filter_kelamin").combobox({
-        onClick : function(val){
-            $('#dg-guru').datagrid('load',{
-                kelamin : val.value
-            });
-        }
-    }) 
-    
+
     function doKelas(){
         $('#dg-kelas').datagrid('load',{
             search_kelas: $('#searchKelas').val()
@@ -59,18 +84,18 @@
     }
 
     function newKelas(){
-        $('#dlg').dialog('open').dialog('setTitle','Tambah Data Kelas');
-        $('#fm').form('clear');
-        $('#fm #tb-id').textbox({readonly:false})
-        url = '';
+        $('#dlg-kelas').dialog('open').dialog('setTitle','Tambah Data Kelas');
+        $('#form-tambah_kelas').form('clear');
+        $('#form-tambah_kelas #tb-id').textbox({readonly:false})
+        url = 'index.php/Kelas/tambah';
     }
 
     function editKelas(){
         let row = $('#dg-kelas').datagrid('getSelected');
         if (row){
-        $('#dlg').dialog('open').dialog('setTitle','Edit Data Kelas');
-        $('#fm').form('load',row);
-        $('#fm #tb-id').textbox({readonly:true})
+        $('#dlg-kelas').dialog('open').dialog('setTitle','Edit Data Kelas');
+        $('#form-tambah_kelas').form('load',row);
+        $('#form-tambah_kelas #tb-id').textbox({readonly:true})
         url = 'index.php/Kelas/edit';
     }
     }
@@ -79,11 +104,11 @@
         let row = $('#dg-kelas').datagrid('getSelected');
         if (row){
         $('#dd').dialog('open').dialog('setTitle','Hapus Data Kelas');
-        $('#fm').form('load',row);
+        $('#form-tambah_kelas').form('load',row);
         url = 'index.php/Kelas/hapus';
     }
     }
-    function cetakGuru() {
+    function cetakKelas() {
         $('#dg-kelas').datagrid('print','Data Kelas');  
         $('#dg-kelas').datagrid('print', {
         paper: 'A4',
@@ -95,7 +120,7 @@
 
    
         function cetakexcel(){
-        $('#dg-guru').datagrid('toExcel',{
+        $('#dg-kelas').datagrid('toExcel',{
             filename: 'data_kelas.xls',
             worksheet: 'Worksheet',
             caption: 'DATA EXCEL SELURUH KELAS',
@@ -128,7 +153,7 @@
     }
 
     function simpan(){
-        $('#fm').form('submit',{
+        $('#form-tambah_kelas').form('submit',{
             url: url,
             onSubmit: function(){
                 return $(this).form('validate');
@@ -139,10 +164,10 @@
                 if(obj.success=="1"){				
                     $.messager.progress('close');	
                     $.messager.alert('Info',obj.msg,'info');
-                    $("#dg-guru").datagrid("reload");
-                    $('#dlg').dialog('close'); 
+                    $("#dg-kelas").datagrid("reload");
+                    $('#dlg-kelas').dialog('close'); 
                 }else{
-                    $('#dlg').dialog('close'); 
+                    $('#dlg-kelas').dialog('close'); 
                     $.messager.progress('close');
                     $.messager.alert('Info',obj.msg,'info');
                 }
@@ -156,8 +181,8 @@
 
     function edit(){
         var row = $('#dg-kelas').datagrid('getSelected');
-        $('#fm').form('load',row);
-        $('#fm').form('submit',{
+        $('#form-tambah_kelas').form('load',row);
+        $('#form-tambah_kelas').form('submit',{
             url: url,
             onSubmit: function(){
                 return $(this).form('validate');
@@ -185,8 +210,8 @@
 
     function hapus(){
         var row = $('#dg-kelas').datagrid('getSelected');
-        $('#fm').form('load',row);
-        $('#fm').form('submit',{
+        $('#form-tambah_kelas').form('load',row);
+        $('#form-tambah_kelas').form('submit',{
             url: url,
             onSubmit: function(){
                 return $(this).form('validate');
