@@ -118,7 +118,7 @@
                     content: [{
                     table: {
                     headerRows: 1,
-                    widths: ['*','*','*','*','auto','*'],
+                    widths: ['auto','*'],
                     body: body
                 }
             }]
