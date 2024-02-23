@@ -22,12 +22,27 @@ class M_gr extends CI_Model
         $result['total'] = $this->db->get('guru')->num_rows();
         $row = array();
 
+
+        $mapel = $this->input->post("nama_mapel");
+        if($mapel == ""){
+            $mapel = "";
+        }else{
+            $mapel = "AND nama_mapel = '$mapel'";
+        };
+
+        $kelamin = $this->input->post("jk_guru");
+        if($kelamin == ""){
+            $kelamin = "";
+        }else{
+            $kelamin = "AND jk_guru = '$kelamin'";
+        };
+
         // select data from table product
         $query = "SELECT a.*, b.nama_mapel
         FROM guru a
         LEFT JOIN mapel b
         ON a.id_mapel = b.id_mapel
-        where concat(a.nama_guru,'',a.alamat_guru)  like '%$search%' order by $sort $order limit $offset, $rows";
+        where concat(a.nama_guru,'',a.alamat_guru)  like '%$search%' $mapel $kelamin order by $sort $order limit $offset, $rows";
         
         $guru = $this->db->query($query)->result_array();    
         $result = array_merge($result, ['rows' => $guru]);

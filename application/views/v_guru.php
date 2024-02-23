@@ -6,7 +6,7 @@
                             <p>
                             <label>MAPEL:</label>
                             <p>
-                        <select id="cb-filter_kelas" class="easyui-combobox" name="nama_mapel" style="width:150px;" editable="false"   panelHeight="100%">
+                        <select id="cb-filter_mapel" class="easyui-combobox" name="nama_mapel" style="width:150px;" editable="false"   panelHeight="100%">
                             <option>IPA</option>
                             <option>PKN</option>
                             <option>MATEMATIKA</option>
@@ -117,10 +117,10 @@
 <script>
     var url =''
 
-    $("#cb-filter_kelas").combobox({
+    $("#cb-filter_mapel").combobox({
         onClick : function(val){
             $('#dg-guru').datagrid('load',{
-                mapel : val.value
+                nama_mapel : val.value
             });
         }
     })
@@ -128,10 +128,10 @@
     $("#cb-filter_kelamin").combobox({
         onClick : function(val){
             $('#dg-guru').datagrid('load',{
-                kelamin : val.value
+               jk_guru : val.value
             });
         }
-    }) 
+    })  
     
     function doGuru(){
         $('#dg-guru').datagrid('load',{

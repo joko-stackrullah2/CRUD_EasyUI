@@ -3,8 +3,7 @@
             <div data-options="region:'east',split:true" title="PENCARIAN" style="width:350px;padding:7px">
                 <!-- <div>Pencarian</div> -->
                 <input  id="searchKelas" class="easyui-searchbox" data-options="prompt:'Ketikkan nama kelas',searcher:doKelas" style="width:100%">
-
-                
+             
                 
             </div>
             <div data-options="region:'center',title:'DAFTAR KELAS',iconCls:'icon-ok'">
@@ -71,7 +70,7 @@
     $("#cb-filter_kelas").combobox({
         onClick : function(val){
             $('#dg-kelas').datagrid('load',{
-                mapel : val.value
+                kelas : val.value
             });
         }
     })
