@@ -33,7 +33,7 @@
                                 <th field="alamat_guru"  width="430" sortable="true">ALAMAT</th>
                                 <th field="telp_guru"  width="300" sortable="true">TELEPON</th>
                                 <th field="jk_guru"  width="300" sortable="true">JENIS KELAMIN</th>
-                                <th field="nama_mapel"  width="200" sortable="true">MAPEL</th>
+                                <th field="nama_mapel"  width="300" sortable="true">MAPEL</th>
                             </tr>
                         </thead>
                     </table>
