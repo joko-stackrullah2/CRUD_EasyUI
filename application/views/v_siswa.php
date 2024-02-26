@@ -32,7 +32,7 @@
                     <th field="alamat"  width="430" sortable="true">ALAMAT</th>
                     <th field="telepon"  width="300" sortable="true">TELEPON</th>
                     <th field="kelamin"  width="300" sortable="true">JENIS KELAMIN</th>
-                    <th field="kelas"  width="200" sortable="true">KELAS</th>
+                    <th field="nama_kelas"  width="200" sortable="true">KELAS</th>
                 </tr>
             </thead>
         </table>
@@ -78,13 +78,31 @@
                 </select>
                 <label>Kelas:</label>
                 <div style="margin-bottom:20px">
-                    <input class="easyui-radiobutton" name="kelas" value="RPL" label="RPL:">
+                    <input class="easyui-radiobutton" name="id_kelas" value="1" label="RPL 1:">
                 </div>
                 <div style="margin-bottom:20px">
-                    <input class="easyui-radiobutton" name="kelas" value="TKJ" label="TKJ:">
+                    <input class="easyui-radiobutton" name="id_kelas" value="2" label="RPL 2:">
                 </div>
                 <div style="margin-bottom:20px">
-                    <input class="easyui-radiobutton" name="kelas" value="TEI" label="TEI:">
+                    <input class="easyui-radiobutton" name="id_kelas" value="3" label="RPL 3:">
+                </div>
+                <div style="margin-bottom:20px">
+                    <input class="easyui-radiobutton" name="id_kelas" value="4" label="TKJ 1:">
+                </div>
+                <div style="margin-bottom:20px">
+                    <input class="easyui-radiobutton" name="id_kelas" value="5" label="TKJ 2:">
+                </div>
+                <div style="margin-bottom:20px">
+                    <input class="easyui-radiobutton" name="id_kelas" value="6" label="TKJ 3:">
+                </div>
+                <div style="margin-bottom:20px">
+                    <input class="easyui-radiobutton" name="id_kelas" value="7" label="TEI 1:">
+                </div>
+                <div style="margin-bottom:20px">
+                    <input class="easyui-radiobutton" name="id_kelas" value="8" label="TEI 2:">
+                </div>
+                <div style="margin-bottom:20px">
+                    <input class="easyui-radiobutton" name="id_kelas" value="9" label="TEI 3:">
                 </div>
             </form>
         </div>

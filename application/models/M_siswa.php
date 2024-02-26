@@ -12,7 +12,7 @@ class M_siswa extends CI_Model
      function getAllDataSiswa(){
         $page = isset($_POST['page']) ? intval($_POST['page']) : 1;
         $rows = isset($_POST['rows']) ? intval($_POST['rows']) : 50;
-        $sort = isset($_POST['sort']) ? strval($_POST['sort']) : 'siswa.nisn';
+        $sort = isset($_POST['sort']) ? strval($_POST['sort']) : 'a.nisn';
         $order = isset($_POST['order']) ? strval($_POST['order']) : 'asc';
         $search = isset($_POST['search_siswa']) ? strval($_POST['search_siswa']) : '';
         $offset = ($page-1)*$rows;
@@ -38,9 +38,11 @@ class M_siswa extends CI_Model
 
 
         // select data from table product
-        $query = "SELECT *
-        from siswa
-        where concat(nama,'',alamat) like '%$search%' $kelas $kelamin order by $sort $order limit $offset, $rows";
+        $query = "SELECT a.*, b.nama_kelas
+        FROM siswa a
+        LEFT JOIN kelas b
+        ON a.id_kelas = b.id_kelas
+        where concat(a.nama,'',a.alamat) like '%$search%' $kelas $kelamin order by $sort $order limit $offset, $rows";
         
         $siswa = $this->db->query($query)->result_array();    
         $result = array_merge($result, ['rows' => $siswa]);
@@ -59,7 +61,7 @@ class M_siswa extends CI_Model
             'nama' => $this->input->post('nama'),
             'alamat' => $this->input->post('alamat'),
             'telepon' => $this->input->post('telepon'),
-            'kelas' => $this->input->post('kelas'),
+            'id_kelas' => $this->input->post('id_kelas'),
             'kelamin' => $this->input->post('kelamin'),
         ];
 
@@ -80,7 +82,7 @@ class M_siswa extends CI_Model
             'nama' => $this->input->post('nama'),
             'alamat' => $this->input->post('alamat'),
             'telepon' => $this->input->post('telepon'),
-            'kelas' => $this->input->post('kelas'),
+            'id_kelas' => $this->input->post('id_kelas'),
             'kelamin' => $this->input->post('kelamin'),
 
             
@@ -105,7 +107,7 @@ class M_siswa extends CI_Model
             'nama' => $this->input->post('nama'),
             'alamat' => $this->input->post('alamat'),
             'telepon' => $this->input->post('telepon'),
-            'kelas' => $this->input->post('kelas'),
+            'id_kelas' => $this->input->post('id_kelas'),
             'kelamin' => $this->input->post('kelamin'),
 
         ];
