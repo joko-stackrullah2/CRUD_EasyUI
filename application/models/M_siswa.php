@@ -22,11 +22,11 @@ class M_siswa extends CI_Model
         $row = array();
 
 
-        $kelas = $this->input->post("kelas");
+        $kelas = $this->input->post("nama_kelas");
         if($kelas == ""){
             $kelas = "";
         }else{
-            $kelas = "AND kelas = '$kelas'";
+            $kelas = "AND nama_kelas = '$kelas'";
         };
 
         $kelamin = $this->input->post("kelamin");

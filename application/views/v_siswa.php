@@ -2,10 +2,18 @@
     <div data-options="region:'east',split:true" title="PENCARIAN" style="width:350px;padding:7px">
         <input  id="searchSiswa" class="easyui-searchbox" data-options="prompt:'Ketikkan nama siswa',searcher:doSiswa" style="width:100%">
         <p><label>KELAS:</label><p>
-        <select id="cb-siswa-filter_kelas" class="easyui-combobox" name="kelas" style="width:150px;" editable="false"   panelHeight="100%">
-            <option>RPL</option>
-            <option>TKJ</option>
-            <option>TEI</option>
+        <select id="cb-siswa-filter_kelas" class="easyui-combobox" name="nama_kelas" style="width:150px;" editable="false"   panelHeight="100%">
+            <option>RPL 1</option>
+            <option>RPL 2</option>
+            <option>RPL 3</option>
+            <option>TKJ 1</option>
+            <option>TKJ 2</option>
+            <option>TKJ 3</option>
+            <option>TEI 1</option>
+            <option>TEI 2</option>
+            <option>TEI 3</option>
+
+          
         </select>
         <p><label>JENIS KELAMIN:</label><p>
         <select id="cb-siswa-filter_kelamin" class="easyui-combobox" name="kelamin" style="width:150px;" editable="false"  panelHeight="100%">
@@ -128,7 +136,7 @@
     $("#cb-siswa-filter_kelas").combobox({
         onClick : function(val){
             $('#dg-siswa').datagrid('load',{
-                kelas : val.value
+                nama_kelas : val.value
             });
         }
     })
