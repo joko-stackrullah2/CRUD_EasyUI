@@ -50,7 +50,6 @@
         <a href="#" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="newSiswa()" >Tambah Siswa</a>
         <a href="#" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onclick="editSiswa()" >Edit Siswa</a>
         <a href="#" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="hapusSiswa()" >Hapus Siswa</a>
-        <a href = "#" class = "easyui-linkbutton" iconCls = "icon-print"  onclick="cetakSiswa()">Cetak </a>
         <a href = "#" class = "easyui-linkbutton" iconCls = "icon-print"  onclick="cetakpdf()">Cetak PDF </a>
         <a href = "#" class = "easyui-linkbutton" iconCls = "icon-print"  onclick="cetakexcel()">Cetak Excel </a>   
     </div>
@@ -180,15 +179,7 @@
         url = 'index.php/Siswa/hapus';
     }
     }
-    function cetakSiswa() {
-        $('#dg-siswa').datagrid('print','Data Siswa');  
-        $('#dg-siswa').datagrid('print', {
-        paper: 'A4',
-        title: 'Data Siswa',
-        fields: ['nisn','nama','alamat','telepon','kelamin','kelas'],
-        rows: rows,
-    });
-        }
+   
 
    
         function cetakexcel(){

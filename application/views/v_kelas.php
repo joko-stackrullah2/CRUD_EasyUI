@@ -24,7 +24,6 @@
                 <a href="#" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="newKelas()" >Tambah Kelas</a>
                 <a href="#" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onclick="editKelas()" >Edit Kelas</a>
                 <a href="#" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="hapusKelas()" >Hapus Kelas</a>
-                <a href = "#" class = "easyui-linkbutton" iconCls = "icon-print"  onclick="cetakKelas()">Cetak </a>
                 <a href = "#" class = "easyui-linkbutton" iconCls = "icon-print"  onclick="cetakpdf()">Cetak PDF </a>
                 <a href = "#" class = "easyui-linkbutton" iconCls = "icon-print"  onclick="cetakexcel()">Cetak Excel </a>   
             </div>
@@ -107,15 +106,7 @@
         url = 'index.php/Kelas/hapus';
     }
     }
-    function cetakKelas() {
-        $('#dg-kelas').datagrid('print','Data Kelas');  
-        $('#dg-kelas').datagrid('print', {
-        paper: 'A4',
-        title: 'Data Kelas',
-        fields: ['id_kelas','nama_kelas'],
-        rows: rows,
-    });
-        }
+    
 
    
         function cetakexcel(){

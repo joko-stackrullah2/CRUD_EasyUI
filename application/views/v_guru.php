@@ -44,7 +44,6 @@
                 <a href="#" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="newGuru()" >Tambah Guru</a>
                 <a href="#" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onclick="editGuru()" >Edit Guru</a>
                 <a href="#" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="hapusGuru()" >Hapus Guru</a>
-                <a href = "#" class = "easyui-linkbutton" iconCls = "icon-print"  onclick="cetakGuru()">Cetak </a>
                 <a href = "#" class = "easyui-linkbutton" iconCls = "icon-print"  onclick="cetakpdf()">Cetak PDF </a>
                 <a href = "#" class = "easyui-linkbutton" iconCls = "icon-print"  onclick="cetakexcel()">Cetak Excel </a>   
 
@@ -164,15 +163,7 @@
         url = 'index.php/Guru/hapus';
     }
     }
-    function cetakGuru() {
-        $('#dg-guru').datagrid('print','Data Guru');  
-        $('#dg-guru').datagrid('print', {
-        paper: 'A4',
-        title: 'Data Guru',
-        fields: ['nisn','nama','alamat','telepon','kelamin','kelas'],
-        rows: rows,
-    });
-        }
+    
 
    
         function cetakexcel(){
