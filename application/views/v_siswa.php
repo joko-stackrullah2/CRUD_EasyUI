@@ -35,12 +35,12 @@
             nowrap="false" data-options="singleSelect:true" >
             <thead>
                 <tr>
-                    <th field="nisn" width="225" sortable="true">NISN</th>
-                    <th field="nama"  width="300" sortable="true">NAMA</th>
-                    <th field="alamat"  width="430" sortable="true">ALAMAT</th>
-                    <th field="telepon"  width="300" sortable="true">TELEPON</th>
-                    <th field="kelamin"  width="300" sortable="true">JENIS KELAMIN</th>
-                    <th field="nama_kelas"  width="200" sortable="true">KELAS</th>
+                    <th field="nisn" width="225" sortable="true" halign="center">NISN</th>
+                    <th field="nama"  width="300" sortable="true" halign="center">NAMA</th>
+                    <th field="alamat"  width="430" sortable="true" halign="center">ALAMAT</th>
+                    <th field="telepon"  width="300" sortable="true" halign="center">TELEPON</th>
+                    <th field="kelamin"  width="300" sortable="true" halign="center">JENIS KELAMIN</th>
+                    <th field="nama_kelas"  width="200" sortable="true" halign="center">KELAS</th>
                 </tr>
             </thead>
         </table>

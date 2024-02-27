@@ -12,8 +12,8 @@
                     <table id="dg-kelas" toolbar="#toolbar" class="easyui-datagrid" style="width:auto;height:567px;; singleSelect="true" fitColumns="true" rowNumbers="false" pagination="true" url="<?= site_url('kelas/getAllDataKelas') ?>" pageSize="50" pageList="[25,50,75,100,125,150,200]" nowrap="false" data-options="singleSelect:true" >
                         <thead>
                             <tr>
-                                <th field="id_kelas" width="200" sortable="true">ID KELAS</th>
-                                <th field="nama_kelas"  width="200" sortable="true">NAMA KELAS</th>
+                                <th field="id_kelas" width="30" sortable="true" halign="center">ID KELAS</th>
+                                <th field="nama_kelas"  width="200" sortable="true" halign="center">NAMA KELAS</th>
                             </tr>
                         </thead>
                     </table>
