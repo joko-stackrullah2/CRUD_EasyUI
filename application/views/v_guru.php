@@ -1,7 +1,7 @@
 
         <div class="easyui-layout" data-options="fit:true" style="width:1340px;height:600px;">
             <div data-options="region:'east',split:true" title="PENCARIAN" style="width:350px;padding:7px">
-                <!-- <div>Pencarian</div> -->
+                <!-- <div>Pencarian</div> -->  
                 <input  id="searchGuru" class="easyui-searchbox" data-options="prompt:'Ketikkan nama guru',searcher:doGuru" style="width:100%">
                             <p>
                             <label>MAPEL:</label>
@@ -28,12 +28,12 @@
                     <table id="dg-guru" toolbar="#toolbar" class="easyui-datagrid" style="width:auto;height:567px;; singleSelect="true" fitColumns="true" rowNumbers="false" pagination="true" url="<?= site_url('guru/getAllDataGuru') ?>" pageSize="50" pageList="[25,50,75,100,125,150,200]" nowrap="false" data-options="singleSelect:true" >
                         <thead>
                             <tr>
-                                <th field="id_guru" width="225" sortable="true">ID GURU</th>
-                                <th field="nama_guru"  width="300" sortable="true">NAMA</th>
-                                <th field="alamat_guru"  width="430" sortable="true">ALAMAT</th>
-                                <th field="telp_guru"  width="300" sortable="true">TELEPON</th>
-                                <th field="jk_guru"  width="300" sortable="true">JENIS KELAMIN</th>
-                                <th field="nama_mapel"  width="300" sortable="true">MAPEL</th>
+                                <th field="id_guru" width="225" sortable="true" halign="center">ID GURU</th>
+                                <th field="nama_guru"  width="300" sortable="true" halign="center">NAMA</th>
+                                <th field="alamat_guru"  width="430" sortable="true" halign="center">ALAMAT</th>
+                                <th field="telp_guru"  width="300" sortable="true" halign="center">TELEPON</th>
+                                <th field="jk_guru"  width="300" sortable="true" halign="center">JENIS KELAMIN</th>
+                                <th field="nama_mapel"  width="300" sortable="true" halign="center">MAPEL</th>
                             </tr>
                         </thead>
                     </table>
@@ -127,7 +127,7 @@
     $("#cb-filter_kelamin").combobox({
         onClick : function(val){
             $('#dg-guru').datagrid('load',{
-               jk_guru : val.value
+               jk_guru   : val.value
             });
         }
     })  
@@ -163,7 +163,15 @@
         url = 'index.php/Guru/hapus';
     }
     }
-    
+    function cetakGuru() {
+        $('#dg-guru').datagrid('print','Data Guru');  
+        $('#dg-guru').datagrid('print', {
+        paper: 'A4',
+        title: 'Data Guru',
+        fields: ['nisn','nama','alamat','telepon','kelamin','kelas'],
+        rows: rows,
+    });
+        }
 
    
         function cetakexcel(){
