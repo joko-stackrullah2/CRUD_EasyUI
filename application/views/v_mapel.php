@@ -12,8 +12,8 @@
                     <table id="dg-mapel" toolbar="#toolbar" class="easyui-datagrid" style="width:auto;height:567px;;" singleSelect="true" fitColumns="true" rowNumbers="false" pagination="true" url="<?= site_url('mapel/getAllDataMapel') ?>" pageSize="50" pageList="[25,50,75,100,125,150,200]" nowrap="false" data-options="singleSelect:true" >
                         <thead>
                             <tr>
-                                <th field="id_mapel" width="300" sortable="true">ID MAPEL</th>
-                                <th field="nama_mapel"  width="300" sortable="true">NAMA MAPEL</th>
+                                <th field="id_mapel" width="50" sortable="true" halign="center">ID MAPEL</th>
+                                <th field="nama_mapel"  width="300" sortable="true" halign="center">NAMA MAPEL</th>
                             </tr>
                         </thead>
                     </table>
