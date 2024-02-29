@@ -57,6 +57,7 @@ class M_siswa extends CI_Model
 
     function InsertSiswa(){
         $data = [
+            'id_siswa' => $this->input->post('id_siswa'),
             'nisn' => $this->input->post('nisn'),
             'nama' => $this->input->post('nama'),
             'alamat' => $this->input->post('alamat'),
@@ -65,10 +66,10 @@ class M_siswa extends CI_Model
             'kelamin' => $this->input->post('kelamin'),
         ];
 
-        $ceknisn=$this->cekSiswa($data['nisn']);
+        $ceknisn=$this->cekSiswa($data['id_siswa']);
         if($ceknisn > 0){
             $response["success"] = "0";
-			$response["msg"] = "Data siswa dengan NISN ".$data['nisn']." sudah ada !";
+			$response["msg"] = "Data siswa dengan ID ".$data['id_siswa']." sudah ada !";
         }else{
             $this->db->insert('siswa',$data);
             $response["success"] = "1";
@@ -78,6 +79,7 @@ class M_siswa extends CI_Model
     }
     function UpdateSiswa(){
         $data = [
+            'id_siswa' => $this->input->post('id_siswa'),
             'nisn' => $this->input->post('nisn'),
             'nama' => $this->input->post('nama'),
             'alamat' => $this->input->post('alamat'),
@@ -87,7 +89,7 @@ class M_siswa extends CI_Model
 
             
         ];
-        $this->db->where('nisn',$data['nisn']);
+        $this->db->where('id_siswa',$data['id_siswa']);
         if($data == 0){
             $response["success"] = "0";
 			$response["msg"] = "Data gagal di edit!";
@@ -103,6 +105,7 @@ class M_siswa extends CI_Model
 
     function DeleteSiswa(){
         $data = [
+            'id_siswa' => $this->input->post('id_siswa'),
             'nisn' => $this->input->post('nisn'),
             'nama' => $this->input->post('nama'),
             'alamat' => $this->input->post('alamat'),
