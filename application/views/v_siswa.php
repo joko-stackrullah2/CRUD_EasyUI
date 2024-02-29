@@ -186,7 +186,7 @@
         $('#dg-siswa').datagrid('toExcel',{
             filename: 'data_siswa.xls',
             worksheet: 'Worksheet',
-            caption: 'DATA EXCEL SELURUH SISWA',
+            caption: 'DATA SELURUH SISWA',
         }); 
     }
     
@@ -200,7 +200,7 @@
                         columns: [
                             {
                                 margin: [230, 10, 10, 250],
-                                text: 'DATA PDF SELURUH SISWA'
+                                text: 'DATA SELURUH SISWA'
                             }
                         ]
                     },

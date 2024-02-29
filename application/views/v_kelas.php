@@ -113,7 +113,7 @@
         $('#dg-kelas').datagrid('toExcel',{
             filename: 'data_kelas.xls',
             worksheet: 'Worksheet',
-            caption: 'DATA EXCEL SELURUH KELAS',
+            caption: 'DATA SELURUH KELAS',
         }); 
     }
     
@@ -127,7 +127,7 @@
                         columns: [
                             {
                                 margin: [230, 10, 10, 250],
-                                text: 'DATA PDF SELURUH KELAS'
+                                text: 'DATA SELURUH KELAS'
                             }
                         ]
                     },
