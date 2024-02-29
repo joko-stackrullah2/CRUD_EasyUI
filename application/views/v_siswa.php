@@ -3,6 +3,8 @@
         <input  id="searchSiswa" class="easyui-searchbox" data-options="prompt:'Ketikkan nama siswa',searcher:doSiswa" style="width:100%">
         <p><label>KELAS:</label><p>
         <select id="cb-siswa-filter_kelas" class="easyui-combobox" name="nama_kelas" style="width:150px;" editable="false"   panelHeight="100%">
+            <option selected disabled></option>
+            <option value="">Tampilkan Semua</option>
             <option>RPL 1</option>
             <option>RPL 2</option>
             <option>RPL 3</option>
@@ -17,6 +19,8 @@
         </select>
         <p><label>JENIS KELAMIN:</label><p>
         <select id="cb-siswa-filter_kelamin" class="easyui-combobox" name="kelamin" style="width:150px;" editable="false"  panelHeight="100%">
+        <option selected disabled></option>
+            <option value="">Tampilkan Semua</option>
             <option>LAKI-LAKI</option>
             <option>PEREMPUAN</option>
         </select>
