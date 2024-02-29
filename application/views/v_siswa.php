@@ -212,7 +212,7 @@
                     content: [{
                     table: {
                     headerRows: 1,
-                    widths: ['*','*','*','*','auto','*'],
+                    widths: ['auto','*','*','*','*','auto','*'],
                     body: body
                 }
             }]
