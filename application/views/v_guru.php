@@ -7,6 +7,7 @@
                             <label>MAPEL:</label>
                             <p>
                         <select id="cb-filter_mapel" class="easyui-combobox" name="nama_mapel" style="width:150px;" editable="false"   panelHeight="100%">
+                             <option>Tampikan Semua</option>
                             <option>IPA</option>
                             <option>PKN</option>
                             <option>MATEMATIKA</option>
@@ -18,6 +19,7 @@
                             <label>JENIS KELAMIN:</label>
                             <p>
                         <select id="cb-filter_kelamin" class="easyui-combobox" name="jk_guru" style="width:150px;" editable="false"  panelHeight="100%">
+                            <option>Tampikan Semua</option>
                             <option>LAKI-LAKI</option>
                             <option>PEREMPUAN</option>
                         </select>
