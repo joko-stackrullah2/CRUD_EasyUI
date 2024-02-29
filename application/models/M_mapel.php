@@ -38,5 +38,54 @@ class M_mapel extends CI_Model
         return $hasil;
     }
 
+    function InsertMapel(){
+        $data = [
+            'id_mapel' => $this->input->post('id_mapel'),
+            'nama_mapel' => $this->input->post('nama_mapel'),
+        ];
+
+        $cekidmapel=$this->cekMapel($data['id_mapel']);
+        if($cekidmapel > 0){
+            $response["success"] = "0";
+			$response["msg"] = "Data mapel dengan ID MAPEL ".$data['id_mapel']." sudah ada !";
+        }else{
+            $this->db->insert('mapel',$data);
+            $response["success"] = "1";
+			$response["msg"] = "Data mapel berhasil ditambahkan";
+        }
+        return $response;
+    }
+
+    function UpdateMapel(){
+        $data = [
+            'id_mapel' => $this->input->post('id_mapel'),
+            'nama_mapel' => $this->input->post('nama_mapel'),
+
+            
+        ];
+        $this->db->where('id_mapel',$data['id_mapel']);
+        if($data == 0){
+            $response["success"] = "0";
+			$response["msg"] = "Data gagal di edit!";
+        }else{
+            $response["success"] = "1";
+            $response["msg"] = "Data mapel berhasil di edit";
+            $this->db->update('mapel',$data);
+        }
+        return $response;
+       
+
+    }
+
+    function DeleteMapel(){
+        $data = [
+            'id_mapel' => $this->input->post('id_mapel'),
+            'nama_mapel' => $this->input->post('nama_mapel'),
+
+        ];
+        $this->db->where('id_mapel',$data['id_mapel']);
+        return $this->db->delete('mapel',$data);
+    }
 
 }
+

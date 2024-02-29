@@ -50,13 +50,10 @@ class M_gr extends CI_Model
 
     }
 
-    public function cekGuru(){
-        $query = "SELECT a.*, b.nama_mapel
-        FROM guru a
-        LEFT JOIN mapel b
-        ON a.id_mapel = b.id_mapel->num_rows()";
+    public function cekGuru($id){
+        $hasil = $this->db->query("select * from guru where id_guru=$id")->num_rows();
 
-        return $query;
+        return $hasil;
         
     }
 

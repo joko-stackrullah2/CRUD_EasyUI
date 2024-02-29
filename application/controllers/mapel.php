@@ -19,4 +19,25 @@ class Mapel extends CI_Controller {
 	public function index(){
 		$this->load->view('v_mapel');
 	}
+
+	public function tambah(){
+		$input = $this->M_mapel->InsertMapel();
+		echo json_encode($input);
+	}
+
+	 
+	public function edit(){
+		
+		$input = $this->M_mapel->UpdateMapel();
+		echo json_encode($input);
+}
+
+public function hapus(){
+		
+	$input = $this->M_mapel->DeleteMapel();
+	if ($input) {
+		echo json_encode(['success' => true]);
+	}else {
+		echo json_encode(['Msg'=>'Some Error occured!.']);}
+}
 }
