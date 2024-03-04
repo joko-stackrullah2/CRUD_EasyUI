@@ -14,6 +14,7 @@
                             <tr>
                                 <th field="id_mapel" width="50" sortable="true" halign="center">ID MAPEL</th>
                                 <th field="nama_mapel"  width="300" sortable="true" halign="center">NAMA MAPEL</th>
+
                             </tr>
                         </thead>
                     </table>
@@ -47,7 +48,7 @@
     </div>
     <div id="buttons-simpan_kelas">
         <a href="javascript:void(0)" class="easyui-linkbutton c6" iconCls="icon-ok" onclick= "simpan()" style="width:90px">Save</a>
-        <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-cancel" onclick="javascript:$('#dlg-kelas').dialog('close')" style="width:90px">Cancel</a>
+        <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-cancel" onclick="javascript:$('#dlg-mapel').dialog('close')" style="width:90px">Cancel</a>
     </div>
 
     <div id="dlg-hapus-kelas" class="easyui-dialog" title="Confirm" closed="true" button="#buttons-hapus_kelas " style="width:400px;height:200px;" data-options="iconCls:'icon-help',resizable:true,modal:true">
@@ -174,8 +175,8 @@
 
     function edit(){
         var row = $('#dg-mapel').datagrid('getSelected');
-        $('#fm').form('load',row);
-        $('#fm').form('submit',{
+        $('#form-tambah_mapel').form('load',row);
+        $('#form-tambah_mapel').form('submit',{
             url: url,
             onSubmit: function(){
                 return $(this).form('validate');
@@ -203,8 +204,8 @@
 
     function hapus(){
         var row = $('#dg-mapel').datagrid('getSelected');
-        $('#fm').form('load',row);
-        $('#fm').form('submit',{
+        $('#form-tambah_mapel').form('load',row);
+        $('#form-tambah_mapel').form('submit',{
             url: url,
             onSubmit: function(){
                 return $(this).form('validate');

@@ -42,6 +42,7 @@ class M_mapel extends CI_Model
         $data = [
             'id_mapel' => $this->input->post('id_mapel'),
             'nama_mapel' => $this->input->post('nama_mapel'),
+
         ];
 
         $cekidmapel=$this->cekMapel($data['id_mapel']);

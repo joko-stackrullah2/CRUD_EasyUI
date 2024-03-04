@@ -39,7 +39,7 @@
             nowrap="false" data-options="singleSelect:true" >
             <thead>
                 <tr>
-                     <th field="id_siswa" width="225" sortable="true" halign="center">NO</th>
+                    <th field="id_siswa" width="100" sortable="true" halign="center">NO</th>
                     <th field="nisn" width="225" sortable="true" halign="center">NISN</th>
                     <th field="nama"  width="300" sortable="true" halign="center">NAMA</th>
                     <th field="alamat"  width="430" sortable="true" halign="center">ALAMAT</th>
@@ -62,10 +62,6 @@
     <div id="dlg-siswa" class="easyui-dialog"  style="width:420px;height:510px;padding:10px 20px" closed="true" buttons="#buttons-simpan_siswa">
         <div class="ftitle">DATA SISWA</div>
             <form id="form-tambah_siswa" method="post" novalidate>
-                <div class="fitem">
-                    <label>NO:</label>
-                    <input id="id_siswa" name="id_siswa" class="easyui-textbox" width= "300" required="true"></p>
-                </div>
                 <div class="fitem">
                     <label>Nisn:</label>
                     <input id="tb-nisn" name="nisn" class="easyui-textbox" width= "300" required="true"></p>
