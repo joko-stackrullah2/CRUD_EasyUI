@@ -61,7 +61,7 @@
                             <P>
                             <label>Id guru:</label>
                             <p>
-                            <input id="tb-id" name="id_guru" class="easyui-textbox" width= "300" required="true"></p>
+                            <input id="tb-id" name="id_guru" class="easyui-textbox" width= "300" ></p>
                         </div>
                         <div class="fitem">
                             <p>

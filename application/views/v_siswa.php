@@ -64,12 +64,12 @@
             <form id="form-tambah_siswa" method="post" novalidate>
                 <div class="fitem">
                     <label>Nisn:</label>
-                    <input id="tb-nisn" name="nisn" class="easyui-textbox" width= "300" required="true"></p>
+                    <input id="tb-nisn" name="nisn" class="easyui-textbox" width= "300"></p>
                 </div>
                 <div class="fitem">
                     <p>
                     <label>Nama:</label>
-                <input name="nama" class="easyui-textbox" width="300"  required="true"></p>
+                <input name="nama" class="easyui-textbox" width="300"  ></p>
                 </div>
                 <div class="fitem">
                     <p>

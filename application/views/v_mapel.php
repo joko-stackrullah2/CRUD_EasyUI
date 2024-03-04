@@ -36,12 +36,12 @@
                 <div class="fitem">
                     <label> Id Mapel:</label>
                     <p>
-                    <input id="tb-id_mapel" name="id_mapel" class="easyui-textbox" width= "300" required="true"></p>
+                    <input id="tb-id_mapel" name="id_mapel" class="easyui-textbox" width= "300" ></p>
                 </div>
                 <div class="fitem">
                     <p>
                     <label>Nama Mapel:</label>
-                <input name="nama_mapel" class="easyui-textbox" width="300"  required="true"></p>
+                <input name="nama_mapel" class="easyui-textbox" width="300" ></p>
                 </div>
             </form>
         </div>
