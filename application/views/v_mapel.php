@@ -12,8 +12,9 @@
                     <table id="dg-mapel" toolbar="#toolbar" class="easyui-datagrid" style="width:auto;height:567px;;" singleSelect="true" fitColumns="true" rowNumbers="false" pagination="true" url="<?= site_url('mapel/getAllDataMapel') ?>" pageSize="50" pageList="[25,50,75,100,125,150,200]" nowrap="false" data-options="singleSelect:true" >
                         <thead>
                             <tr>
-                                <th field="id_mapel" width="50" sortable="true" halign="center">ID MAPEL</th>
+                                <th field="id_mapel" width="80" sortable="true" halign="center">ID MAPEL</th>
                                 <th field="nama_mapel"  width="300" sortable="true" halign="center">NAMA MAPEL</th>
+                                <th field="buku"  width="300" sortable="true" halign="center">BUKU</th>
 
                             </tr>
                         </thead>
@@ -29,7 +30,7 @@
                 <a href = "#" class = "easyui-linkbutton" iconCls = "icon-print"  onclick="cetakexcel()">Cetak Excel </a>   
             </div>
                 <div id="dd" class="easyui-dialog" title="Confirm" closed="true" button="#dd-buttons" style="width:400px;height:200px;" data-options="iconCls:'icon-help',resizable:true,modal:true">
-                <div id="dlg-mapel" class="easyui-dialog"  style="width:420px;height:300px;padding:10px 20px" closed="true" buttons="#buttons-simpan_kelas">
+                <div id="dlg-mapel" class="easyui-dialog"  style="width:420px;height:360px;padding:10px 20px" closed="true" buttons="#buttons-simpan_kelas">
                  <div class="ftitle">DAFTAR MAPEL</div>
                  <p>
             <form id="form-tambah_mapel" method="post" novalidate>
@@ -41,7 +42,14 @@
                 <div class="fitem">
                     <p>
                     <label>Nama Mapel:</label>
+                    <p>
                 <input name="nama_mapel" class="easyui-textbox" width="300" ></p>
+                </div>
+                <div class="fitem">
+                    <p>
+                    <label>File:</label>
+                    <p>
+                <input class="easyui-filebox" style="width:300px">
                 </div>
             </form>
         </div>
@@ -79,6 +87,10 @@
             });
         }
     }) 
+
+    $('#file').filebox({
+	accept: 'image/*'
+});
     
     function doMapel(){
         $('#dg-mapel').datagrid('load',{
