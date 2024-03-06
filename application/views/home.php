@@ -34,7 +34,7 @@
     <div data-options="region:'west',title:'Menu',collapsible:true" style="width:200px;">
         <?php include('common/sidebar_menu.php') ?>
     </div>
-    <div data-options="region:'north' "style="height:50px;"><img src="<?php echo base_url("image/bnr.png"); ?>" height="80%" width="auto" style="margin-left: 30px; margin-top: 5px;"></div>
+    <div data-options="region:'north' "style="height:50px; background-image:url('image/hd2.png');"><height="80%" width="auto" style="margin-left: 30px; margin-top: 5px;"></div>
 
    
    
