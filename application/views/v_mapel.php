@@ -15,7 +15,6 @@
                                 <th field="id_mapel" width="80" sortable="true" halign="center">ID MAPEL</th>
                                 <th field="nama_mapel"  width="300" sortable="true" halign="center">NAMA MAPEL</th>
                                 <th field="buku"  width="300" sortable="true" halign="center">BUKU</th>
-
                             </tr>
                         </thead>
                     </table>
@@ -49,7 +48,7 @@
                     <p>
                     <label>File:</label>
                     <p>
-                <input class="easyui-filebox" style="width:300px">
+                <input id="filebox" name="buku" style="width:300px">
                 </div>
             </form>
         </div>
@@ -88,7 +87,7 @@
         }
     }) 
 
-    $('#file').filebox({
+    $('#filebox').filebox({
 	accept: 'image/*'
 });
     
