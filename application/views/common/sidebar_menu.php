@@ -1,6 +1,12 @@
 <ul id="tt" class="easyui-tree" animate="true" lines="true">
 </ul>
 
+<script type="text/javascript" src="<?php echo base_url();?>static/plupload/js/plupload.full.min.js"></script>
+<link rel="stylesheet" href="<?php echo base_url("static/fancybox/css/normalize.css")?>" />
+<link rel="stylesheet" href="<?php echo base_url("static/fancybox/css/popelt.css")?>" />
+<script type="text/javascript" src="<?php echo base_url("static/fancybox/minified/popelt-v1.0.min.js")?>"></script>
+<script type="text/javascript" src="<?php echo base_url();?>static/js/fancybox.js"></script>
+
 <script type="text/javascript">
  $(document).ready(function() {
      $('#tt').tree({
