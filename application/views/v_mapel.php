@@ -334,6 +334,7 @@
                             file_path: jsonObj.relativePath + jsonObj.fileName,
                             file_name: jsonObj.fileName
                         }});
+                        $("#grid-berkas_mapel").datagrid("reload");
                     },
                     UploadComplete : function(up, files) {
                         plupload.each(files, function(file) {
