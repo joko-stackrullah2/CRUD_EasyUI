@@ -33,6 +33,12 @@
                  <div class="ftitle">DAFTAR MAPEL</div>
                  <p>
             <form id="form-tambah_mapel" method="post" novalidate>
+            <div class="fitem">
+                            <P>
+                            <label>Id mapel:</label>
+                            <p>
+                            <input id="tb-id" name="id_mapel" class="easyui-textbox" width= "300" ></p>
+                        </div>
                 <div class="fitem">
                     <p>
                     <label>Nama Mapel:</label>

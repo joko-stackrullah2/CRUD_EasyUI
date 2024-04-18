@@ -25,15 +25,15 @@ class M_mapel extends CI_Model
         // select data from table product
         $query = "SELECT *
         from mapel
-        where concat(id_mapel,'',nama_mapel)  like '%$search%' order by $sort $order limit $offset, $rows";
+        where concat(id_mapel,'',nama_mapel) like '%$search%' order by $sort $order limit $offset, $rows";
         
         $mapel = $this->db->query($query)->result_array();    
         $result = array_merge($result, ['rows' => $mapel]);
         return $result;
     }
 
-    public function cekMapel($idmapel){
-        $hasil = $this->db->query("select * from mapel where id_mapel=$idmapel")->num_rows();
+    public function cekMapel($id){
+        $hasil = $this->db->query("select * from mapel where id_mapel=$id")->num_rows();
 
         return $hasil;
     }
@@ -42,7 +42,6 @@ class M_mapel extends CI_Model
         $data = [
             'id_mapel' => $this->input->post('id_mapel'),
             'nama_mapel' => $this->input->post('nama_mapel'),
-            'buku' => $this->input->post('buku'),
         ];
 
         $cekidmapel=$this->cekMapel($data['id_mapel']);
