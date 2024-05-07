@@ -32,8 +32,8 @@ class M_kelas extends CI_Model
         return $result;
     }
 
-    public function cekKelas($idkelas){
-        $hasil = $this->db->query("select * from kelas where id_kelas=$idkelas")->num_rows();
+    public function cekKelas($nmkelas){
+        $hasil = $this->db->query("select * from kelas where nama_kelas='$nmkelas'")->num_rows();
 
         return $hasil;
     }
@@ -44,10 +44,10 @@ class M_kelas extends CI_Model
             'nama_kelas' => $this->input->post('nama_kelas'),
         ];
 
-        $cekidkelas=$this->cekKelas($data['id_kelas']);
+        $cekidkelas=$this->cekKelas($data['nama_kelas']);
         if($cekidkelas > 0){
             $response["success"] = "0";
-			$response["msg"] = "Data kelas dengan ID KELAS ".$data['id_kelas']." sudah ada !";
+			$response["msg"] = "Data kelas dengan KELAS ".$data['nama_kelas']." sudah ada !";
         }else{
             $this->db->insert('kelas',$data);
             $response["success"] = "1";
