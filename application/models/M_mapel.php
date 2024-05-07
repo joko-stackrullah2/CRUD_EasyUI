@@ -32,8 +32,8 @@ class M_mapel extends CI_Model
         return $result;
     }
 
-    public function cekMapel($kd){
-        $hasil = $this->db->query("select * from mapel where kode=$kd")->num_rows();
+    public function cekMapel($kd,$nm){
+        $hasil = $this->db->query("SELECT * FROM mapel WHERE kode=$kd OR nama_mapel = '$nm'")->num_rows();
 
         return $hasil;
     }
@@ -44,7 +44,7 @@ class M_mapel extends CI_Model
             'nama_mapel' => $this->input->post('nama_mapel'),
         ];
 
-        $cekidmapel=$this->cekMapel($data['kode']);
+        $cekidmapel=$this->cekMapel($data['kode'],$data['nama_mapel']);
         if($cekidmapel > 0){
             $response["success"] = "0";
 			$response["msg"] = "Data mapel dengan NAMA MAPEL ".$data['nama_mapel']." sudah ada !";
@@ -63,6 +63,7 @@ class M_mapel extends CI_Model
 
             
         ];
+        $data=$this->cekMapel($data['kode'],$data['nama_mapel']);
         $this->db->where('kode',$data['kode']);
         if($data == 0){
             $response["success"] = "0";
