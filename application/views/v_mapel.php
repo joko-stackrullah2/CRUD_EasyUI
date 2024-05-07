@@ -12,7 +12,8 @@
                     <table id="dg-mapel" toolbar="#toolbar" class="easyui-datagrid" style="width:auto;height:567px;;" singleSelect="true" fitColumns="true" rowNumbers="false" pagination="true" url="<?= site_url('mapel/getAllDataMapel') ?>" pageSize="50" pageList="[25,50,75,100,125,150,200]" nowrap="false" data-options="singleSelect:true" >
                         <thead>
                             <tr>
-                                <th field="id_mapel" width="80" sortable="true" halign="center">ID MAPEL</th>
+                            <th field="id_mapel" width="80" sortable="true" halign="center">NO</th>
+                                <th field="kode" width="80" sortable="true" halign="center">KODE</th>
                                 <th field="nama_mapel"  width="300" sortable="true" halign="center">NAMA MAPEL</th>
                                 <th field="buku"  width="300" sortable="true" halign="center">BUKU</th>
                             </tr>
@@ -35,9 +36,9 @@
             <form id="form-tambah_mapel" method="post" novalidate>
             <div class="fitem">
                             <P>
-                            <label>Id mapel:</label>
+                            <label>Kode mapel:</label>
                             <p>
-                            <input id="tb-id" name="id_mapel" class="easyui-textbox" width= "300" ></p>
+                            <input id="tb-kode" name="kode" class="easyui-textbox" width= "300" ></p>
                         </div>
                 <div class="fitem">
                     <p>
@@ -130,7 +131,7 @@
     function newMapel(){
         $('#dlg-mapel').dialog('open').dialog('setTitle','Tambah Data Mapel');
         $('#form-tambah_mapel').form('clear');
-        $('#form-tambah_mapel #tb-id_mapel').textbox({readonly:false})
+        $('#form-tambah_mapel #tb').textbox({readonly:false})
         url = 'index.php/Mapel/tambah';
         initUploadFile()
     }
@@ -140,7 +141,7 @@
         if (row){
         $('#dlg-mapel').dialog('open').dialog('setTitle','Edit Data Mapel');
         $('#form-tambah_mapel').form('load',row);
-        $('#form-tambah_mapel #tb-id_mapel').textbox({readonly:true})
+        $('#form-tambah_mapel #tb-kode').textbox({readonly:true})
         url = 'index.php/Mapel/edit';
         initUploadFile()
     }

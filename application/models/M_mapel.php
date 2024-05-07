@@ -13,7 +13,7 @@ class M_mapel extends CI_Model
         
         $page = isset($_POST['page']) ? intval($_POST['page']) : 1;
         $rows = isset($_POST['rows']) ? intval($_POST['rows']) : 50;
-        $sort = isset($_POST['sort']) ? strval($_POST['sort']) : 'mapel.id_mapel';
+        $sort = isset($_POST['sort']) ? strval($_POST['sort']) : 'mapel.kode';
         $order = isset($_POST['order']) ? strval($_POST['order']) : 'asc';
         $search = isset($_POST['search_mapel']) ? strval($_POST['search_mapel']) : '';
         $offset = ($page-1)*$rows;
@@ -25,29 +25,29 @@ class M_mapel extends CI_Model
         // select data from table product
         $query = "SELECT *
         from mapel
-        where concat(id_mapel,'',nama_mapel) like '%$search%' order by $sort $order limit $offset, $rows";
+        where concat(kode,'',nama_mapel) like '%$search%' order by $sort $order limit $offset, $rows";
         
         $mapel = $this->db->query($query)->result_array();    
         $result = array_merge($result, ['rows' => $mapel]);
         return $result;
     }
 
-    public function cekMapel($id){
-        $hasil = $this->db->query("select * from mapel where id_mapel=$id")->num_rows();
+    public function cekMapel($kd){
+        $hasil = $this->db->query("select * from mapel where kode=$kd")->num_rows();
 
         return $hasil;
     }
 
     function InsertMapel(){
         $data = [
-            'id_mapel' => $this->input->post('id_mapel'),
+            'kode' => $this->input->post('kode'),
             'nama_mapel' => $this->input->post('nama_mapel'),
         ];
 
-        $cekidmapel=$this->cekMapel($data['id_mapel']);
+        $cekidmapel=$this->cekMapel($data['kode']);
         if($cekidmapel > 0){
             $response["success"] = "0";
-			$response["msg"] = "Data mapel dengan ID MAPEL ".$data['id_mapel']." sudah ada !";
+			$response["msg"] = "Data mapel dengan NAMA MAPEL ".$data['nama_mapel']." sudah ada !";
         }else{
             $this->db->insert('mapel',$data);
             $response["success"] = "1";
@@ -58,12 +58,12 @@ class M_mapel extends CI_Model
 
     function UpdateMapel(){
         $data = [
-            'id_mapel' => $this->input->post('id_mapel'),
+            'kode' => $this->input->post('kode'),
             'nama_mapel' => $this->input->post('nama_mapel'),
 
             
         ];
-        $this->db->where('id_mapel',$data['id_mapel']);
+        $this->db->where('kode',$data['kode']);
         if($data == 0){
             $response["success"] = "0";
 			$response["msg"] = "Data gagal di edit!";
@@ -83,7 +83,7 @@ class M_mapel extends CI_Model
             'nama_mapel' => $this->input->post('nama_mapel'),
 
         ];
-        $this->db->where('id_mapel',$data['id_mapel']);
+        $this->db->where('kode',$data['kode']);
         return $this->db->delete('mapel',$data);
     }
 
