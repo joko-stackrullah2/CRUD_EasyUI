@@ -80,7 +80,7 @@ class M_mapel extends CI_Model
 
     function DeleteMapel(){
         $data = [
-            'id_mapel' => $this->input->post('id_mapel'),
+            'kode' => $this->input->post('kode'),
             'nama_mapel' => $this->input->post('nama_mapel'),
 
         ];
