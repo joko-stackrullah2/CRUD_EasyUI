@@ -63,9 +63,10 @@ class M_kelas extends CI_Model
             
         ];
         $this->db->where('id_kelas',$data['id_kelas']);
-        if($data == 0){
+        $cekidkelas=$this->cekKelas($data['nama_kelas']);
+        if($cekidkelas > 0){
             $response["success"] = "0";
-			$response["msg"] = "Data gagal di edit!";
+			$response["msg"] = "Data gagal di edit karena KELAS ".$data['nama_kelas']." sudah ada !";
         }else{
             $response["success"] = "1";
             $response["msg"] = "Data kelas berhasil di edit";
