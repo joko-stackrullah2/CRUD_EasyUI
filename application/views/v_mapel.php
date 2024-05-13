@@ -30,7 +30,7 @@
                 <a href = "#" class = "easyui-linkbutton" iconCls = "icon-print"  onclick="cetakexcel()">Cetak Excel </a>   
             </div>
                 <div id="dd" class="easyui-dialog" title="Confirm" closed="true" button="#dd-buttons" style="width:600px;height:400px;" data-options="iconCls:'icon-help',resizable:true,modal:true">
-                <div id="dlg-mapel" class="easyui-dialog"  style="width:520px;height:560px;padding:10px 20px" closed="true" buttons="#buttons-simpan_kelas">
+                <div id="dlg-mapel" class="easyui-dialog"  style="width:520px;height:400px;padding:10px 20px" closed="true" buttons="#buttons-simpan_kelas">
                  <div class="ftitle">DAFTAR MAPEL</div>
                  <p>
             <form id="form-tambah_mapel" method="post" novalidate>
@@ -46,41 +46,14 @@
                     <p>
                     <input name="nama_mapel" class="easyui-textbox" width="300" ></p>
                 </div>
-                <div class="container" style="width:auto;height:350px; padding-bottom:50px;">
+                <div class="fitem">
                     <p>
-                    <label>file Mapel:</label>
+                    <label>File:</label>
                     <p>
-                    <table class="easyui-datagrid" id="grid-berkas_mapel" title="" style="width:auto;height:auto;" 
-                    data-options="
-                        url:'',
-                        fit:true,
-                        rownumbers:'true',
-                        pagination:true,
-                        border:false,
-                        striped:true,
-                        toolbar:'#tbr-berkas_aset',
-                        singleSelect:true,
-                        collapsible:false,
-                        nowrap:true">
-                        <thead>
-                            <tr>	
-                                <th field="tgl_upload" width="130" align="center" halign="center">Tanggal Upload</th>
-                                <th field="file_name" width="350" align="left" halign="center" data-options="formatter: customLink" >File Name</th>
-                                <th field="file_path" hidden="true" ></th>
-                            </tr>
-                        </thead>
-                    </table>
-                    <div id="tbr-berkas_aset" style='padding:5px;height:35px'>
-                        <div style="display:inline;">
-                            <div id="container2" style="display:inline-block">
-                                <a href='javascript:void(0)' class='easyui-linkbutton' iconCls='icon-add' id="pickFile">Add File</a>
-                                <a id="uploadfiles" href="javascript:void(0);" style="display:none;">[Upload files]</a>
-                            </div>
-                            <a href='javascript:void(0)' class='easyui-linkbutton' iconCls='icon-remove' onClick='delBerkasAset()'>Delete</a>
-                        </div>
-                    </div>
-                    <div id="dialog-berkas_aset" class="easyui-dialog" style="width:450px; height:250px" closed="true" buttons="#button_dialog-lampiran_task" iconCls="icon-table" >
-                    </div>
+                    <input name="" class="easyui-filebox" width="300" ></p>
+                </div>
+                
+                  
                 </div>
             </form>
         </div>
