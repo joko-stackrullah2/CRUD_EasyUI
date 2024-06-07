@@ -53,6 +53,17 @@
                     <a href="#" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="newFile()" >Tambah File</a>
 </p>
                 </div>
+                <div id="dd" class="easyui-dialog" title="Confirm" closed="true" button="#dd-buttons" style="width:600px;height:400px;" data-options="iconCls:'icon-help',resizable:true,modal:true">
+                <div id="dlg-file" class="easyui-dialog"  style="width:520px;height:400px;padding:10px 20px" closed="true" buttons="#buttons-simpan_file">
+                 <div class="ftitle">DAFTAR MAPEL</div>
+                 <p>
+            <form id="form-tambah_file" method="post" novalidate>
+            <div class="fitem">
+                            <P>
+                            <label>Kode file:</label>
+                            <p>
+                            <input id="tb-kode" name="kode" class="easyui-textbox" width= "300" ></p>
+                        </div>
                 
                   
                 </div>
@@ -62,6 +73,10 @@
     <div id="buttons-simpan_kelas">
         <a href="javascript:void(0)" class="easyui-linkbutton c6" iconCls="icon-ok" onclick= "simpan()" style="width:90px">Save</a>
         <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-cancel" onclick="javascript:$('#dlg-mapel').dialog('close')" style="width:90px">Cancel</a>
+    </div>
+    <div id="buttons-simpan_file">
+        <a href="javascript:void(0)" class="easyui-linkbutton c6" iconCls="icon-ok" onclick= "simpanF()" style="width:90px">Save</a>
+        <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-cancel" onclick="javascript:$('#dlg-file').dialog('close')" style="width:90px">Cancel</a>
     </div>
 
     <div id="dlg-hapus-kelas" class="easyui-dialog" title="Confirm" closed="true" button="#buttons-hapus_kelas " style="width:400px;height:200px;" data-options="iconCls:'icon-help',resizable:true,modal:true">
@@ -106,6 +121,13 @@
         $('#dlg-mapel').dialog('open').dialog('setTitle','Tambah Data Mapel');
         $('#form-tambah_mapel').form('clear');
         $('#form-tambah_mapel #tb').textbox({readonly:false})
+        url = 'index.php/Mapel/tambah';
+        initUploadFile()
+    }
+    function newFile(){
+        $('#dlg-file').dialog('open').dialog('setTitle','Tambah File');
+        $('#form-tambah_file').form('clear');
+        $('#form-tambah_file #tb').textbox({readonly:false})
         url = 'index.php/Mapel/tambah';
         initUploadFile()
     }
