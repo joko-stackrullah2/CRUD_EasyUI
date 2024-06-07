@@ -50,7 +50,8 @@
                     <p>
                     <label>File:</label>
                     <p>
-                    <input name="" class="easyui-filebox" width="300" ></p>
+                    <a href="#" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="newFile()" >Tambah File</a>
+</p>
                 </div>
                 
                   
