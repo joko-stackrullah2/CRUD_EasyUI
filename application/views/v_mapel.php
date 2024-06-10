@@ -54,15 +54,39 @@
 </p>
                 </div>
                 <div id="dd" class="easyui-dialog" title="Confirm" closed="true" button="#dd-buttons" style="width:600px;height:400px;" data-options="iconCls:'icon-help',resizable:true,modal:true">
-                <div id="dlg-file" class="easyui-dialog"  style="width:520px;height:400px;padding:10px 20px" closed="true" buttons="#buttons-simpan_file">
+                <div id="dlg-file" class="easyui-dialog"  style="width:520px;height:500px;padding:10px 20px" closed="true" buttons="#buttons-simpan_file">
                  <div class="ftitle">DAFTAR MAPEL</div>
                  <p>
             <form id="form-tambah_file" method="post" novalidate>
-            <div class="fitem">
+                         <div class="fitem">
                             <P>
-                            <label>Kode file:</label>
+                            <label>Dokumen mapel:</label>
+                            <p>
+                            <input id="tb-dokumen" name="dokumen" class="easyui-textbox" width= "300" ></p>
+                        </div>
+                        <div class="fitem">
+                            <P>
+                            <label>Kode mapel:</label>
                             <p>
                             <input id="tb-kode" name="kode" class="easyui-textbox" width= "300" ></p>
+                        </div>
+                        <div class="fitem">
+                            <P>
+                            <label>Path file:</label>
+                            <p>
+                            <input id="tb-kode" name="path" class="easyui-textbox" width= "300" ></p>
+                        </div>
+                        <div class="fitem">
+                            <P>
+                            <label>Nama file:</label>
+                            <p>
+                            <input id="tb-kode" name="nama" class="easyui-textbox" width= "300" ></p>
+                        </div>
+                        <div class="fitem">
+                            <P>
+                            <label>Keterangan file:</label>
+                            <p>
+                            <input id="tb-kode" name="keterangan" class="easyui-textbox" width= "300" ></p>
                         </div>
                 
                   
