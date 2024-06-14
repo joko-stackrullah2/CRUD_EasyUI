@@ -15,7 +15,6 @@
                             <th field="id_mapel" width="80" sortable="true" halign="center">NO</th>
                                 <th field="kode" width="80" sortable="true" halign="center">KODE</th>
                                 <th field="nama_mapel"  width="300" sortable="true" halign="center">NAMA MAPEL</th>
-                                <th field="buku"  width="300" sortable="true" halign="center">BUKU</th>
                             </tr>
                         </thead>
                     </table>
@@ -53,40 +52,35 @@
                     <a href="#" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="newFile()" >Tambah File</a>
 </p>
                 </div>
-                <div id="dd" class="easyui-dialog" title="Confirm" closed="true" button="#dd-buttons" style="width:600px;height:400px;" data-options="iconCls:'icon-help',resizable:true,modal:true">
+                </form>
+            
                 <div id="dlg-file" class="easyui-dialog"  style="width:520px;height:500px;padding:10px 20px" closed="true" buttons="#buttons-simpan_file">
                  <div class="ftitle">DAFTAR MAPEL</div>
                  <p>
             <form id="form-tambah_file" method="post" novalidate>
-                         <div class="fitem">
-                            <P>
-                            <label>Dokumen mapel:</label>
-                            <p>
-                            <input id="tb-dokumen" name="dokumen" class="easyui-textbox" width= "300" ></p>
-                        </div>
                         <div class="fitem">
                             <P>
                             <label>Kode mapel:</label>
                             <p>
-                            <input id="tb-kode" name="kode" class="easyui-textbox" width= "300" ></p>
+                            <input name="kode_mapel_id" class="easyui-textbox" width= "300" ></p>
                         </div>
                         <div class="fitem">
                             <P>
                             <label>Path file:</label>
                             <p>
-                            <input id="tb-kode" name="path" class="easyui-textbox" width= "300" ></p>
+                            <input  name="path_file" class="easyui-textbox" width= "300" ></p>
                         </div>
                         <div class="fitem">
                             <P>
                             <label>Nama file:</label>
                             <p>
-                            <input id="tb-kode" name="nama" class="easyui-textbox" width= "300" ></p>
+                            <input name="nama_file" class="easyui-textbox" width= "300" ></p>
                         </div>
                         <div class="fitem">
                             <P>
                             <label>Keterangan file:</label>
                             <p>
-                            <input id="tb-kode" name="keterangan" class="easyui-textbox" width= "300" ></p>
+                            <input  name="keterangan_file" class="easyui-textbox" width= "300" ></p>
                         </div>
                 
                   
@@ -152,7 +146,7 @@
         $('#dlg-file').dialog('open').dialog('setTitle','Tambah File');
         $('#form-tambah_file').form('clear');
         $('#form-tambah_file #tb').textbox({readonly:false})
-        url = 'index.php/Mapel/tambah';
+        url = 'index.php/File/tambah';
         initUploadFile()
     }
 
@@ -226,6 +220,33 @@
                     $('#dlg-mapel').dialog('close'); 
                 }else{
                     $('#dlg-mapel').dialog('close'); 
+                    $.messager.progress('close');
+                    $.messager.alert('Info',obj.msg,'info');
+                }
+            },
+            error: function(){
+                $.messager.progress('close');
+                $.messager.alert('Info','Terjadi kesalahan','info');
+            },
+        });
+    }
+
+    function simpanF(){
+        $('#form-tambah_file').form('submit',{
+            url: url,
+            onSubmit: function(){
+                return $(this).form('validate');
+            },
+            success: function(response){
+                var obj = jQuery.parseJSON(response);
+                console.log(obj)
+                if(obj.success=="1"){				
+                    $.messager.progress('close');	
+                    $.messager.alert('Info',obj. msg,'info');
+                    $("#dg-mapel").datagrid("reload");
+                    $('#dlg-file').dialog('close'); 
+                }else{
+                    $('#dlg-file').dialog('close'); 
                     $.messager.progress('close');
                     $.messager.alert('Info',obj.msg,'info');
                 }
