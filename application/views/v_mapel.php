@@ -53,7 +53,7 @@
                     <input name="nama_mapel" class="easyui-textbox" width="300" ></p>
                 </div>
                 <div class="fitem">
-                <table id="dg-file" toolbar="#toolbarfile" class="easyui-datagrid" style="width:auto;height:250px;;" singleSelect="true" fitColumns="true" rowNumbers="false" pagination="true" url="<?= site_url('file/getAllDataFile') ?>" pageSize="50" pageList="[25,50,75,100,125,150,200]" nowrap="false" data-options="singleSelect:true" >
+                <table id="dg-file" toolbar="#toolbarfile" class="easyui-datagrid" style="width:auto;height:250px;;" singleSelect="true" fitColumns="true" rowNumbers="false" pagination="true" pageSize="50" pageList="[25,50,75,100,125,150,200]" nowrap="false" data-options="singleSelect:true" >
                         <thead>
                             <tr>
                             <th field="dokumen_mapel_id" width="80" sortable="true" halign="center">NO</th>
@@ -83,7 +83,7 @@
                             <P>
                             <label>Path file:</label>
                             <p>
-                            <input  name="path_file" class="easyui-textbox" width= "300" ></p>
+                            <input name="path_file" class="easyui-filebox" width= "300" ></p>
                         </div>
                         <div class="fitem">
                             <P>
@@ -108,7 +108,7 @@
         <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-cancel" onclick="javascript:$('#dlg-mapel').dialog('close')" style="width:90px">Cancel</a>
     </div>
     <div id="buttons-simpan_file">
-        <a href="javascript:void(0)" class="easyui-linkbutton c6" iconCls="icon-ok" onclick= "simpanF()" style="width:90px">Save</a>
+        <a href="javascript:void(0)" class="easyui-linkbutton c6" iconCls="icon-ok" onclick= "saveUser(1)" style="width:90px">Save</a>
         <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-cancel" onclick="javascript:$('#dlg-file').dialog('close')" style="width:90px">Cancel</a>
     </div>
 
@@ -218,7 +218,7 @@
         };
         pdfMake.createPdf(docDefinition).download('daftar-mapel.pdf');
     }
-
+    
     function simpan(){
         $('#form-tambah_mapel').form('submit',{
             url: url,
@@ -245,6 +245,22 @@
             },
         });
     }
+
+    function saveUser(dg) {
+   let values = $('#form-tambah_file').serializeArray();
+    
+            let kode_mapel_id = values.filter(item => item.name === 'kode_mapel_id')[0].value;
+            let nama_file = values.filter(item => item.name === 'nama_file')[0].value;
+            let keterangan_file =  values.filter(item => item.name === 'keterangan_file')[0].value;
+    
+            $('#dg-file').datagrid('appendRow', {
+                kode_mapel_id: kode_mapel_id,
+                nama_file: nama_file,
+                keterangan_file: keterangan_file
+            });
+            
+            $('#dlg-file').dialog('close');
+        }
 
     function simpanF(){
         $('#form-tambah_file').form('submit',{
