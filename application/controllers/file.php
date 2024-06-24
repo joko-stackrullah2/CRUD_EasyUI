@@ -9,10 +9,10 @@ class File extends CI_Controller {
 	
 	}
 
-	public function getAllDataMapel()
+	public function getAllDataFile()
 	{
 		$this->output->set_content_type('application/json');
-		$employee = $this->M_mapel->getAllDataMapel();
+		$employee = $this->M_file->getAllDataFile();
 		echo json_encode($employee);
 	}
 
@@ -28,13 +28,13 @@ class File extends CI_Controller {
 	 
 	public function edit(){
 		
-		$input = $this->M_mapel->UpdateMapel();
+		$input = $this->M_file->UpdateFile();
 		echo json_encode($input);
 }
 
 public function hapus(){
 		
-	$input = $this->M_mapel->DeleteMapel();
+	$input = $this->M_file->DeleteFile();
 	if ($input) {
 		echo json_encode(['success' => true]);
 	}else {

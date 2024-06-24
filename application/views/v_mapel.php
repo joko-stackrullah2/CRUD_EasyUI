@@ -28,8 +28,15 @@
                 <a href = "#" class = "easyui-linkbutton" iconCls = "icon-print"  onclick="cetakpdf()">Cetak PDF </a>
                 <a href = "#" class = "easyui-linkbutton" iconCls = "icon-print"  onclick="cetakexcel()">Cetak Excel </a>   
             </div>
+            <div id="toolbarfile">
+            <a href="#" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="newFile()" >Tambah File</a>
+                <a href="#" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onclick="editFile()" >Edit File</a>
+                <a href="#" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="hapusFile()" >Hapus File</a>
+                <a href = "#" class = "easyui-linkbutton" iconCls = "icon-print"  onclick="cetakpdf()">Cetak PDF </a>
+                <a href = "#" class = "easyui-linkbutton" iconCls = "icon-print"  onclick="cetakexcel()">Cetak Excel </a>   
+            </div>
                 <div id="dd" class="easyui-dialog" title="Confirm" closed="true" button="#dd-buttons" style="width:600px;height:400px;" data-options="iconCls:'icon-help',resizable:true,modal:true">
-                <div id="dlg-mapel" class="easyui-dialog"  style="width:520px;height:400px;padding:10px 20px" closed="true" buttons="#buttons-simpan_kelas">
+                <div id="dlg-mapel" class="easyui-dialog"  style="width:600px;height:550px;padding:10px 20px" closed="true" buttons="#buttons-simpan_kelas">
                  <div class="ftitle">DAFTAR MAPEL</div>
                  <p>
             <form id="form-tambah_mapel" method="post" novalidate>
@@ -46,11 +53,19 @@
                     <input name="nama_mapel" class="easyui-textbox" width="300" ></p>
                 </div>
                 <div class="fitem">
-                    <p>
-                    <label>File:</label>
-                    <p>
-                    <a href="#" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="newFile()" >Tambah File</a>
-</p>
+                <table id="dg-file" toolbar="#toolbarfile" class="easyui-datagrid" style="width:auto;height:250px;;" singleSelect="true" fitColumns="true" rowNumbers="false" pagination="true" url="<?= site_url('file/getAllDataFile') ?>" pageSize="50" pageList="[25,50,75,100,125,150,200]" nowrap="false" data-options="singleSelect:true" >
+                        <thead>
+                            <tr>
+                            <th field="dokumen_mapel_id" width="80" sortable="true" halign="center">NO</th>
+                                <th field="kode_mapel_id" width="200" sortable="true" halign="center">KODE</th>
+                                <th field="path_file"  width="300" sortable="true" halign="center">PATH FILE</th>
+                                <th field="nama_file"  width="300" sortable="true" halign="center">NAMA FILE</th>
+                                <th field="keterangan_file"  width="300" sortable="true" halign="center">KETERANGAN FILE</th>
+
+
+                            </tr>
+                        </thead>
+                    </table>
                 </div>
                 </form>
             

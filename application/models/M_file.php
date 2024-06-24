@@ -13,7 +13,7 @@ class M_file extends CI_Model
         
         $page = isset($_POST['page']) ? intval($_POST['page']) : 1;
         $rows = isset($_POST['rows']) ? intval($_POST['rows']) : 50;
-        $sort = isset($_POST['sort']) ? strval($_POST['sort']) : 'mapel.kode';
+        $sort = isset($_POST['sort']) ? strval($_POST['sort']) : 'file.kode';
         $order = isset($_POST['order']) ? strval($_POST['order']) : 'asc';
         $search = isset($_POST['search_mapel']) ? strval($_POST['search_mapel']) : '';
         $offset = ($page-1)*$rows;
@@ -60,14 +60,14 @@ class M_file extends CI_Model
         return $response;
     }
 
-    function UpdateMapel(){
+    function UpdateFile(){
         $data = [
             'kode' => $this->input->post('kode'),
-            'nama_mapel' => $this->input->post('nama_mapel'),
+            'nama_mapel' => $this->input->post('nama_file'),
 
             
         ];
-        $data=$this->cekMapel($data['kode'],$data['nama_mapel']);
+        $data=$this->cekFile($data['kode'],$data['nama_file']);
         $this->db->where('kode',$data['kode']);
         if($data == 0){
             $response["success"] = "0";
