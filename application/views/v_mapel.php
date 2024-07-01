@@ -36,7 +36,7 @@
                 <a href = "#" class = "easyui-linkbutton" iconCls = "icon-print"  onclick="cetakexcel()">Cetak Excel </a>   
             </div>
                 <div id="dd" class="easyui-dialog" title="Confirm" closed="true" button="#dd-buttons" style="width:600px;height:400px;" data-options="iconCls:'icon-help',resizable:true,modal:true">
-                <div id="dlg-mapel" class="easyui-dialog"  style="width:600px;height:550px;padding:10px 20px" closed="true" buttons="#buttons-simpan_kelas">
+                <div id="dlg-mapel" class="easyui-dialog" datagrid="dg-file" style="width:600px;height:550px;padding:10px 20px" closed="true" buttons="#buttons-simpan_kelas">
                  <div class="ftitle">DAFTAR MAPEL</div>
                  <p>
             <form id="form-tambah_mapel" method="post" novalidate>
@@ -44,13 +44,13 @@
                             <P>
                             <label>Kode mapel:</label>
                             <p>
-                            <input id="tb-kode" name="kode" class="easyui-textbox" width= "300" ></p>
+                            <input id="tb-kode" name="kode" value="kode" class="easyui-textbox" width= "300" ></p>
                         </div>
                 <div class="fitem">
                     <p>
                     <label>Nama Mapel:</label>
                     <p>
-                    <input name="nama_mapel" class="easyui-textbox" width="300" ></p>
+                    <input name="nama_mapel" value="nama_mapel" class="easyui-textbox" width="300" ></p>
                 </div>
                 <div class="fitem">
                 <table id="dg-file" toolbar="#toolbarfile" class="easyui-datagrid" style="width:auto;height:250px;;" singleSelect="true" fitColumns="true" rowNumbers="false" pagination="true" pageSize="50" pageList="[25,50,75,100,125,150,200]" nowrap="false" data-options="singleSelect:true" >
@@ -77,25 +77,25 @@
                             <P>
                             <label>Kode mapel:</label>
                             <p>
-                            <input name="kode_mapel_id" class="easyui-textbox" width= "300" ></p>
+                            <input name="kode_mapel_id" value="kode_mapel_id" class="easyui-textbox" width= "300" ></p>
                         </div>
                         <div class="fitem">
                             <P>
                             <label>Path file:</label>
                             <p>
-                            <input name="path_file" class="easyui-filebox" width= "300" ></p>
+                            <input name="path_file" value="path_file" class="easyui-filebox" width= "300" ></p>
                         </div>
                         <div class="fitem">
                             <P>
                             <label>Nama file:</label>
                             <p>
-                            <input name="nama_file" class="easyui-textbox" width= "300" ></p>
+                            <input name="nama_file" value="nama_file" class="easyui-textbox" width= "300" ></p>
                         </div>
                         <div class="fitem">
                             <P>
                             <label>Keterangan file:</label>
                             <p>
-                            <input  name="keterangan_file" class="easyui-textbox" width= "300" ></p>
+                            <input  name="keterangan_file" value="keterangan_file" class="easyui-textbox" width= "300" ></p>
                         </div>
                 
                   
@@ -220,7 +220,7 @@
     }
     
     function simpan(){
-        $('#form-tambah_mapel').form('submit',{
+        $('#form-tambah_file').form('submit',{
             url: url,
             onSubmit: function(){
                 return $(this).form('validate');
@@ -260,6 +260,7 @@
             });
             
             $('#dlg-file').dialog('close');
+            
         }
 
     function simpanF(){

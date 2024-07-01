@@ -39,25 +39,45 @@ class M_file extends CI_Model
     }
 
     function InsertFile(){
-        $data = [
-            'kode_mapel_id' => $this->input->post('kode_mapel_id'),
-            'path_file' => $this->input->post('path_file'),
-            'nama_file' => $this->input->post('nama_file'),
-            'keterangan_file' => $this->input->post('keterangan_file'),
-
-
-        ];
-
-        $cekidfile=$this->cekFile($data['kode_mapel_id'],$data['kode_mapel_id']);
-        if($cekidfile > 0){
-            $response["success"] = "0";
-			$response["msg"] = "Data file dengan NAMA FILE ".$data['nama_file']." sudah ada !";
-        }else{
-            $this->db->insert('dokumen_mapel',$data);
-            $response["success"] = "1";
-			$response["msg"] = "Data file berhasil ditambahkan";
+        // Memeriksa data POST
+        $kode_mapel_id = $this->input->post('kode_mapel_id');
+        $path_file = $this->input->post('path_file');
+        $nama_file = $this->input->post('nama_file');
+        $keterangan_file = $this->input->post('keterangan_file');
+    
+        // Debugging: Memastikan data POST tidak kosong
+        var_dump($_POST);
+    
+        // Validasi data tidak boleh kosong
+        if(empty($kode_mapel_id) || empty($path_file) || empty($nama_file) || empty($keterangan_file)) {
+            echo "Semua kolom harus diisi.";
+            return;
         }
-        return $response;
+    
+        // Memasukkan data ke array
+        $data = array(
+            array(
+                'kode_mapel_id' => $kode_mapel_id,
+                'path_file' => $path_file,
+                'nama_file' => $nama_file,
+                'keterangan_file' => $keterangan_file
+            ),
+           array(
+                'kode_mapel_id' => $kode_mapel_id,
+                'path_file' => $path_file,
+                'nama_file' => $nama_file,
+                'keterangan_file' => $keterangan_file
+            )
+        );
+    
+        // Memasukkan data ke database
+        if ($this->db->insert_batch('dokumen_mapel', $data)) {
+            echo "Data berhasil ditambahkan.";
+        } else {
+            // Menampilkan pesan kesalahan
+            $error = $this->db->error();
+            echo "Terjadi kesalahan: " . $error['message'];
+        }
     }
 
     function UpdateFile(){
