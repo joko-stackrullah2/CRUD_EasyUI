@@ -1,114 +1,96 @@
 
 <div class="easyui-layout" data-options="fit:true" style="width:1340px;height:600px;">
-            <div data-options="region:'east',split:true" title="PENCARIAN" style="width:350px;padding:7px">
-                <!-- <div>Pencarian</div> -->
-                <input  id="searchMapel" class="easyui-searchbox" data-options="prompt:'Ketikkan nama mapel',searcher:doMapel" style="width:100%">
-
-                        
-            </div>
-            <div data-options="region:'center',title:'DAFTAR MATA PELAJARAN',iconCls:'icon-ok'">
-                <div id="container">
-                    <div id="body">
-                    <table id="dg-mapel" toolbar="#toolbar" class="easyui-datagrid" style="width:auto;height:567px;;" singleSelect="true" fitColumns="true" rowNumbers="false" pagination="true" url="<?= site_url('mapel/getAllDataMapel') ?>" pageSize="50" pageList="[25,50,75,100,125,150,200]" nowrap="false" data-options="singleSelect:true" >
-                        <thead>
-                            <tr>
-                            <th field="id_mapel" width="80" sortable="true" halign="center">NO</th>
-                                <th field="kode" width="80" sortable="true" halign="center">KODE</th>
-                                <th field="nama_mapel"  width="300" sortable="true" halign="center">NAMA MAPEL</th>
-                            </tr>
-                        </thead>
-                    </table>
-                </div>
-            </div>
-
-            <div id="toolbar">
-            <a href="#" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="newMapel()" >Tambah Mapel</a>
-                <a href="#" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onclick="editMapel()" >Edit Mapel</a>
-                <a href="#" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="hapusMapel()" >Hapus Mapel</a>
-                <a href = "#" class = "easyui-linkbutton" iconCls = "icon-print"  onclick="cetakpdf()">Cetak PDF </a>
-                <a href = "#" class = "easyui-linkbutton" iconCls = "icon-print"  onclick="cetakexcel()">Cetak Excel </a>   
-            </div>
-            <div id="toolbarfile">
-            <a href="#" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="newFile()" >Tambah File</a>
-                <a href="#" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onclick="editFile()" >Edit File</a>
-                <a href="#" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="hapusFile()" >Hapus File</a>
-                <a href = "#" class = "easyui-linkbutton" iconCls = "icon-print"  onclick="cetakpdf()">Cetak PDF </a>
-                <a href = "#" class = "easyui-linkbutton" iconCls = "icon-print"  onclick="cetakexcel()">Cetak Excel </a>   
-            </div>
-                <div id="dd" class="easyui-dialog" title="Confirm" closed="true" button="#dd-buttons" style="width:600px;height:400px;" data-options="iconCls:'icon-help',resizable:true,modal:true">
-                <div id="dlg-mapel" class="easyui-dialog" datagrid="dg-file" style="width:600px;height:550px;padding:10px 20px" closed="true" buttons="#buttons-simpan_kelas">
-                 <div class="ftitle">DAFTAR MAPEL</div>
-                 <p>
-            <form id="form-tambah_mapel" method="post" novalidate>
-            <div class="fitem">
-                            <P>
-                            <label>Kode mapel:</label>
-                            <p>
-                            <input id="tb-kode" name="kode" value="kode" class="easyui-textbox" width= "300" ></p>
-                        </div>
-                <div class="fitem">
-                    <p>
-                    <label>Nama Mapel:</label>
-                    <p>
-                    <input name="nama_mapel" value="nama_mapel" class="easyui-textbox" width="300" ></p>
-                </div>
-                <div class="fitem">
-                <table id="dg-file" toolbar="#toolbarfile" class="easyui-datagrid" style="width:auto;height:250px;;" singleSelect="true" fitColumns="true" rowNumbers="false" pagination="true" pageSize="50" pageList="[25,50,75,100,125,150,200]" nowrap="false" data-options="singleSelect:true" >
-                        <thead>
-                            <tr>
-                            <th field="dokumen_mapel_id" width="80" sortable="true" halign="center">NO</th>
-                                <th field="kode_mapel_id" width="200" sortable="true" halign="center">KODE</th>
-                                <th field="path_file"  width="300" sortable="true" halign="center">PATH FILE</th>
-                                <th field="nama_file"  width="300" sortable="true" halign="center">NAMA FILE</th>
-                                <th field="keterangan_file"  width="300" sortable="true" halign="center">KETERANGAN FILE</th>
-
-
-                            </tr>
-                        </thead>
-                    </table>
-                </div>
-                </form>
-            
-                <div id="dlg-file" class="easyui-dialog"  style="width:520px;height:500px;padding:10px 20px" closed="true" buttons="#buttons-simpan_file">
-                 <div class="ftitle">DAFTAR MAPEL</div>
-                 <p>
-            <form id="form-tambah_file" method="post" novalidate>
-                        <div class="fitem">
-                            <P>
-                            <label>Kode mapel:</label>
-                            <p>
-                            <input name="kode_mapel_id" value="kode_mapel_id" class="easyui-textbox" width= "300" ></p>
-                        </div>
-                        <div class="fitem">
-                            <P>
-                            <label>Path file:</label>
-                            <p>
-                            <input name="path_file" value="path_file" class="easyui-filebox" width= "300" ></p>
-                        </div>
-                        <div class="fitem">
-                            <P>
-                            <label>Nama file:</label>
-                            <p>
-                            <input name="nama_file" value="nama_file" class="easyui-textbox" width= "300" ></p>
-                        </div>
-                        <div class="fitem">
-                            <P>
-                            <label>Keterangan file:</label>
-                            <p>
-                            <input  name="keterangan_file" value="keterangan_file" class="easyui-textbox" width= "300" ></p>
-                        </div>
-                
-                  
-                </div>
-            </form>
+    <div data-options="region:'east',split:true" title="PENCARIAN" style="width:350px;padding:7px">
+        <input  id="searchMapel" class="easyui-searchbox" data-options="prompt:'Ketikkan nama mapel',searcher:doMapel" style="width:100%">                        
+    </div>
+    <div data-options="region:'center',title:'DAFTAR MATA PELAJARAN',iconCls:'icon-ok'">
+        <div id="container">
+            <div id="body">
+            <table id="dg-mapel" toolbar="#toolbar" class="easyui-datagrid" style="width:auto;height:567px;;" singleSelect="true" fitColumns="true" rowNumbers="false" pagination="true" url="<?= site_url('mapel/getAllDataMapel') ?>" pageSize="50" pageList="[25,50,75,100,125,150,200]" nowrap="false" data-options="singleSelect:true" >
+                <thead>
+                    <tr>
+                    <th field="id_mapel" width="80" sortable="true" halign="center">NO</th>
+                        <th field="kode" width="80" sortable="true" halign="center">KODE</th>
+                        <th field="nama_mapel"  width="300" sortable="true" halign="center">NAMA MAPEL</th>
+                    </tr>
+                </thead>
+            </table>
         </div>
     </div>
+
+    <div id="toolbar">
+        <a href="#" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="newMapel()" >Tambah Mapel</a>
+        <a href="#" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onclick="editMapel()" >Edit Mapel</a>
+        <a href="#" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="hapusMapel()" >Hapus Mapel</a>
+        <a href = "#" class = "easyui-linkbutton" iconCls = "icon-print"  onclick="cetakpdf()">Cetak PDF </a>
+        <a href = "#" class = "easyui-linkbutton" iconCls = "icon-print"  onclick="cetakexcel()">Cetak Excel </a>   
+    </div>
+    <div id="toolbarfile">
+        <a href="#" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="newFile()" >Tambah File</a>
+        <a href="#" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onclick="editFile()" >Edit File</a>
+        <a href="#" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="hapusFile()" >Hapus File</a>
+        <a href = "#" class = "easyui-linkbutton" iconCls = "icon-print"  onclick="cetakpdf()">Cetak PDF </a>
+        <a href = "#" class = "easyui-linkbutton" iconCls = "icon-print"  onclick="cetakexcel()">Cetak Excel </a>   
+    </div>
+
+    <div id="dlg-hapus_mapel" class="easyui-dialog" title="Confirm" closed="true" button="#dlg-hapus_mapel-buttons" style="width:600px;height:400px;" data-options="iconCls:'icon-help',resizable:true,modal:true">
+    </div>
+    <div id="dlg-mapel" class="easyui-dialog" datagrid="dg-file" style="width:600px;height:550px;padding:10px 20px" closed="true" buttons="#buttons-simpan_kelas">
+        <input type="hidden" name="key_file" id="key_file" value="">
+        <div class="ftitle">DAFTAR MAPEL</div>
+        <form id="form-tambah_mapel" method="post" novalidate>
+            <div class="fitem">
+                <P>
+                <label>Kode mapel:</label>
+                <p>
+                <input id="tb-kode" name="kode" value="kode" class="easyui-textbox" width= "300" ></p>
+            </div>
+            <div class="fitem">
+                <p>
+                <label>Nama Mapel:</label>
+                <p>
+                <input name="nama_mapel" value="nama_mapel" class="easyui-textbox" width="300" ></p>
+            </div>
+            <div class="fitem">
+                <table id="dg-file" toolbar="#toolbarfile" class="easyui-datagrid" style="width:auto;height:250px;;" singleSelect="true" fitColumns="true" rowNumbers="false" pagination="true" pageSize="50" pageList="[25,50,75,100,125,150,200]" nowrap="false" data-options="singleSelect:true" >
+                    <thead>
+                        <tr>
+                            <th field="upload_file_id"  width="300" sortable="true" halign="center">UPLOAD FILE ID</th>
+                            <th field="nama_file"  width="300" sortable="true" halign="center">NAMA FILE</th>
+                            <th field="path_file"  width="300" sortable="true" halign="center">FILE PATH</th>
+                            <th field="tipe_file"  width="300" sortable="true" halign="center">FILE TYPE</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </form>
+    </div>
+
+    <div id="dlg-file" class="easyui-dialog"  style="width:520px;height:500px;padding:10px 20px" closed="true" buttons="#buttons-simpan_file">
+        <div class="ftitle">DAFTAR MAPEL</div>
+        <form id="form-tambah_file" method="post" novalidate>
+            <input type="hidden" name='key_file' id='key_file_dokumen'/>
+            <div class="fitem">
+                <P>
+                <label>Path file:</label>
+                <p>
+                <input name="path_file" id="path_file" class="easyui-filebox" width= "300" ></p>
+            </div>
+            <div class="fitem">
+                <P>
+                <label>Keterangan file:</label>
+                <p>
+                <input name="keterangan_file" id="keterangan_file" class="easyui-textbox" width= "300" ></p>
+            </div>
+        </form>
+    </div>
+
     <div id="buttons-simpan_kelas">
         <a href="javascript:void(0)" class="easyui-linkbutton c6" iconCls="icon-ok" onclick= "simpan()" style="width:90px">Save</a>
         <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-cancel" onclick="javascript:$('#dlg-mapel').dialog('close')" style="width:90px">Cancel</a>
     </div>
     <div id="buttons-simpan_file">
-        <a href="javascript:void(0)" class="easyui-linkbutton c6" iconCls="icon-ok" onclick= "saveUser(1)" style="width:90px">Save</a>
+        <a href="javascript:void(0)" class="easyui-linkbutton c6" iconCls="icon-ok" onclick= "uploadDokumenMapel()" style="width:90px">Save</a>
         <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-cancel" onclick="javascript:$('#dlg-file').dialog('close')" style="width:90px">Cancel</a>
     </div>
 
@@ -120,8 +102,7 @@
             <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-cancel" onclick="javascript:$('#dlg-hapus-kelas').dialog('close')" style="width:90px">Cancel</a>
         </div>
     </div>
-    </body>
-</html>
+</div>
 <script>
     var url =''
     $("#cb-filter_kelas").combobox({
@@ -179,7 +160,7 @@
     function hapusMapel(){
         let row = $('#dg-mapel').datagrid('getSelected');
         if (row){
-        $('#dd').dialog('open').dialog('setTitle','Hapus Data Mapel');
+        $('#dlg-hapus_mapel').dialog('open').dialog('setTitle','Hapus Data Mapel');
         $('#fm').form('load',row);
         url = 'index.php/Mapel/hapus';
     }
@@ -246,18 +227,21 @@
         });
     }
 
-    function saveUser(dg) {
+    function tambahFileMapel(dg) {
    let values = $('#form-tambah_file').serializeArray();
     
             let kode_mapel_id = values.filter(item => item.name === 'kode_mapel_id')[0].value;
+            let path_file = document.getElementById("path_file").value;
             let nama_file = values.filter(item => item.name === 'nama_file')[0].value;
             let keterangan_file =  values.filter(item => item.name === 'keterangan_file')[0].value;
-    
-            $('#dg-file').datagrid('appendRow', {
+            let tambahFile = {
                 kode_mapel_id: kode_mapel_id,
                 nama_file: nama_file,
+                path_file:path_file,
                 keterangan_file: keterangan_file
-            });
+            }
+            console.log(tambahFile)
+            $('#dg-file').datagrid('appendRow',tambahFile);
             
             $('#dlg-file').dialog('close');
             
@@ -330,7 +314,7 @@
             success: function(result){
                 var result = eval('('+result+')');
                 if (result.success){
-                    $('#dd').dialog('close');        
+                    $('#dlg-hapus_mapel').dialog('close');        
                     $('#dg-mapel').datagrid('reload');
                 } else {
                     $.messager.show({
@@ -343,94 +327,55 @@
         });
     }
 
-    let uploaderBerkasAset = null;
+    function uploadDokumenMapel(){
+    var form = $('#form-tambah_file')[0];
+    if ($(form).form('enableValidation').form('validate')){
+        var data = new FormData(form);
 
-    function initUploadFile(){
-        console.log("asyu");
-        function initg(){
-            return new plupload.Uploader({
-                browse_button : 'pickFile', // you can pass an id...
-                container: document.getElementById('container2'), // ... or DOM Element itself
-                url : '<?php echo base_url();?>upload/go',
-                max_files: 200,
-                multi_selection:false,
-                multipart_params : {
-                    lokasi  : "aset",
-                    jenis   : "berkas_aset" 
-                },
-                flash_swf_url : '<?php echo base_url();?>static/plupload/js/Moxie.swf',
-                silverlight_xap_url : '<?php echo base_url();?>static/plupload/js/Moxie.xap',
-                            
-                filters : {
-                    max_file_size : '10mb',
-                    mime_types: [
-                        {title : "Image files", extensions : "jpg,pdf,xls,xlsx,png,,jpeg,doc,docx"}
-                    ]
-                },
-                        
-                init: {
-                    PostInit: function() {
-                        document.getElementById('uploadfiles').onclick = function() {
-                            uploaderBerkasAset.start();
-                            return false;
-                        };
-                    },
-                                
-                    FilesAdded: function(up, files) {
-                        plupload.each(files, function(file) {
-                            if(up.files.length == up.settings.max_files){
-                            } 
-                            if (up.files.length > up.settings.max_files) {
-                                alert('Cannot send more than ' + up.settings.max_files + ' file(s).');
-                                return false;
-                            }	
-                            if(file.origSize == file.size){
-                                $('#uploadfiles').click();
-                                $('#uploadfiles').hide();
-                            }
+        $.ajax({
+            url:'<?php echo site_url('mapel/saveDokumenMapel'); ?>',
+            type:"post",
+            enctype: 'multipart/form-data',
+            data: data,
+            dataType:'json',
+            processData:false,
+            contentType:false,
+            cache:false,
+            async:false,
+            beforeSend	: function(){
+                $.messager.progress({
+                    title:'Mohon tunggu',
+                    msg:'Menyimpan Dokumen'
+                });
+            },
+            success: function(data){
+                $.messager.progress('close');
+                if(data.success){
+                    key_file = $("#key_file").val();
+                    dokumen_id_array = $("#dokume_id_array").val();
+                    if (key_file == '') {
+                        $("#dokume_id_array").val(dokumen_id_array+","+data.id);
+                        $("#dg-file").datagrid("appendRow",{
+                            upload_file_id: data.upload_file_id,
+                            key_file: null,
+                            nama_file: data.nama_file,
+                            tipe_file: data.tipe_file,
+                            path_file: data.path_file
                         });
-                    },
-                    UploadProgress: function(up, file) {
-                        $.messager.progress({
-                            title: 'Please waiting',
-                            msg: 'Uploading...',
-                            interval: 0
-                        });
-                        var bar = $.messager.progress('bar');
-                        bar.progressbar('setValue', file.percent);
-                        if (file.percent == 100) {
-                            $.messager.progress('close');
-                        }
-                    },
-                    Error: function(up, err) {
-                        window.alert("Maaf, terdapat kesalahan sistem");
-                    },
-                    FileUploaded: function(up, file, jsonresp){
-                        let jsonObj = JSON.parse(jsonresp.response);
-                        console.log(jsonObj);
-                        var listBerkasAset = $("#grid-berkas_mapel").datagrid('getRows');
-                        $('#grid-berkas_mapel').datagrid('insertRow', {index: listBerkasAset.length + 1, row: {
-                            tgl_upload: jsonObj.tgl_upload,
-                            file_path: jsonObj.relativePath + jsonObj.fileName,
-                            file_name: jsonObj.fileName
-                        }});
-                        $("#grid-berkas_mapel").datagrid("reload");
-                    },
-                    UploadComplete : function(up, files) {
-                        plupload.each(files, function(file) {
-                            //-- 
-                        });			
+                    }else{
+                        $('#dg-file').datagrid('reload');
                     }
+                    $('#dlg-file').dialog('close');
+                }else{
+                    $.messager.alert('INFO',data.msg,'info');
+
                 }
-            });
+                
         }
-    
-        uploaderBerkasAset = initg();
-        uploaderBerkasAset.init();
-        uploaderBerkasAset.splice();
-        uploaderBerkasAset.refresh();
+        });
     }
-    
+    }
+
     function customLink(val,row){
 		var ext=row.file_name.slice((row.file_name.lastIndexOf(".") - 1 >>> 0) + 2);
 		ext = ext.toLowerCase();
