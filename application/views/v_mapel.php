@@ -94,12 +94,12 @@
         <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-cancel" onclick="javascript:$('#dlg-file').dialog('close')" style="width:90px">Cancel</a>
     </div>
 
-    <div id="dlg-hapus-kelas" class="easyui-dialog" title="Confirm" closed="true" button="#buttons-hapus_kelas " style="width:400px;height:200px;" data-options="iconCls:'icon-help',resizable:true,modal:true">
+    <div id="dlg-hapus-mapel" class="easyui-dialog" title="Confirm" closed="true" button="#buttons-hapus_mapel " style="width:400px;height:200px;" data-options="iconCls:'icon-help',resizable:true,modal:true">
         <center>
         <h1> Hapus data ini? </h1>
         <div id="buttons-hapus_kelas" >
             <a href="javascript:void(0)" class="easyui-linkbutton c6" iconCls="icon-ok" onclick= "hapus()" style="width:90px" >Hapus</a>
-            <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-cancel" onclick="javascript:$('#dlg-hapus-kelas').dialog('close')" style="width:90px">Cancel</a>
+            <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-cancel" onclick="javascript:$('#dlg-hapus-mapel').dialog('close')" style="width:90px">Cancel</a>
         </div>
     </div>
 </div>
@@ -160,7 +160,7 @@
     function hapusMapel(){
         let row = $('#dg-mapel').datagrid('getSelected');
         if (row){
-        $('#dlg-hapus_mapel').dialog('open').dialog('setTitle','Hapus Data Mapel');
+        $('#dlg-hapus-mapel').dialog('open').dialog('setTitle','Hapus Data Mapel');
         $('#fm').form('load',row);
         url = 'index.php/Mapel/hapus';
     }
@@ -314,7 +314,7 @@
             success: function(result){
                 var result = eval('('+result+')');
                 if (result.success){
-                    $('#dlg-hapus_mapel').dialog('close');        
+                    $('#dlg-hapus-mapel').dialog('close');        
                     $('#dg-mapel').datagrid('reload');
                 } else {
                     $.messager.show({
