@@ -44,12 +44,14 @@ class M_file extends CI_Model
         $path_file = $this->input->post('path_file');
         $nama_file = $this->input->post('nama_file');
         $keterangan_file = $this->input->post('keterangan_file');
+        $key_file = $this->input->post('key_file');
+
     
         // Debugging: Memastikan data POST tidak kosong
         var_dump($_POST);
     
         // Validasi data tidak boleh kosong
-        if(empty($kode_mapel_id) || empty($path_file) || empty($nama_file) || empty($keterangan_file)) {
+        if(empty($kode_mapel_id) || empty($path_file) || empty($nama_file) || empty($keterangan_file) || empty($key_file)) {
             echo "Semua kolom harus diisi.";
             return;
         }
@@ -60,13 +62,17 @@ class M_file extends CI_Model
                 'kode_mapel_id' => $kode_mapel_id,
                 'path_file' => $path_file,
                 'nama_file' => $nama_file,
-                'keterangan_file' => $keterangan_file
+                'keterangan_file' => $keterangan_file,
+                'key_file' => $key_file
+
+
             ),
            array(
                 'kode_mapel_id' => $kode_mapel_id,
                 'path_file' => $path_file,
                 'nama_file' => $nama_file,
-                'keterangan_file' => $keterangan_file
+                'keterangan_file' => $keterangan_file,
+                'key_file' => $key_file
             )
         );
     

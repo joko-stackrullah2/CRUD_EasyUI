@@ -72,6 +72,13 @@
             <input type="hidden" name='key_file' id='key_file_dokumen'/>
             <div class="fitem">
                 <P>
+                <label>Kode mapel:</label>
+                <p>
+                <input name="kode_mapel_id" id="kode_mapel_id" class="easyui-textbox" width= "300" ></p>
+            </div>
+            <div class="fitem">
+            <div class="fitem">
+                <P>
                 <label>Path file:</label>
                 <p>
                 <input name="path_file" id="path_file" class="easyui-filebox" width= "300" ></p>
@@ -82,11 +89,17 @@
                 <p>
                 <input name="keterangan_file" id="keterangan_file" class="easyui-textbox" width= "300" ></p>
             </div>
+            <div class="fitem">
+                <P>
+                <label>Key file:</label>
+                <p>
+                <input name="key_file" id="key_file" class="easyui-textbox" width= "300" ></p>
+            </div>
         </form>
     </div>
 
     <div id="buttons-simpan_kelas">
-        <a href="javascript:void(0)" class="easyui-linkbutton c6" iconCls="icon-ok" onclick= "simpan()" style="width:90px">Save</a>
+        <a href="javascript:void(0)" class="easyui-linkbutton c6" iconCls="icon-ok" onclick= "simpanF(); simpan();" style="width:90px">Save</a>
         <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-cancel" onclick="javascript:$('#dlg-mapel').dialog('close')" style="width:90px">Cancel</a>
     </div>
     <div id="buttons-simpan_file">
@@ -201,6 +214,11 @@
     }
     
     function simpan(){
+        let dataForm = $('#form-tambah_mapel').serializeArray();
+        let dokumen = $("#dg-file").datagrid('getRows');
+        dataForm.push({name:'dokumen', value:dokumen});
+        let data = Object.fromEntries(dataForm.map(obj => [obj.name, obj.value]));
+        console.log(data);
         $('#form-tambah_file').form('submit',{
             url: url,
             onSubmit: function(){
@@ -248,7 +266,7 @@
         }
 
     function simpanF(){
-        $('#form-tambah_file').form('submit',{
+        $('#form-tambah_mapel').form('submit',{
             url: url,
             onSubmit: function(){
                 return $(this).form('validate');
@@ -260,7 +278,7 @@
                     $.messager.progress('close');	
                     $.messager.alert('Info',obj. msg,'info');
                     $("#dg-mapel").datagrid("reload");
-                    $('#dlg-file').dialog('close'); 
+                    $('#dlg-mapel').dialog('close'); 
                 }else{
                     $('#dlg-file').dialog('close'); 
                     $.messager.progress('close');
