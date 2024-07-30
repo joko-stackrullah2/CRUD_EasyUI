@@ -98,7 +98,7 @@
         </form>
     </div>
 
-    <div id="buttons-simpan_kelas">
+    <div id="buttons-simpan_mapel">
         <a href="javascript:void(0)" class="easyui-linkbutton c6" iconCls="icon-ok" onclick= "simpanF(); simpan();" style="width:90px">Save</a>
         <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-cancel" onclick="javascript:$('#dlg-mapel').dialog('close')" style="width:90px">Cancel</a>
     </div>
