@@ -35,7 +35,7 @@
 
     <div id="dlg-hapus_mapel" class="easyui-dialog" title="Confirm" closed="true" button="#dlg-hapus_mapel-buttons" style="width:600px;height:400px;" data-options="iconCls:'icon-help',resizable:true,modal:true">
     </div>
-    <div id="dlg-mapel" class="easyui-dialog" datagrid="dg-file" style="width:600px;height:550px;padding:10px 20px" closed="true" buttons="#buttons-simpan_kelas">
+    <div id="dlg-mapel" class="easyui-dialog" datagrid="dg-file" style="width:600px;height:550px;padding:10px 20px" closed="true" buttons="#buttons-simpan_mapel">
         <input type="hidden" name="key_file" id="key_file" value="">
         <div class="ftitle">DAFTAR MAPEL</div>
         <form id="form-tambah_mapel" method="post" novalidate>
@@ -108,8 +108,9 @@
     </div>
 
     <div id="dlg-hapus-mapel" class="easyui-dialog" title="Confirm" closed="true" button="#buttons-hapus_mapel " style="width:400px;height:200px;" data-options="iconCls:'icon-help',resizable:true,modal:true">
-        <center>
-        <h1> Hapus data ini? </h1>
+    <center>
+    <h1 id="hapus-pesan">Hapus data ini?</h1>
+    <center>
         <div id="buttons-hapus_kelas" >
             <a href="javascript:void(0)" class="easyui-linkbutton c6" iconCls="icon-ok" onclick= "hapus()" style="width:90px" >Hapus</a>
             <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-cancel" onclick="javascript:$('#dlg-hapus-mapel').dialog('close')" style="width:90px">Cancel</a>
@@ -147,7 +148,7 @@
     function newMapel(){
         $('#dlg-mapel').dialog('open').dialog('setTitle','Tambah Data Mapel');
         $('#form-tambah_mapel').form('clear');
-        $('#form-tambah_mapel #tb').textbox({readonly:false})
+        $('#form-tambah_mapel #tb-kode').textbox({readonly:false})
         url = 'index.php/Mapel/tambah';
         initUploadFile()
     }
@@ -321,6 +322,28 @@
         });
     }
 
+    $(function() {
+        
+            // Event ketika baris data grid diklik
+            var row = $('#dg-mapel').datagrid('getSelected');
+        var row = $('#dg-mapel').datagrid({
+                
+                onClickRow: function(index, row) {
+                    tampilkanDialogKonfirmasi(row);
+                }
+            });
+        });
+    function tampilkanDialogKonfirmasi(row) {
+            // Mengatur pesan konfirmasi dengan nama mapel dari baris yang dipilih
+            
+            var pesan = `Hapus mapel ${row.nama_mapel}?`;
+            document.getElementById('hapus-pesan').innerText = pesan;
+            
+            // Menyimpan nama mapel yang akan dihapus
+            window.namaMapelYangAkanDihapus = row.nama_mapel;
+            
+            // Membuka dialog konfirmasi $('#dlg-hapus-mapel').dialog('open');
+        }
     function hapus(){
         var row = $('#dg-mapel').datagrid('getSelected');
         $('#form-tambah_mapel').form('load',row);
