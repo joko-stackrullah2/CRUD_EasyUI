@@ -111,7 +111,7 @@
     <center>
     <h1 id="hapus-pesan">Hapus data ini?</h1>
     <center>
-        <div id="buttons-hapus_kelas" >
+        <div id="buttons-hapus_mapel" >
             <a href="javascript:void(0)" class="easyui-linkbutton c6" iconCls="icon-ok" onclick= "hapus()" style="width:90px" >Hapus</a>
             <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-cancel" onclick="javascript:$('#dlg-hapus-mapel').dialog('close')" style="width:90px">Cancel</a>
         </div>
@@ -119,7 +119,7 @@
 </div>
 <script>
     var url =''
-    $("#cb-filter_kelas").combobox({
+    $("#cb-filter_mapel").combobox({
         onClick : function(val){
             $('#dg-guru').datagrid('load',{
                 mapel : val.value
@@ -342,7 +342,7 @@
             // Menyimpan nama mapel yang akan dihapus
             window.namaMapelYangAkanDihapus = row.nama_mapel;
             
-            // Membuka dialog konfirmasi $('#dlg-hapus-mapel').dialog('open');
+            
         }
     function hapus(){
         var row = $('#dg-mapel').datagrid('getSelected');

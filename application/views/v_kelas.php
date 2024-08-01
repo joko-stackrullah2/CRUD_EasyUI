@@ -54,12 +54,14 @@
     </div>
 
     <div id="dlg-hapus-kelas" class="easyui-dialog" title="Confirm" closed="true" button="#buttons-hapus_kelas " style="width:400px;height:200px;" data-options="iconCls:'icon-help',resizable:true,modal:true">
-        <center>
-        <h1> Hapus data ini? </h1>
+    <center>
+    <h1 id="hapus-pesan">Hapus data ini?</h1>
+    <center>
         <div id="buttons-hapus_kelas" >
             <a href="javascript:void(0)" class="easyui-linkbutton c6" iconCls="icon-ok" onclick= "hapus()" style="width:90px" >Hapus</a>
             <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-cancel" onclick="javascript:$('#dlg-hapus-kelas').dialog('close')" style="width:90px">Cancel</a>
         </div>
+    </div>
     </div>
     </body>
 </html>
@@ -198,29 +200,49 @@
         });
     }
 
-    function hapus(){
+    $(function() {
+        
+        // Event ketika baris data grid diklik
         var row = $('#dg-kelas').datagrid('getSelected');
-        $('#form-tambah_kelas').form('load',row);
-        $('#form-tambah_kelas').form('submit',{
-            url: url,
-            onSubmit: function(){
-                return $(this).form('validate');
-            },
-            success: function(result){
-                var result = eval('('+result+')');
-                if (result.success){
-                    $('#dd').dialog('close');        
-                    $('#dg-kelas').datagrid('reload');
-                } else {
-                    $.messager.show({
-                        title: 'Error',
-                        msg: result.errorMsg
-                    });
-                    ;
-                }
+    var row = $('#dg-kelas').datagrid({
+            
+            onClickRow: function(index, row) {
+                tampilkanDialogKonfirmasi(row);
             }
         });
+    });
+function tampilkanDialogKonfirmasi(row) {
+        // Mengatur pesan konfirmasi dengan nama kelas dari baris yang dipilih
+        
+        var pesan = `Hapus kelas ${row.nama_kelas}?`;
+        document.getElementById('hapus-pesan').innerText = pesan;
+        
+        // Menyimpan nama kelas yang akan dihapus
+        window.namaKelasYangAkanDihapus = row.nama_kelas;
+        
+       
     }
-
-
+function hapus(){
+    var row = $('#dg-kelas').datagrid('getSelected');
+    $('#form-tambah_kelas').form('load',row);
+    $('#form-tambah_kelas').form('submit',{
+        url: url,
+        onSubmit: function(){
+            return $(this).form('validate');
+        },
+        success: function(result){
+            var result = eval('('+result+')');
+            if (result.success){
+                $('#dlg-hapus-kelas').dialog('close');        
+                $('#dg-kelas').datagrid('reload');
+            } else {
+                $.messager.show({
+                    title: 'Error',
+                    msg: result.errorMsg
+                });
+                ;
+            }
+        }
+    });
+}
 </script>
