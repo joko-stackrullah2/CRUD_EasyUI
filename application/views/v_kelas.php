@@ -103,7 +103,7 @@
     function hapusKelas(){
         let row = $('#dg-kelas').datagrid('getSelected');
         if (row){
-        $('#dd').dialog('open').dialog('setTitle','Hapus Data Kelas');
+        $('#dlg-hapus-kelas').dialog('open').dialog('setTitle','Hapus Data Kelas');
         $('#form-tambah_kelas').form('load',row);
         url = 'index.php/Kelas/hapus';
     }
