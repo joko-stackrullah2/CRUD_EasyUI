@@ -9,9 +9,11 @@
             <table id="dg-mapel" toolbar="#toolbar" class="easyui-datagrid" style="width:auto;height:567px;;" singleSelect="true" fitColumns="true" rowNumbers="false" pagination="true" url="<?= site_url('mapel/getAllDataMapel') ?>" pageSize="50" pageList="[25,50,75,100,125,150,200]" nowrap="false" data-options="singleSelect:true" >
                 <thead>
                     <tr>
-                    <th field="id_mapel" width="80" sortable="true" halign="center">NO</th>
-                        <th field="kode" width="80" sortable="true" halign="center">KODE</th>
-                        <th field="nama_mapel"  width="300" sortable="true" halign="center">NAMA MAPEL</th>
+                    <th field="id_mapel" width="100" sortable="true" halign="center">NO</th>
+                        <th field="kode" width="100" sortable="true" halign="center">KODE</th>
+                        <th field="nama_mapel"  width="100" sortable="true" halign="center">NAMA MAPEL</th>
+                        <th field="lihat_foto"  width="100" sortable="true" halign="center">LIHAT FOTO</th>
+
                     </tr>
                 </thead>
             </table>
@@ -28,9 +30,7 @@
     <div id="toolbarfile">
         <a href="#" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="newFile()" >Tambah File</a>
         <a href="#" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onclick="editFile()" >Edit File</a>
-        <a href="#" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="hapusFile()" >Hapus File</a>
-        <a href = "#" class = "easyui-linkbutton" iconCls = "icon-print"  onclick="cetakpdf()">Cetak PDF </a>
-        <a href = "#" class = "easyui-linkbutton" iconCls = "icon-print"  onclick="cetakexcel()">Cetak Excel </a>   
+        <a href="#" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="hapusFile()" >Hapus File</a>   
     </div>
 
     <div id="dlg-hapus_mapel" class="easyui-dialog" title="Confirm" closed="true" button="#dlg-hapus_mapel-buttons" style="width:600px;height:400px;" data-options="iconCls:'icon-help',resizable:true,modal:true">
@@ -66,17 +66,10 @@
         </form>
     </div>
 
-    <div id="dlg-file" class="easyui-dialog"  style="width:520px;height:500px;padding:10px 20px" closed="true" buttons="#buttons-simpan_file">
+    <div id="dlg-file" class="easyui-dialog"  style="width:400px;height:300px;padding:10px 20px" closed="true" buttons="#buttons-simpan_file">
         <div class="ftitle">DAFTAR MAPEL</div>
         <form id="form-tambah_file" method="post" novalidate>
             <input type="hidden" name='key_file' id='key_file_dokumen'/>
-            <div class="fitem">
-                <P>
-                <label>Kode mapel:</label>
-                <p>
-                <input name="kode_mapel_id" id="kode_mapel_id" class="easyui-textbox" width= "300" ></p>
-            </div>
-            <div class="fitem">
             <div class="fitem">
                 <P>
                 <label>Path file:</label>
@@ -88,12 +81,6 @@
                 <label>Keterangan file:</label>
                 <p>
                 <input name="keterangan_file" id="keterangan_file" class="easyui-textbox" width= "300" ></p>
-            </div>
-            <div class="fitem">
-                <P>
-                <label>Key file:</label>
-                <p>
-                <input name="key_file" id="key_file" class="easyui-textbox" width= "300" ></p>
             </div>
         </form>
     </div>
