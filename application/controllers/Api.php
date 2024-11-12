@@ -11,18 +11,18 @@ class Api extends CI_Controller {
 
     public function login() {
         // Mengatur validasi input
-        $this->form_validation->set_rules('nama', 'Nama', 'required');
-        $this->form_validation->set_rules('password', 'Password', 'required');
+        // $this->form_validation->set_rules('nama', 'Nama', 'required');
+        // $this->form_validation->set_rules('password', 'Password', 'required');
 
-        if ($this->form_validation->run() == FALSE) {
-            // Jika validasi gagal
-            $response = array(
-                'status' => false,
-                'message' => validation_errors()
-            );
-            echo json_encode($response);
-            return;
-        }
+        // if ($this->form_validation->run() == FALSE) {
+        //     // Jika validasi gagal
+        //     $response = array(
+        //         'status' => false,
+        //         'message' => validation_errors()
+        //     );
+        //     echo json_encode($response);
+        //     return;
+        // }
 
         // Mengambil input
         $nama = $this->input->post('nama');

@@ -8,16 +8,18 @@ class User_model extends CI_Model {
     }
 
     // Fungsi untuk login user
-    public function login($nama, $katasandi) {
+    public function login($nama, $password) {
         // Mencari user berdasarkan username
-        $this->db->where('nama', $katasandi);
+        $this->db->where('nama_guru', $nama);
+        $this->db->where('password', $password);
         $user = $this->db->get('guru')->row();
 
         // Jika user ditemukan, verifikasi password
-        if ($user && password_verify($katasandi, $user->katasandi)) {
+        if ($user) {
             return $user;
         } else {
             return false;
         }
     }
+
 }
