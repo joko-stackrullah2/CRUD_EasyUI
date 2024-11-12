@@ -12,7 +12,7 @@ class Api extends CI_Controller {
     public function login() {
         // Mengatur validasi input
         $this->form_validation->set_rules('nama', 'Nama', 'required');
-        $this->form_validation->set_rules('katasandi', 'Kata sandi', 'required');
+        $this->form_validation->set_rules('password', 'Password', 'required');
 
         if ($this->form_validation->run() == FALSE) {
             // Jika validasi gagal
@@ -26,10 +26,10 @@ class Api extends CI_Controller {
 
         // Mengambil input
         $nama = $this->input->post('nama');
-        $katasandi = $this->input->post('katasandi');
+        $password = $this->input->post('password');
 
         // Memanggil model untuk verifikasi user
-        $user = $this->User_model->login($nama, $katasandi);
+        $user = $this->User_model->login($nama, $password);
 
         if ($user) {
             // Jika login sukses
@@ -37,15 +37,15 @@ class Api extends CI_Controller {
                 'status' => true,
                 'message' => 'Login berhasil',
                 'data' => array(
-                    'id' => $user->id,
-                    'nama' => $user->nama
+                    'id_guru' => $user->id_guru,
+                    'nama_guru' => $user->nama_guru
                 )
             );
         } else {
             // Jika login gagal
             $response = array(
                 'status' => false,
-                'message' => 'Nama atau Kata sandi salah'
+                'message' => 'Nama atau Kata password salah'
             );
         }
 
