@@ -1,0 +1,5 @@
+SELECT * FROM guru
+SELECT nama_guru,jk_guru FROM guru
+SELECT * FROM kelas
+SELECT a.*,b.nama_kelas FROM siswa a INNER JOIN kelas b ON a.id_kelas = b.id_kelas
+SELECT a.*,b.id_mapel FROM guru a INNER JOIN mapel b ON a.id_mapel = b.id_mapel
