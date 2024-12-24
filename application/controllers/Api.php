@@ -1,5 +1,9 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
+header("Access-Control-Allow-Headers: Authorization, Content-Type");
+header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE, PATCH, OPTIONS");
+header("Content-Type: application/json; charset=utf-8");
 
 class Api extends CI_Controller {
 
@@ -52,4 +56,4 @@ class Api extends CI_Controller {
         // Mengirimkan respon JSON
         echo json_encode($response);
     }
-}
+} 

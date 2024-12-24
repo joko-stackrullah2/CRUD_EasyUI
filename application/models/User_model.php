@@ -6,9 +6,13 @@ class User_model extends CI_Model {
     public function __construct() {
         parent::__construct();
     }
-
-    // Fungsi untuk login user
-    public function login($nama, $password) {
+ // Fungsi untuk menyimpan data pengguna baru
+ public function regis($data) {
+    $this->db->insert('guru', $data); // Pastikan tabel "users" sudah ada di database
+    return $this->db->insert_id(); // Mengembalikan ID pengguna baru
+}
+     // Fungsi untuk login user
+     public function login($nama, $password) {
         // Mencari user berdasarkan username
         $this->db->where('nama_guru', $nama);
         $this->db->where('password', $password);
@@ -21,5 +25,4 @@ class User_model extends CI_Model {
             return false;
         }
     }
-
 }
